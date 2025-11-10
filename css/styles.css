@@ -1,0 +1,498 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #1a1a1a;
+    color: #e0e0e0;
+    transition: background 0.3s, color 0.3s;
+}
+
+body.light-mode {
+    background: #ffffff;
+    color: #2c3e50;
+}
+
+/* Slide Layout */
+.slide {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 80px;
+    position: relative;
+}
+
+.slide-content {
+    max-width: 1400px;
+    width: 100%;
+}
+
+.slide-number {
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+    font-size: 1em;
+    color: #666;
+}
+
+body.light-mode .slide-number {
+    color: #999;
+}
+
+/* Title Slide */
+.title-slide h1 {
+    font-size: 4.5em;
+    font-weight: 300;
+    margin-bottom: 20px;
+    color: #ffffff;
+    letter-spacing: -1px;
+}
+
+body.light-mode .title-slide h1 {
+    color: #2c3e50;
+}
+
+.title-slide .subtitle {
+    font-size: 1.8em;
+    color: #888;
+    font-weight: 300;
+    margin-bottom: 40px;
+}
+
+body.light-mode .title-slide .subtitle {
+    color: #7f8c8d;
+}
+
+.title-slide .divider {
+    width: 80px;
+    height: 3px;
+    background: #7B42BC;
+    margin: 30px 0;
+}
+
+.title-slide .meta {
+    font-size: 1.3em;
+    color: #666;
+    margin-top: 40px;
+}
+
+body.light-mode .title-slide .meta {
+    color: #95a5a6;
+}
+
+/* Content Slides */
+h2 {
+    font-size: 3.2em;
+    font-weight: 300;
+    margin-bottom: 40px;
+    color: #ffffff;
+}
+
+body.light-mode h2 {
+    color: #2c3e50;
+}
+
+h3 {
+    font-size: 2.2em;
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: #7B42BC;
+}
+
+.content {
+    font-size: 1.5em;
+    line-height: 1.8;
+    color: #b0b0b0;
+}
+
+body.light-mode .content {
+    color: #34495e;
+}
+
+.content p {
+    margin-bottom: 20px;
+}
+
+.content strong {
+    color: #e0e0e0;
+    font-weight: 500;
+}
+
+body.light-mode .content strong {
+    color: #2c3e50;
+}
+
+.divider {
+    width: 60px;
+    height: 3px;
+    background: #7B42BC;
+    margin: 30px 0;
+}
+
+/* Code Blocks */
+.code-block {
+    background: #0a0a0a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 25px;
+    margin: 30px 0;
+    font-family: 'Courier New', monospace;
+    font-size: 1.15em;
+    color: #7B42BC;
+    line-height: 1.7;
+}
+
+body.light-mode .code-block {
+    background: #f8f9fa;
+    border: 2px solid #dee2e6;
+    color: #7B42BC;
+}
+
+.code-block .comment {
+    color: #888;
+    font-style: italic;
+}
+
+body.light-mode .code-block .comment {
+    color: #6c757d;
+}
+
+.code-block .keyword {
+    color: #4ECDC4;
+    font-weight: 600;
+}
+
+body.light-mode .code-block .keyword {
+    color: #0066cc;
+    font-weight: 600;
+}
+
+.code-block .string {
+    color: #7B42BC;
+}
+
+/* Lists */
+.content ul {
+    list-style: none;
+    margin: 30px 0;
+}
+
+.content li {
+    margin-bottom: 28px;
+    padding-left: 35px;
+    position: relative;
+    font-size: 1.05em;
+}
+
+.content li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #7B42BC;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+/* Highlight Box */
+.highlight-box {
+    background: #252525;
+    border-left: 4px solid #7B42BC;
+    padding: 25px 30px;
+    margin: 30px 0;
+    border-radius: 4px;
+    font-size: 1.05em;
+}
+
+body.light-mode .highlight-box {
+    background: #f0e6ff;
+}
+
+.highlight-box strong {
+    color: #7B42BC;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.15em;
+}
+
+/* Warning Box */
+.warning-box {
+    background: #2a2520;
+    border-left: 4px solid #ff9800;
+    padding: 25px 30px;
+    margin: 30px 0;
+    border-radius: 4px;
+    font-size: 1.05em;
+}
+
+body.light-mode .warning-box {
+    background: #fff3cd;
+}
+
+.warning-box strong {
+    color: #ff9800;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.15em;
+}
+
+body.light-mode .warning-box strong {
+    color: #ff6f00;
+}
+
+/* Link Button */
+.link-button {
+    display: inline-block;
+    background: #7B42BC;
+    color: white;
+    padding: 16px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.15em;
+    margin: 20px 0;
+    transition: all 0.3s;
+}
+
+.link-button:hover {
+    background: #9b5ddc;
+    transform: translateY(-2px);
+}
+
+/* Side by Side Layout */
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin: 30px 0;
+}
+
+.side-left, .side-right {
+    background: #0a0a0a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 25px;
+}
+
+body.light-mode .side-left,
+body.light-mode .side-right {
+    background: #f8f9fa;
+    border: 2px solid #dee2e6;
+}
+
+.side-left h3, .side-right h3 {
+    font-size: 1.5em;
+    color: #4ECDC4;
+    margin-bottom: 20px;
+}
+
+body.light-mode .side-left h3,
+body.light-mode .side-right h3 {
+    color: #0066cc;
+}
+
+/* Landscape Diagrams */
+.diagram-landscape {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    padding: 30px;
+    font-size: 1.5em;
+}
+
+.diagram-landscape .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100px;
+}
+
+.diagram-landscape .icon {
+    font-size: 3.5em;
+    margin-bottom: 10px;
+}
+
+.diagram-landscape .label {
+    font-size: 0.8em;
+    color: #b0b0b0;
+    text-align: center;
+    font-weight: 500;
+}
+
+body.light-mode .diagram-landscape .label {
+    color: #495057;
+}
+
+.diagram-landscape .arrow {
+    color: #4ECDC4;
+    font-size: 1.8em;
+    margin: 0 8px;
+    font-weight: bold;
+}
+
+body.light-mode .diagram-landscape .arrow {
+    color: #0066cc;
+}
+
+.diagram-landscape .new {
+    color: #4CAF50;
+}
+
+body.light-mode .diagram-landscape .new {
+    color: #28a745;
+}
+
+/* Command List */
+.command-list {
+    margin: 30px 0;
+}
+
+.command-item {
+    background: #252525;
+    padding: 20px 25px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border-left: 3px solid #7B42BC;
+}
+
+body.light-mode .command-item {
+    background: #f0e6ff;
+}
+
+.command-item .cmd {
+    font-family: 'Courier New', monospace;
+    color: #7B42BC;
+    font-size: 1.3em;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.command-item .desc {
+    color: #888;
+    font-size: 1.1em;
+}
+
+body.light-mode .command-item .desc {
+    color: #6c757d;
+}
+
+/* Two Column Layout */
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin: 30px 0;
+}
+
+.column h3 {
+    color: #7B42BC;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.column ul {
+    list-style: none;
+}
+
+.column li {
+    margin-bottom: 14px;
+    padding-left: 22px;
+    position: relative;
+    font-size: 1.15em;
+}
+
+.column li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #7B42BC;
+    font-size: 1.2em;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    background: rgba(123, 66, 188, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(123, 66, 188, 0.3);
+    color: #7B42BC;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5em;
+    z-index: 99999;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .theme-toggle {
+    background: rgba(123, 66, 188, 0.1);
+    box-shadow: 0 2px 10px rgba(123, 66, 188, 0.2);
+}
+
+.theme-toggle:hover {
+    background: rgba(123, 66, 188, 0.3);
+    transform: scale(1.1) rotate(15deg);
+    box-shadow: 0 4px 15px rgba(123, 66, 188, 0.3);
+}
+
+/* Navigation Buttons */
+.nav-buttons {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 1000;
+}
+
+.nav-button {
+    background: #252525;
+    border: 1px solid #444;
+    color: #e0e0e0;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: all 0.3s;
+}
+
+body.light-mode .nav-button {
+    background: #ffffff;
+    border: 2px solid #7B42BC;
+    color: #7B42BC;
+}
+
+.nav-button:hover {
+    background: #7B42BC;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.nav-button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.nav-button:disabled:hover {
+    background: #252525;
+    transform: none;
+}
+
+body.light-mode .nav-button:disabled:hover {
+    background: #ffffff;
+    color: #7B42BC;
+}

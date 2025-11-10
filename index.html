@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terraform Introduction</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+    <span id="themeIcon">🌙</span>
+</button>
+
+<div class="slide title-slide">
+    <div class="slide-content">
+        <h1>Terraform Introduction</h1>
+        <div class="subtitle">Infrastructure as Code at Rocket Partners</div>
+        <div class="divider"></div>
+        <div class="meta">Data Platform Team • PH Team<br>AWS Infrastructure Management</div>
+    </div>
+    <div class="slide-number">1/26</div>
+</div>
+
+<div class="slide">
+    <div class="slide-content">
+        <h2>What is Terraform?</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <p>Terraform allows you to <strong>build, change, and version infrastructure safely</strong> and efficiently.</p>
+            <p>In simpler terms: <strong>codify the process</strong> of managing infrastructure, almost like how we write application code.</p>
+            <div class="highlight-box">
+                <strong>Key Features</strong>
+                It can execute and automate everything you do in the cloud. It's free and open-source.
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">2/26</div>
+</div>
+
+<div class="slide">
+    <div class="slide-content">
+        <h2>Why Infrastructure as Code?</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <ul>
+                <li><strong>Version Control:</strong> Track every infrastructure change in Git</li>
+                <li><strong>Repeatability:</strong> Create identical environments with confidence</li>
+                <li><strong>Documentation:</strong> Your code IS your documentation, always up-to-date</li>
+                <li><strong>Automation:</strong> No more manual clicking, reducing human error</li>
+                <li><strong>Collaboration:</strong> Team reviews infrastructure changes through pull requests</li>
+            </ul>
+        </div>
+    </div>
+    <div class="slide-number">3/26</div>
+</div>
+
+<div class="slide">
+    <div class="slide-content">
+        <h2>HashiCorp Configuration Language</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <p>Terraform uses <strong>HCL</strong> to declaratively specify what resources should exist.</p>
+            <div class="code-block">
+                <span class="keyword">resource</span> <span class="string">"aws_s3_bucket"</span> <span class="string">"data_lake"</span> {<br>
+                &nbsp;&nbsp;bucket = <span class="string">"rocketpartners-data-lake"</span><br>
+                &nbsp;&nbsp;region = <span class="string">"us-east-1"</span><br>
+                }<br><br>
+                <span class="comment"># You describe WHAT you want, not HOW to create it</span>
+            </div>
+            <p>Terraform can manage almost anything across any cloud provider.</p>
+        </div>
+    </div>
+    <div class="slide-number">4/26</div>
+</div>
+
+<div class="slide">
+    <div class="slide-content">
+        <h2>Terraform Code Glossary</h2>
+        <div class="divider"></div>
+        <div class="content" style="font-size: 1em;">
+            <div class="highlight-box">
+                <strong>Terraform is Declarative</strong>
+                You describe WHAT you want to exist, not HOW. Terraform figures out the steps.
+            </div>
+            <div class="two-column" style="margin-top: 20px;">
+                <div class="column">
+                    <h3 style="font-size: 1.2em;">Code Structure</h3>
+                    <ul style="font-size: 0.9em;">
+                        <li><strong>resource:</strong> Keyword to create infrastructure</li>
+                        <li><strong>"aws_s3_bucket":</strong> Resource type</li>
+                        <li><strong>"my_name":</strong> Your reference name</li>
+                        <li><strong>tags:</strong> Metadata labels</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3 style="font-size: 1.2em;">AWS Terms</h3>
+                    <ul style="font-size: 0.9em;">
+                        <li><strong>bucket:</strong> S3 name (globally unique)</li>
+                        <li><strong>ami:</strong> Amazon Machine Image</li>
+                        <li><strong>instance_type:</strong> Server size</li>
+                        <li><strong>security_group:</strong> Firewall rules (who can access)</li>
+                        <li><strong>region:</strong> AWS data center</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="two-column" style="margin-top: 15px;">
+                <div class="column">
+                    <h3 style="font-size: 1.2em;">Properties</h3>
+                    <ul style="font-size: 0.9em;">
+                        <li><strong>var.something:</strong> Reference variable</li>
+                        <li><strong>aws_resource.name.id:</strong> Reference resources</li>
+                        <li><strong>ingress/egress:</strong> Inbound/outbound rules</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3 style="font-size: 1.2em;">Container Terms</h3>
+                    <ul style="font-size: 0.9em;">
+                        <li><strong>ECR:</strong> Elastic Container Registry (Docker images)</li>
+                        <li><strong>ECS:</strong> Elastic Container Service (runs containers)</li>
+                        <li><strong>Task Definition:</strong> Container configuration</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">5/26</div>
+</div>
+
+<div class="slide">
+    <div class="slide-content">
+        <h2>Installing Terraform</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div class="code-block">
+                <span class="comment"># Install tfenv (version manager)</span><br>
+                brew install tfenv<br><br>
+                <span class="comment"># Install required version</span><br>
+                tfenv install 1.6.3<br>
+                tfenv use 1.6.3<br><br>
+                terraform --version
+            </div>
+            <div class="warning-box">
+                <strong>⚠️ Required: Terraform 1.6.3</strong>
+                Defined in <code style="color: #ff9800;">workflows/plan-prod-us.yml</code><br>
+                Ensures team consistency.
+            </div>
+            <a href="https://github.com/RocketPartners/liftck_tf_infra/blob/main/.github/workflows/plan-prod-us.yml" class="link-button">📄 View Workflow YAML</a>
+        </div>
+    </div>
+    <div class="slide-number">6/26</div>
+</div>
+
+<div class="slide">
+    <div class="slide-content">
+        <h2>Essential Terraform Commands</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div class="command-list">
+                <div class="command-item">
+                    <span class="cmd">terraform init</span>
+                    <span class="desc">Initialize working directory, download providers</span>
+                </div>
+                <div class="command-item">
+                    <span class="cmd">terraform plan</span>
+                    <span class="desc">Preview what will change (dry run)</span>
+                </div>
+                <div class="command-item">
+                    <span class="cmd">terraform apply</span>
+                    <span class="desc">Execute changes to match your code</span>
+                </div>
+                <div class="command-item">
+                    <span class="cmd">terraform destroy</span>
+                    <span class="desc">Tear down all managed resources</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">7/26</div>
+</div>
+
+<div class="slide">
+    <div class="slide-content">
+        <h2>Real Example: Our POS Discount Service</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <p style="color: #7B42BC; font-size: 1.1em;"><strong>This is similar to what we actually built:</strong></p>
+            <h3>We'll Create:</h3>
+            <ul>
+                <li><strong>ECR Repository:</strong> Store Docker image for Discount Service</li>
+                <li><strong>ECS Cluster:</strong> Run the containerized Discount Service</li>
+                <li><strong>Load Balancer:</strong> Distribute traffic to ECS tasks</li>
+                <li><strong>Security Groups:</strong> Control network access</li>
+                <li><strong>Virtual Journal Integration:</strong> HTTP endpoint for POS data</li>
+            </ul>
+            <div class="highlight-box">
+                <strong>Architecture:</strong>
+                Java POS App → Virtual Journal (HTTP) → Discount Service (ECS) → Load Balancer
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">8/26</div>
+</div>
+
+<div class="slide">
+    <div class="slide-content">
+        <h2>Step 1: Create ECR Repository</h2>
+        <div class="divider"></div>
+        <div class="side-by-side">
+            <div class="side-left">
+                <h3>Infrastructure</h3>
+                <div class="diagram-landscape">
+                    <div class="item">
+                        <span class="icon" style="font-size: 2em;">📦</span>
+                        <span class="label">ECR Repository<br>Discount Service Image</span>
+                    </div>
+                </div>
+            </div>
+            <div class="side-right">
+                <h3>Terraform Code</h3>
+                <div class="code-block" style="font-size: 0.9em;">
+                    <span class="keyword">resource</span> <span class="string">"aws_ecr_repository"</span> <span class="string">"discount_service"</span> {<br>
+                    &nbsp;&nbsp;name = <span class="string">"discount-service"</span><br>
+                    &nbsp;&nbsp;<span class="comment"># Repository name for Docker images</span><br>
+                    <br>
+                    &nbsp;&nbsp;image_tag_mutability = <span class="string">"MUTABLE"</span><br>
+                    &nbsp;&nbsp;<span class="comment"># Allow tag updates</span><br>
+                    <br>
+                    &nbsp;&nbsp;tags = {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Name = <span class="string">"discount-service"</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;ManagedBy = <span class="string">"Terraform"</span><br>
+                    &nbsp;&nbsp;}<br>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">9/26</div>
+</div>
+
+<div class="slide">
+    <div class="slide-content">
+        <h2>Step 2: Create ECS Cluster</h2>
+        <div class="divider"></div>
+        <div class="side-by-side">
+            <div class="side-left">
+                <h3>Infrastructure</h3>
+                <div class="diagram-landscape">
+                    <div class="item">
+                        <span class="icon" style="font-size: 1.8em;">📦</span>
+                        <span class="label">ECR</span>
+                    </div>
+                    <span class="arrow">→</span>
+                    <div class="item">
+                        <span class="icon new" style="font-size: 2em;">🐳</span>
+                        <span class="label new">ECS Cluster<br>(NEW)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="side-right">
+                <h3>Terraform Code</h3>
+                <div class="code-block" style="font-size: 0.85em;">
+                    <span class="keyword">resource</span> <span class="string">"aws_ecs_cluster"</span> <span class="string">"main"</span> {<br>
+                    &nbsp;&nbsp;name = <span class="string">"discount-service-cluster"</span><br>
+                    &nbsp;&nbsp;<span class="comment"># ECS cluster name</span><br>
+                    }<br>
+                    <br>
+                    <span class="keyword">resource</span> <span class="string">"aws_ecs_task_definition"</span> <span class="string">"discount"</span> {<br>
+                    &nbsp;&nbsp;family = <span class="string">"discount-service"</span><br>
+                    &nbsp;&nbsp;container_definitions = jsonencode([{<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;name = <span class="string">"discount"</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;image = <span class="string">"${aws_ecr_repository.discount_service.repository_url}"</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment"># Uses ECR image!</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;memory = 512<br>
+                    &nbsp;&nbsp;}])<br>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">10/26</div>
+</div>
+
+<div class="slide">
+    <div class="slide-content">
+        <h2>Step 3: Add Load Balancer</h2>
+        <div class="divider"></div>
+        <div class="side-by-side">
+            <div class="side-left">
+                <h3>Infrastructure</h3>
+                <div class="diagram-landscape" style="font-size: 1.3em;">
+                    <div class="item"><span class="icon" style="font-size: 1.5em;">📦</span></div>
+                    <span class="arrow">→</span>
+                    <div class="item"><span class="icon" style="font-size: 1.8em;">🐳</span><span class="label" style="font-size: 0.7em;">ECS</span></div>
+                    <span class="arrow">→</span>
+                    <div class="item"><span class="icon new" style="font-size: 2em;">⚖️</span><span class="label new">ALB<br>(NEW)</span></div>
+                </div>
+                <p style="text-align: center; color: #4ECDC4; font-size: 0.7em; margin-top: 10px;">← Virtual Journal connects here</p>
+            </div>
+            <div class="side-right">
+                <h3>Terraform Code</h3>
+                <div class="code-block" style="font-size: 0.8em;">
+                    <span class="keyword">resource</span> <span class="string">"aws_lb"</span> <span class="string">"discount"</span> {<br>
+                    &nbsp;&nbsp;name = <span class="string">"discount-service-lb"</span><br>
+                    &nbsp;&nbsp;<span class="comment"># Load balancer name</span><br>
+                    &nbsp;&nbsp;load_balancer_type = <span class="string">"application"</span><br>
+                    }<br>
+                    <br>
+                    <span class="keyword">resource</span> <span class="string">"aws_lb_target_group"</span> <span class="string">"discount"</span> {<br>
+                    &nbsp;&nbsp;port = 8080<br>
+                    &nbsp;&nbsp;<span class="comment"># Discount service port</span><br>
+                    &nbsp;&nbsp;protocol = <span class="string">"HTTP"</span><br>
+                    &nbsp;&nbsp;target_type = <span class="string">"ip"</span><br>
+                    &nbsp;&nbsp;<span class="comment"># For ECS Fargate tasks</span><br>
+                    &nbsp;&nbsp;vpc_id = var.vpc_id<br>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">11/26</div>
+</div>
+
+<div class="slide">
+    <div class="slide-content">
+        <h2>Step 4: Add Security Groups</h2>
+        <div class="divider"></div>
+        <div class="side-by-side">
+            <div class="side-left">
+                <h3>Infrastructure</h3>
+                <div class="diagram-landscape" style="font-size: 1.2em;">
+                    <div class="item"><span class="icon" style="font-size: 1.5em;">📦</span></div>
+                    <span class="arrow">→</span>
+                    <div class="item"><span class="icon" style="font-size: 1.8em;">🐳</span></div>
+                    <span class="arrow">→</span>
+                    <div class="item"><span class="icon" style="font-size: 2em;">⚖️</span></div>
+                </div>
+                <div class="diagram-landscape" style="margin-top: 15px;">
+                    <div class="item">
+                        <span class="icon new" style="font-size: 2em;">🛡️</span>
+                        <span class="label new">Security Groups<br>(NEW)</span>
+                    </div>
+                </div>
+                <p style="text-align: center; font-size: 0.7em; color: #888; margin-top: 5px;">(Controls network access)</p>
+            </div>
+            <div class="side-right">
+                <h3>Terraform Code</h3>
+                <div class="code-block" style="font-size: 0.75em;">
+                    <span class="keyword">resource</span> <span class="string">"aws_security_group"</span> <span class="string">"ecs_tasks"</span> {<br>
+                    &nbsp;&nbsp;name = <span class="string">"discount-ecs-tasks"</span><br>
+                    &nbsp;&nbsp;<span class="comment"># For ECS containers</span><br>
+                    &nbsp;&nbsp;vpc_id = var.vpc_id<br>
+                    <br>
+                    &nbsp;&nbsp;ingress {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;from_port = 8080<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment"># Allow port 8080</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;to_port = 8080<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;protocol = <span class="string">"tcp"</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;security_groups = [aws_security_group.lb.id]<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment"># Only from Load Balancer!</span><br>
+                    &nbsp;&nbsp;}<br>
+                    }<br>
+                    <br>
+                    <span class="keyword">resource</span> <span class="string">"aws_security_group"</span> <span class="string">"lb"</span> {<br>
+                    &nbsp;&nbsp;name = <span class="string">"discount-lb"</span><br>
+                    &nbsp;&nbsp;<span class="comment"># For Load Balancer</span><br>
+                    &nbsp;&nbsp;ingress {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;from_port = 80<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;to_port = 80<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;protocol = <span class="string">"tcp"</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;cidr_blocks = [<span class="string">"0.0.0.0/0"</span>]<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment"># Public HTTP access</span><br>
+                    &nbsp;&nbsp;}<br>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">12/26</div>
+</div>
+
+<div class="slide">
+    <div class="slide-content">
+        <h2>Step 5: ECS Service</h2>
+        <div class="divider"></div>
+        <div class="side-by-side">
+            <div class="side-left">
+                <h3>Infrastructure</h3>
+                <div class="diagram-landscape" style="font-size: 1.2em;">
+                    <div class="item"><span class="icon" style="font-size: 1.3em;">📦</span></div>
+                    <span class="arrow" style="font-size: 0.8em;">→</span>
+                    <div class="item"><span class="icon" style="font-size: 1.5em;">🐳</span></div>
+                    <span class="arrow" style="font-size: 0.8em;">→</span>
+                    <div class="item"><span class="icon" style="font-size: 1.8em;">⚖️</span></div>
+                </div>
+                <div style="text-align: center; margin-top: 10px;">
+                    <span class="icon new" style="font-size: 1.5em;">🛡️</span>
+                    <span style="font-size: 0.7em; color: #888;"> Security Groups protect all</span>
+                </div>
+            </div>
+            <div class="side-right">
+                <h3>Terraform Code</h3>
+                <div class="code-block" style="font-size: 0.85em;">
+                    <span class="keyword">resource</span> <span class="string">"aws_ecs_service"</span> <span class="string">"discount"</span> {<br>
+                    &nbsp;&nbsp;name = <span class="string">"discount-service"</span><br>
+                    &nbsp;&nbsp;cluster = aws_ecs_cluster.main.id<br>
+                    &nbsp;&nbsp;<span class="comment"># Uses cluster from earlier</span><br>
+                    <br>
+                    &nbsp;&nbsp;task_definition = aws_ecs_task_definition.discount.arn<br>
+                    &nbsp;&nbsp;<span class="comment"># Uses task definition</span><br>
+                    <br>
+                    &nbsp;&nbsp;load_balancer {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;target_group_arn = aws_lb_target_group.discount.arn<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment"># Connect to LB</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;container_name = <span class="string">"discount"</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;container_port = 8080<br>
+                    &nbsp;&nbsp;}<br>
+                    <br>
+                    &nbsp;&nbsp;network_configuration {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;security_groups = [aws_security_group.ecs_tasks.id]<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment"># Uses security group!</span><br>
+                    &nbsp;&nbsp;}<br>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">13/26</div>
+</div>
+
+<div class="slide">
+    <div class="slide-content">
+        <h2>Complete POS Discount Service</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <p style="text-align: left; color: #888; font-size: 0.85em;">POS App → Virtual Journal (HTTP) → Our Infrastructure</p>
+            <div class="diagram-landscape">
+                <div class="item">
+                    <span class="icon">🖥️</span>
+                    <span class="label">Java POS<br>App</span>
+                </div>
+                <span class="arrow">→</span>
+                <div class="item">
+                    <span class="icon">📡</span>
+                    <span class="label">Virtual<br>Journal<br>(HTTP)</span>
+                </div>
+                <span class="arrow">→</span>
+                <div class="item">
+                    <span class="icon">⚖️</span>
+                    <span class="label">Load<br>Balancer</span>
+                </div>
+                <span class="arrow">→</span>
+                <div class="item">
+                    <span class="icon">🐳</span>
+                    <span class="label">ECS<br>Discount<br>Service</span>
+                </div>
+                <span class="arrow">→</span>
+                <div class="item">
+                    <span class="icon">📦</span>
+                    <span class="label">ECR<br>Image</span>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 15px;">
+                <span class="icon">🛡️</span>
+                <span style="font-size: 0.8em; color: #888;"> Security Groups protect ECS and LB</span>
+            </div>
+            <div class="highlight-box" style="margin-top: 20px;">
+                <strong>All managed with Terraform:</strong>
+                ECR, ECS Cluster, Task Definition, Service, Load Balancer, Security Groups
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">14/26</div>
+</div>
+
+<div class="slide">
+    <div class="slide-content">
+        <h2>Upgrading: Scale ECS Service</h2>
+        <div class="divider"></div>
+        <div class="side-by-side">
+            <div class="side-left">
+                <h3>What Changes</h3>
+                <div class="diagram-landscape" style="font-size: 1.2em;">
+                    <div>
+                        <span style="color: #888; font-size: 0.6em;">BEFORE</span><br>
+                        <span class="icon">🐳</span><br>
+                        <span style="font-size: 0.5em;">512MB memory</span>
+                    </div>
+                    <span class="arrow">→</span>
+                    <div>
+                        <span style="color: #4CAF50; font-size: 0.6em;">AFTER</span><br>
+                        <span class="icon new">🐳</span><br>
+                        <span class="new" style="font-size: 0.5em;">1024MB memory</span>
+                    </div>
+                </div>
+            </div>
+            <div class="side-right">
+                <h3>Code Change</h3>
+                <div class="code-block" style="font-size: 0.9em;">
+                    <span class="keyword">resource</span> <span class="string">"aws_ecs_task_definition"</span> <span class="string">"discount"</span> {<br>
+                    &nbsp;&nbsp;container_definitions = jsonencode([{<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;memory = 1024<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment"># Changed from 512!</span><br>
+                    &nbsp;&nbsp;}])<br>
+                    }<br>
+                    <br>
+                    <span class="comment"># terraform plan shows:</span><br>
+                    <span class="comment"># ~ memory: 512 -> 1024</span><br>
+                    <span class="comment"># Plan: 0 add, 1 change</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">15/26</div>
+</div>
+
+<div class="slide">
+    <div class="slide-content">
+        <h2>What is Terragrunt?</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <p><strong>Thin wrapper around Terraform</strong> - keeps code DRY</p>
+            <div class="two-column">
+                <div class="column">
+                    <h3>Problem</h3>
+                    <ul>
+                        <li>Multiple environments</li>
+                        <li>Multiple regions</li>
+                        <li>Repeated code</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Solution</h3>
+                    <ul>
+                        <li>Write once</li>
+                        <li>Reuse everywhere</li>
+                        <li>Auto backend</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">16/26</div>
+</div>
+
+<div class="slide">
+    <div class="slide-content">
+        <h2>Terragrunt Structure</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div class="code-block" style="font-size: 1em;">
+                project/<br>
+                ├── workflows/plan-prod-us.yml  <span class="comment"># TF 1.6.3, TG 0.53.2</span><br>
+                ├── scripts/                    <span class="comment"># .js files</span><br>
+                ├── <span class="keyword">modules/contentstack/</span>       <span class="comment"># ONE copy!</span><br>
+                │   ├── iam.tf<br>
+                │   ├── main.tf<br>
+                │   └── variables.tf<br>
+                └── <span class="keyword">live/</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;├── dev/   <span class="comment"># us-east-1, eu-central-1</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;├── e2e/<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;└── prod/
+            </div>
+            <div class="highlight-box">
+                <strong>Fix once → Fixed everywhere!</strong>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">17/26</div>
+</div>
+
+<div class="slide">
+    <div class="slide-content">
+        <h2>Setting Up Terragrunt</h2>
+        <div class="divider"></div>
+        <div class="content" style="font-size: 1em;">
+            <h3 style="font-size: 1.5em;">1. Install</h3>
+            <div class="code-block" style="font-size: 1em;">
+                brew install terragrunt@0.53.2
+            </div>
+            <h3 style="font-size: 1.5em;">2. Create terragrunt.hcl</h3>
+            <div class="code-block" style="font-size: 0.95em;">
+                terraform {<br>
+                &nbsp;&nbsp;source = <span class="string">"../../modules/web-app"</span><br>
+                }<br>
+                inputs = {<br>
+                &nbsp;&nbsp;region = <span class="string">"us-east-1"</span><br>
+                }
+            </div>
+            <h3 style="font-size: 1.5em;">3. Use It</h3>
+            <div class="code-block" style="font-size: 1em;">
+                terragrunt init<br>
+                terragrunt apply
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">18/26</div>
+</div>
+
+<div class="slide">
+    <div class="slide-content">
+        <h2>Simplest Way to Use Terragrunt</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div class="highlight-box">
+                <strong>Just Like Terraform!</strong>
+                Replace "terraform" with "terragrunt"
+            </div>
+            <div class="two-column" style="font-size: 0.95em;">
+                <div class="column">
+                    <h3>Terraform</h3>
+                    <ul><li>terraform init</li><li>terraform plan</li><li>terraform apply</li></ul>
+                </div>
+                <div class="column">
+                    <h3>Terragrunt</h3>
+                    <ul><li>terragrunt init</li><li>terragrunt plan</li><li>terragrunt apply</li></ul>
+                </div>
+            </div>
+            <div class="code-block">
+                terragrunt run-all plan<br>
+                <span class="comment"># Plans dev, e2e, AND prod!</span>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">19/26</div>
+</div>
+
+<div class="slide">
+    <div class="slide-content">
+        <h2>Actual ContentStack Setup</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div class="code-block" style="font-size: 0.9em;">
+                modules/contentstack/  <span class="comment"># Infrastructure</span><br>
+                &nbsp;&nbsp;├── iam.tf, main.tf, variables.tf<br>
+                <br>
+                live/prod/<br>
+                ├── us-east-1/lambda/<br>
+                │   ├── fetcher/terragrunt.hcl<br>
+                │   └── integration/terragrunt.hcl<br>
+                └── eu-central-1/lambda/<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;├── fetcher/terragrunt.hcl<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;└── integration/terragrunt.hcl
+            </div>
+            <div class="warning-box">
+                <strong>Each Lambda has terragrunt.hcl</strong>
+                Points to shared module with region config
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">20/26</div>
+</div>
+
+<div class="slide">
+    <div class="slide-content">
+        <h2>What is ContentStack?</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <p><strong>Headless CMS</strong> - delivers content via APIs</p>
+            <div class="two-column">
+                <div class="column">
+                    <h3>Traditional CMS</h3>
+                    <ul><li>Content + Design tied</li><li>Only websites</li><li>Hard to reuse</li></ul>
+                </div>
+                <div class="column">
+                    <h3>Headless CMS</h3>
+                    <ul><li>Content separate</li><li>Works everywhere</li><li>Easy to reuse</li></ul>
+                </div>
+            </div>
+            <div class="highlight-box">
+                <strong>For Rocket Partners:</strong>
+                Update an ad or promotion once in ContentStack → Portal gets updated automatically without manual work and Portal issues.
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">21/26</div>
+</div>
+
+<div class="slide">
+    <div class="slide-content">
+        <h2>ContentStack at Rocket Partners</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div class="diagram-landscape">
+                <div class="item"><span class="icon">☁️</span><span class="label">ContentStack</span></div>
+                <span class="arrow">→</span>
+                <div class="item"><span class="icon">⚙️</span><span class="label">Lambdas</span></div>
+                <span class="arrow">→</span>
+                <div class="item"><span class="icon">🎛️</span><span class="label">Portal</span></div>
+                <span class="arrow">→</span>
+                <div class="item"><span class="icon">🖥️</span><span class="label">POS</span></div>
+            </div>
+            <div class="highlight-box">
+                <strong>The Flow:</strong>
+                Content → Through Lambdas → Managed in Portal → Displayed on POS
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">22/26</div>
+</div>
+
+<div class="slide">
+    <div class="slide-content">
+        <h2>Portal & Player Integration</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <p><strong>Portal:</strong> Internal tool for creating/managing ads</p>
+            <div class="diagram-landscape">
+                <div class="item"><span class="icon">☁️</span><span class="label">ContentStack</span></div>
+                <span class="arrow">→</span>
+                <div class="item"><span class="icon">🔌</span><span class="label">API</span></div>
+                <span class="arrow">→</span>
+                <div class="item"><span class="icon">🎛️</span><span class="label" style="color: #4CAF50;">Portal</span></div>
+                <span class="arrow">→</span>
+                <div class="item"><span class="icon">📺</span><span class="label">Player</span></div>
+            </div>
+            <div class="highlight-box">
+                <strong>Why This Matters:</strong>
+                Portal uses ContentStack API - no manual work needed.
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">23/26</div>
+</div>
+
+<div class="slide">
+    <div class="slide-content">
+        <h2>Multi-Region Deployment</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div class="code-block">
+                <span style="color: #4ECDC4;">US:</span> ContentStack → Lambdas → Portal → Player<br>
+                &nbsp;&nbsp;├── S3, API Gateway, IAM<br>
+                <br>
+                <span style="color: #4ECDC4;">EU:</span> ContentStack → Lambdas → Portal → Player<br>
+                &nbsp;&nbsp;├── S3, API Gateway, IAM<br>
+                <br>
+                <span class="comment"># Same code, different configs!</span>
+            </div>
+            <div class="highlight-box">
+                <strong>Your EU Deployment:</strong>
+                Terraform created all resources, Terragrunt reused code
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">24/26</div>
+</div>
+
+<div class="slide">
+    <div class="slide-content">
+        <h2>The Complete Picture</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div class="code-block">
+                <span class="keyword">1. Terraform</span> → Creates AWS resources<br>
+                <span class="keyword">2. Terragrunt</span> → Manages multi-region<br>
+                <span class="keyword">3. ContentStack</span> → Stores content<br>
+                <span class="keyword">4. Integration</span> → Fetches/transforms<br>
+                <span class="keyword">5. Portal</span> → Manages ads<br>
+                <span class="keyword">6. POS/Player</span> → Displays ads
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">25/26</div>
+</div>
+
+<div class="slide">
+    <div class="slide-content">
+        <h2>Summary</h2>
+        <div class="divider"></div>
+        <div class="content" style="font-size: 1.05em;">
+            <ul>
+                <li><strong>Terraform:</strong> Declarative IaC, plan/apply workflow</li>
+                <li><strong>Code Glossary:</strong> resource, tags, ami, instance_type, security groups</li>
+                <li><strong>POS Example:</strong> Discount Service with ECR, ECS, ALB, Security Groups</li>
+                <li><strong>Upgrading:</strong> Change code, Terraform handles it</li>
+                <li><strong>Terragrunt:</strong> No duplication across regions</li>
+                <li><strong>ContentStack:</strong> API → Portal → POS</li>
+            </ul>
+            <div class="warning-box">
+                <strong>Versions:</strong> TF 1.6.3 • TG 0.53.2<br>
+                <span style="font-size: 0.9em;">(workflows/plan-prod-us.yml)</span>
+            </div>
+            <a href="https://rocketpartners.atlassian.net/wiki/spaces/RPPHDev/pages/1213530118/Local+Terraform+Terragrunt+Environment+Setup" class="link-button">📄 Documentation</a>
+        </div>
+    </div>
+    <div class="slide-number">26/26</div>
+</div>
+
+<div class="nav-buttons">
+    <button class="nav-button" id="prevBtn" onclick="changeSlide(-1)">← Previous</button>
+    <button class="nav-button" id="nextBtn" onclick="changeSlide(1)">Next →</button>
+</div>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
