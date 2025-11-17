@@ -3,13 +3,918 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terraform Introduction</title>
+    <title>CI/CD & Terraform at RocketPartners</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
     <span id="themeIcon">🌙</span>
 </button>
+
+<!-- CI/CD PRESENTATION STARTS -->
+
+<div class="slide title-slide">
+    <div class="slide-content">
+        <h1>CI/CD at RocketPartners</h1>
+        <div class="subtitle">Continuous Integration & Continuous Delivery</div>
+        <div class="divider"></div>
+        <div class="meta">The 8 Phases in Practice at RocketPartners<br>Part 2 of DevOps 101</div>
+    </div>
+    <div class="slide-number">1/49</div>
+</div>
+
+<div class="slide">
+    <div class="slide-content">
+        <h2>The 8 CI/CD Phases</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <p><strong>An infinite loop of continuous improvement</strong></p>
+            <div class="diagram-landscape" style="flex-wrap: wrap; gap: 15px;">
+                <div class="item">
+                    <span class="icon" style="font-size: 2.5em;">📋</span>
+                    <span class="label">1. Plan</span>
+                </div>
+                <div class="item">
+                    <span class="icon" style="font-size: 2.5em;">💻</span>
+                    <span class="label">2. Code</span>
+                </div>
+                <div class="item">
+                    <span class="icon" style="font-size: 2.5em;">📦</span>
+                    <span class="label">3. Build</span>
+                </div>
+                <div class="item">
+                    <span class="icon" style="font-size: 2.5em;">🧪</span>
+                    <span class="label">4. Test</span>
+                </div>
+                <div class="item">
+                    <span class="icon" style="font-size: 2.5em;">🚀</span>
+                    <span class="label">5. Release</span>
+                </div>
+                <div class="item">
+                    <span class="icon" style="font-size: 2.5em;">🌐</span>
+                    <span class="label">6. Deploy</span>
+                </div>
+                <div class="item">
+                    <span class="icon" style="font-size: 2.5em;">🔧</span>
+                    <span class="label">7. Operate</span>
+                </div>
+                <div class="item">
+                    <span class="icon" style="font-size: 2.5em;">📊</span>
+                    <span class="label">8. Monitor</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">2/49</div>
+</div>
+
+<!-- Phase 1: Plan -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Phase 1: Plan 📋</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <p><strong>Define project requirements, features, and roadmap</strong></p>
+            <div class="two-column" style="margin-top: 30px;">
+                <div class="column">
+                    <h3>🎯 Objectives</h3>
+                    <ul>
+                        <li>Define clear project requirements and acceptance criteria</li>
+                        <li>Establish feature priorities and development roadmap</li>
+                        <li>Identify dependencies and technical constraints</li>
+                    </ul>
+                    <h3 style="margin-top: 20px;">🚀 At RocketPartners</h3>
+                    <ul>
+                        <li>CircleK Lift workstreams</li>
+                        <li>Release Train – LoA</li>
+                        <li>Terraform infrastructure planning</li>
+                        <li>Multi-team sprint coordination</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>🛠️ Technologies</h3>
+                    <div class="command-list">
+                        <div class="command-item">
+                            <span class="cmd">Jira</span>
+                            <span class="desc">Sprint planning, backlog</span>
+                        </div>
+                        <div class="command-item">
+                            <span class="cmd">Confluence</span>
+                            <span class="desc">Documentation, requirements</span>
+                        </div>
+                        <div class="command-item">
+                            <span class="cmd">Slack</span>
+                            <span class="desc">Team communication</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">3/49</div>
+</div>
+
+<!-- Phase 2: Code -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Phase 2: Code 💻</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <p><strong>Write code according to plan and standards</strong></p>
+            <div class="two-column" style="margin-top: 30px;">
+                <div class="column">
+                    <h3>🎯 Objectives</h3>
+                    <ul>
+                        <li>Implement features per requirements</li>
+                        <li>Write clean, testable code</li>
+                        <li>Follow coding standards</li>
+                        <li>Perform peer code reviews</li>
+                    </ul>
+                    <h3 style="margin-top: 20px;">🚀 At RocketPartners</h3>
+                    <ul>
+                        <li>Angular for Lift Portal</li>
+                        <li>TypeScript across projects</li>
+                        <li>React for modern web apps</li>
+                        <li>Java Spring Boot services</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>🛠️ Technologies</h3>
+                    <div class="command-list">
+                        <div class="command-item">
+                            <span class="cmd">GitHub</span>
+                            <span class="desc">Version control</span>
+                        </div>
+                        <div class="command-item">
+                            <span class="cmd">IntelliJ IDEA</span>
+                            <span class="desc">Development environment</span>
+                        </div>
+                        <div class="command-item">
+                            <span class="cmd">Claude AI</span>
+                            <span class="desc">Coding Assistant</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">4/49</div>
+</div>
+
+<!-- Phase 3: Build -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Phase 3: Build 📦</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <p><strong>Compile code into runnable instances</strong></p>
+            <div class="two-column" style="margin-top: 30px;">
+                <div class="column">
+                    <h3>🎯 Objectives</h3>
+                    <ul>
+                        <li>Compile source code successfully</li>
+                        <li>Resolve and bundle dependencies</li>
+                        <li>Create deployable artifacts</li>
+                        <li>Ensure build reproducibility</li>
+                    </ul>
+                    <h3 style="margin-top: 20px;">🚀 At RocketPartners</h3>
+                    <ul>
+                        <li>Docker images for Discount Service</li>
+                        <li>ECR for storing container images</li>
+                        <li>GitHub Actions for builds</li>
+                        <li>Spring Boot JAR packaging</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>🛠️ Technologies</h3>
+                    <div class="command-list">
+                        <div class="command-item">
+                            <span class="cmd">Docker</span>
+                            <span class="desc">Container image creation</span>
+                        </div>
+                        <div class="command-item">
+                            <span class="cmd">ECR</span>
+                            <span class="desc">Container registry</span>
+                        </div>
+                        <div class="command-item">
+                            <span class="cmd">GitHub Actions</span>
+                            <span class="desc">CI/CD automation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">5/49</div>
+</div>
+
+<!-- Phase 4: Test -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Phase 4: Test 🧪</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <p><strong>Ensure build meets quality standards</strong></p>
+            <div class="two-column" style="margin-top: 30px;">
+                <div class="column">
+                    <h3>🎯 Objectives</h3>
+                    <ul>
+                        <li>Verify functionality matches requirements</li>
+                        <li>Ensure code quality</li>
+                        <li>Identify defects before production</li>
+                        <li>Validate security & performance</li>
+                    </ul>
+                    <h3 style="margin-top: 20px;">🚀 At RocketPartners</h3>
+                    <ul>
+                        <li>Playwright tests for LoA TC Ads</li>
+                        <li>SonarQube quality gates</li>
+                        <li>Automated ad behavior validation</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>🛠️ Technologies</h3>
+                    <div class="command-list">
+                        <div class="command-item">
+                            <span class="cmd">Jest / Vitest </span>
+                            <span class="desc">Unit testing</span>
+                        </div>
+                        <div class="command-item">
+                            <span class="cmd">Playwright</span>
+                            <span class="desc">E2E testing</span>
+                        </div>
+                        <div class="command-item" style="background: #fff3cd; border-left-color: #ff9800;">
+                            <span class="cmd">SonarQube</span>
+                            <span class="desc">Code quality & security</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">6/49</div>
+</div>
+
+<!-- Phase 5: Release -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Phase 5: Release 🚀</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <p><strong>Package software for release</strong></p>
+            <div class="two-column" style="margin-top: 30px;">
+                <div class="column">
+                    <h3>🎯 Objectives</h3>
+                    <ul>
+                        <li>Create versioned release candidates</li>
+                        <li>Generate release notes</li>
+                        <li>Tag releases in version control</li>
+                        <li>Obtain necessary approvals</li>
+                    </ul>
+                    <h3 style="margin-top: 20px;">🚀 At RocketPartners</h3>
+                    <ul>
+                        <li>Docker images tagged & pushed to ECR</li>
+                        <li>GitHub releases for version tracking</li>
+                        <li>Version management for Lift Portal</li>
+                        <li>Multi-region coordination (US & EU)</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>🛠️ Technologies</h3>
+                    <div class="command-list">
+                        <div class="command-item">
+                            <span class="cmd">Semantic Release</span>
+                            <span class="desc">Automated versioning</span>
+                        </div>
+                        <div class="command-item">
+                            <span class="cmd">GitHub Releases</span>
+                            <span class="desc">Release tracking</span>
+                        </div>
+                        <div class="command-item">
+                            <span class="cmd">ECR</span>
+                            <span class="desc">Artifact storage</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">7/49</div>
+</div>
+
+<!-- Phase 6: Deploy -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Phase 6: Deploy 🌐</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <p><strong>Deploy to production environments</strong></p>
+            <div class="two-column" style="margin-top: 30px;">
+                <div class="column">
+                    <h3>🎯 Objectives</h3>
+                    <ul>
+                        <li>Deploy artifacts to production safely</li>
+                        <li>Minimize deployment downtime</li>
+                        <li>Validate deployment health</li>
+                        <li>Enable quick rollback if needed</li>
+                    </ul>
+                    <h3 style="margin-top: 20px;">🚀 At RocketPartners</h3>
+                    <ul>
+                        <li>Terraform manages ECS clusters</li>
+                        <li>Terragrunt handles multi-region</li>
+                        <li>AWS: ECR, ECS, ALB, Security Groups</li>
+                        <li>Lambda for ContentStack</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>🛠️ Technologies</h3>
+                    <div class="command-list">
+                        <div class="command-item" style="background: #fff3cd; border-left-color: #ff9800;">
+                            <span class="cmd">Terraform</span>
+                            <span class="desc">Infrastructure as Code</span>
+                        </div>
+                        <div class="command-item">
+                            <span class="cmd">ECS</span>
+                            <span class="desc">Container orchestration</span>
+                        </div>
+                        <div class="command-item">
+                            <span class="cmd">GitHub Actions</span>
+                            <span class="desc">Deployment automation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">8/49</div>
+</div>
+
+<!-- Phase 7: Operate -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Phase 7: Operate 🔧</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <p><strong>Manage released software in production</strong></p>
+            <div class="two-column" style="margin-top: 30px;">
+                <div class="column">
+                    <h3>🎯 Objectives</h3>
+                    <ul>
+                        <li>Ensure system availability</li>
+                        <li>Respond to incidents</li>
+                        <li>Manage infrastructure & resources</li>
+                        <li>Perform routine maintenance</li>
+                    </ul>
+                    <h3 style="margin-top: 20px;">🚀 At RocketPartners</h3>
+                    <ul>
+                        <li>ECS task scaling for Discount Service</li>
+                        <li>Multi-region operations (US & EU)</li>
+                        <li>Automated incident response</li>
+                        <li>CircleK POS system uptime</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>🛠️ Technologies</h3>
+                    <div class="command-list">
+                        <div class="command-item">
+                            <span class="cmd">ECS</span>
+                            <span class="desc">Container orchestration</span>
+                        </div>
+                        <div class="command-item">
+                            <span class="cmd">CloudWatch</span>
+                            <span class="desc">Monitoring & alerting</span>
+                        </div>
+                        <div class="command-item">
+                            <span class="cmd">PagerDuty</span>
+                            <span class="desc">Incident management</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">9/49</div>
+</div>
+
+<!-- Phase 8: Monitor -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Phase 8: Monitor 📊</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <p><strong>Monitor software performance and health</strong></p>
+            <div class="two-column" style="margin-top: 30px;">
+                <div class="column">
+                    <h3>🎯 Objectives</h3>
+                    <ul>
+                        <li>Gain visibility into system behavior</li>
+                        <li>Detect issues before users</li>
+                        <li>Track business & technical metrics</li>
+                        <li>Support data-driven decisions</li>
+                    </ul>
+                    <h3 style="margin-top: 20px;">🚀 At RocketPartners</h3>
+                    <ul>
+                        <li>CloudWatch metrics for AWS</li>
+                        <li>Real-time dashboards for alerts</li>
+                        <li>ECS task health monitoring</li>
+                        <li>API Gateway request tracking</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>🛠️ Technologies</h3>
+                    <div class="command-list">
+                        <div class="command-item">
+                            <span class="cmd">CloudWatch</span>
+                            <span class="desc">AWS monitoring</span>
+                        </div>
+                        <div class="command-item">
+                            <span class="cmd">Prometheus</span>
+                            <span class="desc">Metrics collection</span>
+                        </div>
+                        <div class="command-item">
+                            <span class="cmd">Grafana</span>
+                            <span class="desc">Visualization</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">10/49</div>
+</div>
+
+<!-- Technology Connections Diagram -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>CI/CD Pipeline at RocketPartners</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <p style="margin-bottom: 30px;"><strong>Connecting the Phases with RP Technologies</strong></p>
+            <div class="two-column">
+                <div class="column">
+                    <div class="highlight-box">
+                        <strong>📋 Plan</strong><br>Jira • Confluence • Slack
+                    </div>
+                    <div class="highlight-box">
+                        <strong>💻 Code</strong><br>GitHub • VS Code • SonarQube
+                    </div>
+                    <div class="highlight-box">
+                        <strong>📦 Build</strong><br>Docker • ECR • GitHub Actions
+                    </div>
+                    <div class="highlight-box">
+                        <strong>🧪 Test</strong><br>Playwright • Jest • SonarQube
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="highlight-box">
+                        <strong>🚀 Release</strong><br>GitHub Releases • ECR
+                    </div>
+                    <div class="highlight-box">
+                        <strong>🌐 Deploy</strong><br>Terraform • ECS • AWS
+                    </div>
+                    <div class="highlight-box">
+                        <strong>🔧 Operate</strong><br>CloudWatch • PagerDuty
+                    </div>
+                    <div class="highlight-box">
+                        <strong>📊 Monitor</strong><br>Prometheus • Grafana • CloudWatch
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">11/49</div>
+</div>
+
+<!-- Demo Introduction -->
+<div class="slide title-slide">
+    <div class="slide-content">
+        <h1>Live Demo</h1>
+        <div class="subtitle">Seeing the CI/CD Pipeline in Practice</div>
+        <div class="divider"></div>
+        <div class="content" style="text-align: left; margin-top: 40px;">
+            <ul style="font-size: 1.3em; line-height: 2;">
+                <li>1. Jira → GitHub → GitHub Actions workflow</li>
+                <li>2. Understanding .yml workflow files</li>
+                <li>3. Connecting phases with actual runs</li>
+                <li>4. liftck-player pipeline walkthrough</li>
+                <li>5. loa-player pipeline walkthrough</li>
+            </ul>
+        </div>
+    </div>
+    <div class="slide-number">12/49</div>
+</div>
+
+<!-- Demo: Tools Overview -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Demo: The Tools We Use</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div class="highlight-box" style="margin-bottom: 20px;">
+                <strong>Jira</strong><br>
+                Where it all starts - task tracking and sprint management<br>
+                <span style="color: #888;">Demo: Active sprint board, user stories, linking to GitHub PRs</span>
+            </div>
+            <div class="highlight-box" style="margin-bottom: 20px;">
+                <strong>GitHub</strong><br>
+                Code repository and automation hub<br>
+                <span style="color: #888;">Demo: Repository structure, pull requests, Actions tab</span>
+            </div>
+            <div class="highlight-box">
+                <strong>GitHub Actions</strong><br>
+                CI/CD automation engine<br>
+                <span style="color: #888;">Demo: Workflow runs, logs, status checks</span>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">13/49</div>
+</div>
+
+<!-- Demo: YML Workflows -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Demo: Understanding .yml Workflows</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <p><strong>YAML files that define our automation</strong></p>
+            <div class="two-column" style="margin-top: 30px;">
+                <div class="column">
+                    <div class="code-block" style="font-size: 0.9em;">
+<span class="keyword">on:</span><br>
+&nbsp;&nbsp;<span class="keyword">push:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">branches:</span> [main]<br>
+<br>
+<span class="keyword">jobs:</span><br>
+&nbsp;&nbsp;<span class="keyword">build:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">runs-on:</span> ubuntu-latest<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">steps:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- uses: actions/checkout@v3<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- run: npm test
+                    </div>
+                </div>
+                <div class="column">
+                    <h3>Structure</h3>
+                    <ul>
+                        <li><strong>Trigger:</strong> When does this run? (push, PR)</li>
+                        <li><strong>Jobs:</strong> What tasks need to be done?</li>
+                        <li><strong>Steps:</strong> Individual actions in each job</li>
+                    </ul>
+                    <div class="warning-box" style="margin-top: 20px;">
+                        <strong>Demo:</strong> Show actual .yml from liftck-player
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">14/49</div>
+</div>
+
+<!-- Demo: Phase Connections -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Demo: From Code to Production</h2>
+        <div class="divider"></div>
+        <div class="content" style="font-size: 0.95em;">
+            <div class="diagram-landscape" style="flex-direction: column; align-items: stretch; gap: 10px;">
+                <div class="item" style="background: #f0f0f0; padding: 15px; border-radius: 8px; flex-direction: row; justify-content: space-between; min-width: 100%;">
+                    <span><strong>1. Developer commits code</strong></span>
+                    <span style="color: #7B42BC;">Code → git push</span>
+                </div>
+                <div class="item" style="background: #f0f0f0; padding: 15px; border-radius: 8px; flex-direction: row; justify-content: space-between; min-width: 100%;">
+                    <span><strong>2. GitHub Actions triggered</strong></span>
+                    <span style="color: #7B42BC;">Build → Workflow starts</span>
+                </div>
+                <div class="item" style="background: #f0f0f0; padding: 15px; border-radius: 8px; flex-direction: row; justify-content: space-between; min-width: 100%;">
+                    <span><strong>3. Code compiled & packaged</strong></span>
+                    <span style="color: #7B42BC;">Build → Docker build</span>
+                </div>
+                <div class="item" style="background: #f0f0f0; padding: 15px; border-radius: 8px; flex-direction: row; justify-content: space-between; min-width: 100%;">
+                    <span><strong>4. Tests run automatically</strong></span>
+                    <span style="color: #7B42BC;">Test → Jest, Playwright</span>
+                </div>
+                <div class="item" style="background: #f0f0f0; padding: 15px; border-radius: 8px; flex-direction: row; justify-content: space-between; min-width: 100%;">
+                    <span><strong>5. Docker image tagged</strong></span>
+                    <span style="color: #7B42BC;">Release → ECR push</span>
+                </div>
+                <div class="item" style="background: #f0f0f0; padding: 15px; border-radius: 8px; flex-direction: row; justify-content: space-between; min-width: 100%;">
+                    <span><strong>6. Deploy to environment</strong></span>
+                    <span style="color: #7B42BC;">Deploy → ECS update</span>
+                </div>
+                <div class="item" style="background: #f0f0f0; padding: 15px; border-radius: 8px; flex-direction: row; justify-content: space-between; min-width: 100%;">
+                    <span><strong>7. Health checks pass</strong></span>
+                    <span style="color: #7B42BC;">Operate → Monitoring</span>
+                </div>
+                <div class="item" style="background: #f0f0f0; padding: 15px; border-radius: 8px; flex-direction: row; justify-content: space-between; min-width: 100%;">
+                    <span><strong>8. Metrics collected</strong></span>
+                    <span style="color: #7B42BC;">Monitor → CloudWatch</span>
+                </div>
+            </div>
+            <div class="warning-box" style="margin-top: 20px;">
+                <strong>🎬 Demo:</strong> Show diagram with actual GitHub Actions run
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">15/49</div>
+</div>
+
+<!-- liftck-player Demo -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Demo: liftck-player Pipeline</h2>
+        <div class="divider"></div>
+        <div class="content" style="font-size: 0.85em;">
+            <p><strong>JavaFX application with comprehensive quality gates</strong></p>
+            <div class="two-column" style="margin-top: 20px;">
+                <div class="column">
+                    <h3 style="font-size: 1.1em;">3 Main Workflows</h3>
+                    <div class="command-list">
+                        <div class="command-item">
+                            <span class="cmd">🔍 Pull Request CI</span>
+                            <span class="desc">pullrequest.yml - Automatic on PRs</span>
+                        </div>
+                        <div class="command-item">
+                            <span class="cmd">🚀 Deploy to Environment</span>
+                            <span class="desc">deploy.yml - Manual dispatch</span>
+                        </div>
+                        <div class="command-item">
+                            <span class="cmd">📊 SonarQube Release Scan</span>
+                            <span class="desc">sonarqube-release-scan.yml</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <h3 style="font-size: 1.1em;">Tech Stack</h3>
+                    <ul style="font-size: 0.9em;">
+                        <li><strong>Java:</strong> Zulu JDK 11 with JavaFX</li>
+                        <li><strong>Build:</strong> Gradle with wrapper</li>
+                        <li><strong>Coverage:</strong> JaCoCo</li>
+                        <li><strong>Quality:</strong> SonarQube</li>
+                        <li><strong>Cloud:</strong> AWS S3 (Multi-region)</li>
+                        <li><strong>Notifications:</strong> Slack</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="warning-box" style="margin-top: 15px; font-size: 0.85em;">
+                <strong>⚠️ Key Points:</strong>
+                Pull Request CI enforces quality gates - PRs cannot merge if gates fail • 
+                Multi-region deployment: US and EU S3 buckets • 
+                All workflows use Gradle + JaCoCo
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">16/49</div>
+</div>
+
+<!-- liftck-player Detailed Workflow -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>liftck-player: SonarQube Release Scan</h2>
+        <div class="divider"></div>
+        <div class="content" style="font-size: 0.8em;">
+            <p><strong>Total Time: 6m 17s</strong></p>
+            <div class="code-block" style="font-size: 0.85em; margin-top: 20px;">
+<span style="color: #888;">⚙️  Set up job</span> ................... 3s<br>
+<span style="color: #7B42BC;">📥 Run actions/checkout@v4</span> ...... 37s<br>
+<span style="color: #4ECDC4;">☕ Set up JDK 11</span> ................ 11s<br>
+<span style="color: #4ECDC4;">🔧 Setup Gradle</span> ................. 1s<br>
+<span style="color: #7B42BC;">🌿 Get branch name</span> .............. 0s<br>
+<span style="color: #ff9800; font-weight: bold;">🧪 Run tests with coverage</span> ..... 3m 36s ★<br>
+<span style="color: #ff9800; font-weight: bold;">📊 Run SonarQube analysis</span> ...... 1m 36s ★<br>
+<span style="color: #888;">🧹 Post Setup Gradle</span> ............ 11s<br>
+<span style="color: #888;">🧹 Post Set up JDK 11</span> ........... 0s<br>
+<span style="color: #888;">🧹 Post Run actions/checkout@v4</span> . 1s<br>
+<span style="color: #4CAF50;">✅ Complete job</span> ................. 0s
+            </div>
+            <div class="highlight-box" style="margin-top: 20px;">
+                <strong>Longest steps:</strong> Tests (3m 36s) + SonarQube (1m 36s) = 5m 12s of quality assurance
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">17/49</div>
+</div>
+
+<!-- liftck-player Workflow Features -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>liftck-player: Workflow Features</h2>
+        <div class="divider"></div>
+        <div class="content" style="font-size: 0.75em;">
+            <div class="two-column">
+                <div class="column">
+                    <div class="highlight-box" style="background: #e3f2fd;">
+                        <strong style="color: #1976d2;">Pull Request CI</strong>
+                        <ul style="margin-top: 10px; font-size: 0.95em;">
+                            <li>✅ Validates changelog updated</li>
+                            <li>🔍 Runs linting checks</li>
+                            <li>🧪 Unit tests with JaCoCo coverage</li>
+                            <li>📊 SonarQube with ENFORCED gates</li>
+                            <li>💬 Posts to Slack (#lift-build)</li>
+                            <li>🚫 Blocks merge if quality fails</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="highlight-box" style="background: #e8f5e9;">
+                        <strong style="color: #388e3c;">Deploy to Environment</strong>
+                        <ul style="margin-top: 10px; font-size: 0.95em;">
+                            <li>🧪 Runs all tests before deploy</li>
+                            <li>📦 Builds with Gradle</li>
+                            <li>☁️ Deploys to S3 (US + EU)</li>
+                            <li>🎯 Envs: dev, e2e, prod</li>
+                            <li>💬 Notifies Slack (#lift-deploy)</li>
+                            <li>📝 Tracks deployment metadata</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 15px; background: #f3e5f5;">
+                <strong style="color: #7b1fa2;">SonarQube Release Scan</strong>
+                <ul style="margin-top: 10px; font-size: 0.95em; display: inline-block; text-align: left;">
+                    <li>🧪 Tests with code coverage</li>
+                    <li>📊 Branch-specific analysis</li>
+                    <li>📈 Tracks quality metrics over time</li>
+                    <li>ℹ️ Informational only (no blocking)</li>
+                    <li>🔄 Runs on every push to release branches</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">18/49</div>
+</div>
+
+<!-- loa-player Demo -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Demo: loa-player Pipeline</h2>
+        <div class="divider"></div>
+        <div class="content" style="font-size: 0.75em;">
+            <p><strong>Lift-on-Anything Player - Static web application with multi-region deployment</strong></p>
+            <div class="code-block" style="font-size: 0.85em; margin-top: 15px;">
+<span style="color: #ff9800;">📊 Code Quality (SonarQube)</span> ....... ~3-4m - Coverage, code smells, security<br>
+<span style="color: #7B42BC;">🔍 Lint & Typecheck</span> ............... ~1-2m - ESLint + TypeScript validation<br>
+<span style="color: #ff9800;">🧪 Unit Tests (Player + Emulator)</span> . ~2-3m - Vitest tests for both<br>
+<span style="color: #4ECDC4;">📈 Coverage Report</span> ................ ~2m - Combined coverage<br>
+<span style="color: #ff9800;">🎭 Integration Tests (Playwright)</span> .. ~10-15m - E2E (basket, tc-ads, walkup)<br>
+<span style="color: #4CAF50;">📦 Build Application</span> .............. ~3-5m - Webpack + Angular build<br>
+<span style="color: #ff9800;">🚀 Deploy to S3/CloudFront</span> ......... ~2-3m - Multi-region deployment<br>
+<span style="color: #888;">📢 Release Record + Notifications</span> .. ~30s - Lift API + Slack (#loa-releases)
+            </div>
+            <div class="warning-box" style="margin-top: 15px; font-size: 0.85em;">
+                <strong>✨ Key Difference:</strong> Deploys to S3/CloudFront (static files), not Docker/ECR •
+                6 Parallel Test Workflows • 
+                Version: YYYYMMDDHHMMSS.{git-hash}
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">19/49</div>
+</div>
+
+<!-- loa-player Architecture -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>loa-player: Deployment Architecture</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div class="diagram-landscape" style="margin: 30px 0;">
+                <div class="item">
+                    <span class="icon">🐙</span>
+                    <span class="label">GitHub</span>
+                </div>
+                <span class="arrow">→</span>
+                <div class="item">
+                    <span class="icon">📦</span>
+                    <span class="label">Build<br>(Webpack)</span>
+                </div>
+                <span class="arrow">→</span>
+                <div class="item">
+                    <span class="icon">🪣</span>
+                    <span class="label">S3<br>Bucket</span>
+                </div>
+                <span class="arrow">→</span>
+                <div class="item">
+                    <span class="icon">☁️</span>
+                    <span class="label">CloudFront<br>CDN</span>
+                </div>
+                <span class="arrow">→</span>
+                <div class="item">
+                    <span class="icon">👥</span>
+                    <span class="label">Users</span>
+                </div>
+            </div>
+            <div class="two-column" style="margin-top: 30px;">
+                <div class="column">
+                    <div class="highlight-box">
+                        <strong>🌎 North America</strong><br>
+                        Envs: dev, qa, prod<br>
+                        Tenants: US, CA
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="highlight-box">
+                        <strong>🌍 Europe</strong><br>
+                        Envs: eu-dev, eu-qa, eu-prod<br>
+                        Tenants: SE
+                    </div>
+                </div>
+            </div>
+            <div class="warning-box" style="margin-top: 20px;">
+                <strong>Branch Strategy:</strong> dev → dev env • release/* → qa • master → prod
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">20/49</div>
+</div>
+
+<!-- Architecture Comparison -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Different Deployment Patterns</h2>
+        <div class="divider"></div>
+        <div class="content" style="font-size: 0.9em;">
+            <p><strong>Not all applications follow the same deployment pattern</strong></p>
+            <div class="two-column" style="margin-top: 30px;">
+                <div class="column">
+                    <div class="highlight-box" style="background: #e3f2fd;">
+                        <strong style="color: #1976d2; font-size: 1.2em;">🐳 Container-based</strong><br>
+                        <span style="color: #888; font-size: 0.9em;">(liftck-player)</span>
+                        <div style="margin-top: 15px; text-align: left;">
+                            <div style="padding: 8px; background: white; margin: 5px 0; border-radius: 4px;">Build → Docker Image</div>
+                            <div style="padding: 8px; background: white; margin: 5px 0; border-radius: 4px;">Push to ECR</div>
+                            <div style="padding: 8px; background: white; margin: 5px 0; border-radius: 4px;">Deploy to ECS</div>
+                            <div style="padding: 8px; background: white; margin: 5px 0; border-radius: 4px;">Load Balancer distributes</div>
+                        </div>
+                        <div style="margin-top: 15px; font-size: 0.85em; color: #555;">
+                            <strong>Use Case:</strong> Backend services, APIs, microservices
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="highlight-box" style="background: #e8f5e9;">
+                        <strong style="color: #388e3c; font-size: 1.2em;">📄 Static Site</strong><br>
+                        <span style="color: #888; font-size: 0.9em;">(loa-player)</span>
+                        <div style="margin-top: 15px; text-align: left;">
+                            <div style="padding: 8px; background: white; margin: 5px 0; border-radius: 4px;">Build → Static files</div>
+                            <div style="padding: 8px; background: white; margin: 5px 0; border-radius: 4px;">Upload to S3</div>
+                            <div style="padding: 8px; background: white; margin: 5px 0; border-radius: 4px;">Serve via CloudFront</div>
+                            <div style="padding: 8px; background: white; margin: 5px 0; border-radius: 4px;">Versioned folders</div>
+                        </div>
+                        <div style="margin-top: 15px; font-size: 0.85em; color: #555;">
+                            <strong>Use Case:</strong> Frontend apps, SPAs, static content
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="warning-box" style="margin-top: 25px;">
+                <strong>💡 Key Point:</strong> Both follow CI/CD principles, but adapt the deployment stage to match application architecture
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">21/49</div>
+</div>
+
+<!-- Transition to Terraform -->
+<div class="slide title-slide">
+    <div class="slide-content">
+        <h1>Bridging to Infrastructure as Code</h1>
+        <div class="subtitle">How Terraform Powers Our Deployments</div>
+        <div class="divider"></div>
+        <div class="meta" style="text-align: left; margin-top: 40px;">
+            <h3 style="color: #4ECDC4; margin-bottom: 20px;">Key Questions:</h3>
+            <div style="font-size: 1.2em; line-height: 2;">
+                <p><strong>Q:</strong> Where does our code actually run?</p>
+                <p style="color: #7B42BC;">→ AWS infrastructure managed by Terraform</p>
+                <br>
+                <p><strong>Q:</strong> How do we create consistent environments?</p>
+                <p style="color: #7B42BC;">→ Infrastructure as Code with Terragrunt</p>
+                <br>
+                <p><strong>Q:</strong> How do we deploy to multiple regions?</p>
+                <p style="color: #7B42BC;">→ Reusable Terraform modules</p>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">22/49</div>
+</div>
+
+<div class="slide">
+    <div class="slide-content">
+        <h2>What Terraform Manages</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <ul style="font-size: 1.2em;">
+                <li><strong>ECS Clusters</strong> that run our containers</li>
+                <li><strong>Load Balancers</strong> that distribute traffic</li>
+                <li><strong>Security Groups</strong> that protect our services</li>
+                <li><strong>Multi-region deployment</strong> (US & EU)</li>
+                <li><strong>All version-controlled</strong> and reproducible</li>
+            </ul>
+            <div class="highlight-box" style="margin-top: 40px; font-size: 1.3em; text-align: center; padding: 30px;">
+                <strong>Mark will now show you how Terraform makes all of this possible...</strong>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">23/49</div>
+</div>
+
+<!-- TERRAFORM PRESENTATION STARTS -->
 
 <div class="slide title-slide">
     <div class="slide-content">
@@ -18,7 +923,7 @@
         <div class="divider"></div>
         <div class="meta">Data Platform Team • PH Team<br>AWS Infrastructure Management</div>
     </div>
-    <div class="slide-number">1/26</div>
+    <div class="slide-number">24/49</div>
 </div>
 
 <div class="slide">
@@ -34,7 +939,7 @@
             </div>
         </div>
     </div>
-    <div class="slide-number">2/26</div>
+    <div class="slide-number">25/49</div>
 </div>
 
 <div class="slide">
@@ -51,7 +956,7 @@
             </ul>
         </div>
     </div>
-    <div class="slide-number">3/26</div>
+    <div class="slide-number">26/49</div>
 </div>
 
 <div class="slide">
@@ -70,7 +975,7 @@
             <p>Terraform can manage almost anything across any cloud provider.</p>
         </div>
     </div>
-    <div class="slide-number">4/26</div>
+    <div class="slide-number">27/49</div>
 </div>
 
 <div class="slide">
@@ -123,7 +1028,7 @@
             </div>
         </div>
     </div>
-    <div class="slide-number">5/26</div>
+    <div class="slide-number">28/49</div>
 </div>
 
 <div class="slide">
@@ -147,7 +1052,7 @@
             <a href="https://github.com/RocketPartners/liftck_tf_infra/blob/main/.github/workflows/plan-prod-us.yml" class="link-button">📄 View Workflow YAML</a>
         </div>
     </div>
-    <div class="slide-number">6/26</div>
+    <div class="slide-number">29/49</div>
 </div>
 
 <div class="slide">
@@ -175,7 +1080,7 @@
             </div>
         </div>
     </div>
-    <div class="slide-number">7/26</div>
+    <div class="slide-number">30/49</div>
 </div>
 
 <div class="slide">
@@ -198,7 +1103,7 @@
             </div>
         </div>
     </div>
-    <div class="slide-number">8/26</div>
+    <div class="slide-number">31/49</div>
 </div>
 
 <div class="slide">
@@ -234,7 +1139,7 @@
             </div>
         </div>
     </div>
-    <div class="slide-number">9/26</div>
+    <div class="slide-number">32/49</div>
 </div>
 
 <div class="slide">
@@ -277,7 +1182,7 @@
             </div>
         </div>
     </div>
-    <div class="slide-number">10/26</div>
+    <div class="slide-number">33/49</div>
 </div>
 
 <div class="slide">
@@ -317,7 +1222,7 @@
             </div>
         </div>
     </div>
-    <div class="slide-number">11/26</div>
+    <div class="slide-number">34/49</div>
 </div>
 
 <div class="slide">
@@ -375,7 +1280,7 @@
             </div>
         </div>
     </div>
-    <div class="slide-number">12/26</div>
+    <div class="slide-number">35/49</div>
 </div>
 
 <div class="slide">
@@ -424,7 +1329,7 @@
             </div>
         </div>
     </div>
-    <div class="slide-number">13/26</div>
+    <div class="slide-number">36/49</div>
 </div>
 
 <div class="slide">
@@ -469,7 +1374,7 @@
             </div>
         </div>
     </div>
-    <div class="slide-number">14/26</div>
+    <div class="slide-number">37/49</div>
 </div>
 
 <div class="slide">
@@ -510,7 +1415,7 @@
             </div>
         </div>
     </div>
-    <div class="slide-number">15/26</div>
+    <div class="slide-number">38/49</div>
 </div>
 
 <div class="slide">
@@ -539,7 +1444,7 @@
             </div>
         </div>
     </div>
-    <div class="slide-number">16/26</div>
+    <div class="slide-number">39/49</div>
 </div>
 
 <div class="slide">
@@ -565,7 +1470,7 @@
             </div>
         </div>
     </div>
-    <div class="slide-number">17/26</div>
+    <div class="slide-number">40/49</div>
 </div>
 
 <div class="slide">
@@ -593,7 +1498,7 @@
             </div>
         </div>
     </div>
-    <div class="slide-number">18/26</div>
+    <div class="slide-number">41/49</div>
 </div>
 
 <div class="slide">
@@ -621,7 +1526,7 @@
             </div>
         </div>
     </div>
-    <div class="slide-number">19/26</div>
+    <div class="slide-number">42/49</div>
 </div>
 
 <div class="slide">
@@ -647,7 +1552,7 @@
             </div>
         </div>
     </div>
-    <div class="slide-number">20/26</div>
+    <div class="slide-number">43/49</div>
 </div>
 
 <div class="slide">
@@ -672,7 +1577,7 @@
             </div>
         </div>
     </div>
-    <div class="slide-number">21/26</div>
+    <div class="slide-number">44/49</div>
 </div>
 
 <div class="slide">
@@ -695,7 +1600,7 @@
             </div>
         </div>
     </div>
-    <div class="slide-number">22/26</div>
+    <div class="slide-number">45/49</div>
 </div>
 
 <div class="slide">
@@ -719,7 +1624,7 @@
             </div>
         </div>
     </div>
-    <div class="slide-number">23/26</div>
+    <div class="slide-number">46/49</div>
 </div>
 
 <div class="slide">
@@ -742,7 +1647,7 @@
             </div>
         </div>
     </div>
-    <div class="slide-number">24/26</div>
+    <div class="slide-number">47/49</div>
 </div>
 
 <div class="slide">
@@ -760,7 +1665,7 @@
             </div>
         </div>
     </div>
-    <div class="slide-number">25/26</div>
+    <div class="slide-number">48/49</div>
 </div>
 
 <div class="slide">
@@ -783,7 +1688,7 @@
             <a href="https://rocketpartners.atlassian.net/wiki/spaces/RPPHDev/pages/1213530118/Local+Terraform+Terragrunt+Environment+Setup" class="link-button">📄 Documentation</a>
         </div>
     </div>
-    <div class="slide-number">26/26</div>
+    <div class="slide-number">49/49</div>
 </div>
 
 <div class="nav-buttons">
