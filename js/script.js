@@ -3,11 +3,19 @@
 let currentSlide = 0;
 const slides = document.querySelectorAll('.slide');
 
+// Update slide counter display
+function updateSlideCounter() {
+    const counter = document.getElementById('slideCounter');
+    if (counter) {
+        counter.textContent = `${currentSlide + 1}/${slides.length}`;
+    }
+}
+
 // Theme Toggle Function
 function toggleTheme() {
-    document.body.classList.toggle('light-mode');
-    const isLight = document.body.classList.contains('light-mode');
-    document.getElementById('themeIcon').textContent = isLight ? '☀️' : '🌙';
+    document.documentElement.classList.toggle('dark');
+    const isDark = document.documentElement.classList.contains('dark');
+    document.getElementById('themeIcon').textContent = isDark ? '🌙' : '☀️';
 }
 
 // Show specific slide
@@ -15,6 +23,7 @@ function showSlide(n) {
     currentSlide = Math.max(0, Math.min(n, slides.length - 1));
     slides[currentSlide].scrollIntoView({ behavior: 'smooth' });
     updateNavigationButtons();
+    updateSlideCounter();
 }
 
 // Change slide by direction
@@ -49,6 +58,7 @@ window.addEventListener('scroll', () => {
             if (rect.top >= -100 && rect.top <= 100) {
                 currentSlide = index;
                 updateNavigationButtons();
+                updateSlideCounter();
             }
         });
     }, 100);
