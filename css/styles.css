@@ -496,3 +496,285 @@ body.light-mode .nav-button:disabled:hover {
     background: #ffffff;
     color: #7B42BC;
 }
+/* Enhanced Navigation Buttons */
+.nav-button .nav-icon {
+    font-size: 1.2em;
+}
+
+.nav-button .nav-text {
+    margin: 0 8px;
+}
+
+/* Slide Counter */
+.slide-counter {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    background: rgba(37, 37, 37, 0.9);
+    border: 1px solid #444;
+    color: #e0e0e0;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 0.95em;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    text-align: right;
+}
+
+body.light-mode .slide-counter {
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #7B42BC;
+    color: #7B42BC;
+}
+
+.slide-counter .counter-main {
+    font-weight: 600;
+    font-size: 1.1em;
+    margin-bottom: 2px;
+}
+
+.slide-counter .counter-section {
+    font-size: 0.85em;
+    opacity: 0.8;
+}
+
+/* Stepper Container */
+.stepper-container {
+    position: fixed;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+}
+
+.stepper-toggle {
+    background: rgba(37, 37, 37, 0.9);
+    border: 1px solid #444;
+    color: #e0e0e0;
+    padding: 12px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.5em;
+    transition: all 0.3s;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body.light-mode .stepper-toggle {
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #7B42BC;
+    color: #7B42BC;
+}
+
+.stepper-toggle:hover {
+    background: #7B42BC;
+    color: white;
+    transform: scale(1.1);
+}
+
+.stepper-toggle.active {
+    background: #7B42BC;
+    color: white;
+}
+
+/* Stepper Menu */
+.stepper-menu {
+    position: absolute;
+    left: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(20, 20, 20, 0.98);
+    border: 1px solid #444;
+    border-radius: 12px;
+    width: 350px;
+    max-height: 80vh;
+    overflow-y: auto;
+    backdrop-filter: blur(20px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s;
+    transform: translateY(-50%) translateX(-20px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+body.light-mode .stepper-menu {
+    background: rgba(255, 255, 255, 0.98);
+    border: 2px solid #7B42BC;
+}
+
+.stepper-menu.active {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(-50%) translateX(0);
+}
+
+.stepper-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #333;
+}
+
+body.light-mode .stepper-header {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.stepper-header h3 {
+    font-size: 1.3em;
+    margin: 0;
+    color: #e0e0e0;
+}
+
+body.light-mode .stepper-header h3 {
+    color: #2c3e50;
+}
+
+.stepper-close {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 2em;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+}
+
+.stepper-close:hover {
+    color: #7B42BC;
+}
+
+.stepper-content {
+    padding: 10px;
+}
+
+.stepper-item {
+    padding: 15px;
+    margin: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+}
+
+.stepper-item:hover {
+    background: rgba(123, 66, 188, 0.1);
+    border-color: #7B42BC;
+}
+
+body.light-mode .stepper-item:hover {
+    background: rgba(123, 66, 188, 0.05);
+}
+
+.stepper-item.active {
+    background: rgba(123, 66, 188, 0.2);
+    border-color: #7B42BC;
+}
+
+body.light-mode .stepper-item.active {
+    background: rgba(123, 66, 188, 0.1);
+}
+
+.stepper-item-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.stepper-number {
+    background: #7B42BC;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.9em;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.stepper-name {
+    font-size: 1.1em;
+    font-weight: 500;
+    color: #e0e0e0;
+}
+
+body.light-mode .stepper-name {
+    color: #2c3e50;
+}
+
+.stepper-item-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85em;
+    color: #888;
+    padding-left: 40px;
+}
+
+.stepper-slides {
+    font-weight: 500;
+}
+
+.stepper-range {
+    opacity: 0.7;
+}
+
+/* Scrollbar styling for stepper menu */
+.stepper-menu::-webkit-scrollbar {
+    width: 6px;
+}
+
+.stepper-menu::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.stepper-menu::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 3px;
+}
+
+body.light-mode .stepper-menu::-webkit-scrollbar-thumb {
+    background: #7B42BC;
+}
+
+.stepper-menu::-webkit-scrollbar-thumb:hover {
+    background: #7B42BC;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .stepper-container {
+        left: 15px;
+    }
+    
+    .stepper-menu {
+        width: 280px;
+        left: 60px;
+    }
+    
+    .slide-counter {
+        right: 15px;
+        top: 15px;
+        font-size: 0.85em;
+    }
+    
+    .nav-buttons {
+        bottom: 15px;
+        gap: 10px;
+    }
+    
+    .nav-button {
+        padding: 10px 18px;
+        font-size: 1em;
+    }
+}
