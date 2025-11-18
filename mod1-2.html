@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Day 1 - Introduction & Fundamentals</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+    <span id="themeIcon">🌙</span>
+</button>
+
+<!-- SLIDE 1: Title -->
+<div class="slide title-slide">
+    <div class="slide-content">
+        <h1>DevOps Training</h1>
+        <div class="subtitle">Day 1: Introduction & Core Fundamentals</div>
+        <div class="divider"></div>
+        <div class="meta">Modules 1-2: DevOps Concepts, Linux, Networking, Version Control & Containers<br>Rocket Partners Data Platform Team</div>
+    </div>
+    <div class="slide-number">1/40</div>
+</div>
+
+<!-- MODULE 1 TITLE -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Module 1: Introduction to DevOps</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <p style="font-size: 1.3em; color: #7B42BC;">Understanding the cultural foundation and lifecycle</p>
+        </div>
+    </div>
+    <div class="slide-number">2/40</div>
+</div>
+
+<!-- SLIDE 2: What is DevOps -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>What is DevOps?</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <h3>The Cultural Foundation</h3>
+            <p>DevOps is fundamentally a <strong>cultural movement</strong>.</p>
+
+            <div class="two-column">
+                <div class="column">
+                    <h3>Classic Scene</h3>
+                    <ul>
+                        <li>Developers want to ship features fast, experiment, and innovate</li>
+                        <li>Operations wants stability, reliability, and predictable systems</li>
+                        <li>Goals seem to conflict, creating friction and blame games</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>DevOps Scene</h3>
+                    <ul>
+                        <li>Stop treating these as opposing forces</li>
+                        <li>Shared responsibility, automation, and continuous improvement</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">3/40</div>
+</div>
+
+<!-- SLIDE 3: Dev vs Ops Battle -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>The Battle: Dev vs Ops</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div style="text-align: center; margin: 40px 0;">
+                <img src="https://i.imgur.com/XYZ1234.png" alt="Dev vs Ops Battle" style="max-width: 700px; width: 100%; border-radius: 8px;">
+            </div>
+            <div class="highlight-box">
+                <strong>The Classic Conflict</strong>
+                Developers: "I need change!" vs Operations: "I need stability!"
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">4/40</div>
+</div>
+
+<!-- SLIDE 4: Traditional Siloed Approach -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Traditional Siloed Approach</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div style="text-align: center; margin: 40px 0;">
+                <img src="https://i.imgur.com/ABC5678.png" alt="Breaks in Production Meme" style="max-width: 600px; width: 100%; border-radius: 8px;">
+            </div>
+            <p style="text-align: center; font-size: 1.2em; color: #888; margin-top: 20px;">"Breaks in production? Say the line, Bart! But it works on my machine..."</p>
+        </div>
+    </div>
+    <div class="slide-number">5/40</div>
+</div>
+
+<!-- SLIDE 5: DevOps Collaborative Approach -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>DevOps Collaborative Approach</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div style="text-align: center; margin: 40px 0;">
+                <img src="https://i.imgur.com/DEF9012.png" alt="DevOps Collaboration" style="max-width: 700px; width: 100%; border-radius: 8px;">
+            </div>
+            <div class="highlight-box">
+                <strong>Bridging the Gap</strong>
+                Collaboration, automation, and shared responsibility create DevOps success
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">6/40</div>
+</div>
+
+<!-- SLIDE 6: Agile and DevOps -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Agile and DevOps</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div class="highlight-box">
+                <strong>Two complementary approaches:</strong>
+                <p><strong>Agile</strong> answers: "How do we build the right thing?"</p>
+                <p><strong>DevOps</strong> answers: "How do we deliver it quickly and keep it running reliably?"</p>
+            </div>
+            <div style="text-align: center; margin: 40px 0;">
+                <img src="https://i.imgur.com/GHI3456.png" alt="Agile DevOps Diagram" style="max-width: 600px; width: 100%; border-radius: 8px;">
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">7/40</div>
+</div>
+
+<!-- SLIDE 7: DevOps Brief History -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>DevOps: Brief History</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div style="text-align: center; margin: 40px 0;">
+                <img src="https://i.imgur.com/JKL7890.png" alt="DevOps History Timeline" style="max-width: 800px; width: 100%; border-radius: 8px;">
+            </div>
+            <div class="highlight-box">
+                <strong>2009: The Birth of DevOps</strong>
+                Patrick Debois created the DevOps hashtag on Twitter to advertise a conference on 'agile system administration' as a solution to the 'finger pointing' problem between Dev and Ops teams
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">8/40</div>
+</div>
+
+<!-- SLIDE 8: DevOps Lifecycle -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>The DevOps Lifecycle</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <p>The DevOps lifecycle is an <strong>infinite loop of continuous improvement</strong>:</p>
+            <div style="text-align: center; margin: 40px 0;">
+                <img src="https://i.imgur.com/MNO1234.png" alt="DevOps Lifecycle" style="max-width: 600px; width: 100%; border-radius: 8px;">
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">9/40</div>
+</div>
+
+<!-- SLIDE 9: DevOps Lifecycle Phases -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>DevOps Lifecycle: 8 Phases</h2>
+        <div class="divider"></div>
+        <div class="content" style="font-size: 0.95em;">
+            <ul>
+                <li><strong>Plan:</strong> Define requirements, track work, prioritize features (project management tools)</li>
+                <li><strong>Code:</strong> Write and version control your code</li>
+                <li><strong>Build:</strong> Compile code, manage dependencies, create artifacts</li>
+                <li><strong>Test:</strong> Automated testing to catch issues early</li>
+                <li><strong>Release:</strong> Prepare for deployment, manage release schedules</li>
+                <li><strong>Deploy:</strong> Get your code into production</li>
+                <li><strong>Operate:</strong> Keep systems running, manage infrastructure</li>
+                <li><strong>Monitor:</strong> Track performance, logs, user experience</li>
+            </ul>
+        </div>
+    </div>
+    <div class="slide-number">10/40</div>
+</div>
+
+<!-- SLIDE 10: Benefits of DevOps -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Benefits of DevOps</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <ul>
+                <li><strong>Faster Delivery:</strong> Deploy multiple times per day instead of waiting days or weeks</li>
+                <li><strong>Improved Collaboration:</strong> Less blame, more teamwork between Dev and Ops</li>
+                <li><strong>Greater Reliability:</strong> Automation reduces human error and ensures consistent environments</li>
+                <li><strong>Reduced Stress:</strong> Fewer 3 AM pages, fewer deployment nightmares</li>
+                <li><strong>Complete Developer:</strong> Understanding the full software delivery lifecycle makes you more effective</li>
+            </ul>
+        </div>
+    </div>
+    <div class="slide-number">11/40</div>
+</div>
+
+<!-- SLIDE 11: Key Roles -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Key Roles in DevOps</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div class="two-column">
+                <div class="column">
+                    <h3>Developers</h3>
+                    <ul style="font-size: 0.9em;">
+                        <li>Writing code with deployability in mind</li>
+                        <li>Configure CI/CD pipelines</li>
+                        <li>Respond to production alerts</li>
+                    </ul>
+
+                    <h3 style="margin-top: 20px;">DevOps Engineers</h3>
+                    <ul style="font-size: 0.9em;">
+                        <li>Build pipelines and automation</li>
+                        <li>Create self-service platforms</li>
+                        <li>Enable teams, not gatekeep</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Operations/SREs</h3>
+                    <ul style="font-size: 0.9em;">
+                        <li>Building automation</li>
+                        <li>Creating self-service platforms</li>
+                        <li>Working alongside developers</li>
+                    </ul>
+
+                    <h3 style="margin-top: 20px;">Everyone</h3>
+                    <ul style="font-size: 0.9em;">
+                        <li>Shared responsibility</li>
+                        <li>Collective goal of delivering value</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">12/40</div>
+</div>
+
+<!-- SLIDE 12: Key Takeaways Module 1 -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Module 1: Key Takeaways</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <ul>
+                <li>DevOps is a <strong>culture first</strong>, tools second</li>
+                <li>It breaks down silos between development and operations</li>
+                <li><strong>Automation</strong> is core to DevOps success</li>
+                <li><strong>Continuous everything:</strong> integration, delivery, monitoring, improvement</li>
+                <li>Security must be integrated throughout (DevSecOps)</li>
+                <li>Measure what matters: deployment frequency, lead time, MTTR, quality</li>
+                <li>DevOps enables organizations to deliver software <strong>faster, safer, and more reliably</strong></li>
+            </ul>
+        </div>
+    </div>
+    <div class="slide-number">13/40</div>
+</div>
+
+<!-- MODULE 2 TITLE -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Module 2: Core Fundamentals</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <p style="font-size: 1.3em; color: #7B42BC;">Linux, Networking, Version Control & Containers</p>
+        </div>
+    </div>
+    <div class="slide-number">14/40</div>
+</div>
+
+<!-- SLIDE 13: File System Navigation -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>File System Navigation & Manipulation</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <p>Essential commands you'll use daily:</p>
+            <div class="code-block">
+                <span class="comment"># Navigation and Listing</span>
+                ls                  <span class="comment"># List files in current directory</span>
+                ls -la              <span class="comment"># List all files including hidden, with details</span>
+                pwd                 <span class="comment"># Print working directory (where am I?)</span>
+                cd /path            <span class="comment"># Change directory</span>
+
+                <span class="comment"># File Operations</span>
+                cp file.txt backup.txt      <span class="comment"># Copy file</span>
+                mv old.txt new.txt          <span class="comment"># Move/rename file</span>
+                rm file.txt                 <span class="comment"># Remove file</span>
+                rm -rf folder/              <span class="comment"># Remove directory (careful!)</span>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">15/40</div>
+</div>
+
+<!-- SLIDE 14: Viewing Files -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Viewing Files</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div class="code-block">
+                <span class="comment"># Viewing Files</span>
+                cat file.txt                <span class="comment"># Display entire file</span>
+                less file.txt               <span class="comment"># View file with scrolling</span>
+                head -n 10 file.txt         <span class="comment"># First 10 lines</span>
+                tail -f /var/log/app.log    <span class="comment"># Follow log file in real-time (crucial!)</span>
+            </div>
+
+            <div class="highlight-box">
+                <strong>Real DevOps scenario:</strong> Your app isn't working
+                <div class="code-block" style="margin-top: 15px;">
+                    cd /var/log/app
+                    tail -f application.log     <span class="comment"># Watch logs in real-time</span>
+                    less error.log              <span class="comment"># Check error logs</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">16/40</div>
+</div>
+
+<!-- SLIDE 15: Permissions -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Permissions (chmod, chown)</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div class="code-block">
+                <span class="comment"># Understanding permissions</span>
+                <span class="comment"># -rwxr-xr-- means:</span>
+                <span class="comment"># Owner: read, write, execute (rwx)</span>
+                <span class="comment"># Group: read, execute (r-x)</span>
+                <span class="comment"># Others: read only (r--)</span>
+
+                <span class="comment"># Changing permissions</span>
+                chmod +x script.sh          <span class="comment"># Make script executable</span>
+                chmod 755 file.txt          <span class="comment"># Owner: rwx, Group: rx, Others: rx</span>
+                chmod 644 config.yml        <span class="comment"># Owner: rw, Group: r, Others: r</span>
+
+                <span class="comment"># Changing ownership</span>
+                chown user:group file.txt   <span class="comment"># Change owner and group</span>
+                sudo chown root:root app    <span class="comment"># Change to root (needs sudo)</span>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">17/40</div>
+</div>
+
+<!-- SLIDE 16: Process Management -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Process Management</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div class="code-block">
+                <span class="comment"># Viewing processes</span>
+                ps aux                      <span class="comment"># All running processes</span>
+                ps aux | grep java          <span class="comment"># Find Java processes</span>
+                top                         <span class="comment"># Interactive process viewer</span>
+                htop                        <span class="comment"># Better version of top</span>
+
+                <span class="comment"># Controlling processes</span>
+                kill 1234                   <span class="comment"># Gracefully stop process with ID 1234</span>
+                kill -9 1234                <span class="comment"># Force kill process</span>
+                pkill java                  <span class="comment"># Kill all Java processes</span>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">18/40</div>
+</div>
+
+<!-- SLIDE 17: Package Management -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Package Management (apt)</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div class="code-block">
+                <span class="comment"># Updating package lists</span>
+                sudo apt update             <span class="comment"># Update package list</span>
+
+                <span class="comment"># Installing packages</span>
+                sudo apt install docker.io  <span class="comment"># Install Docker</span>
+                sudo apt install nginx      <span class="comment"># Install Nginx</span>
+
+                <span class="comment"># Removing packages</span>
+                sudo apt remove nginx       <span class="comment"># Remove package</span>
+                sudo apt autoremove         <span class="comment"># Remove unused dependencies</span>
+
+                <span class="comment"># Searching packages</span>
+                apt search kubernetes       <span class="comment"># Find packages</span>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">19/40</div>
+</div>
+
+<!-- SLIDE 18: Networking - OSI Model -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Networking: OSI & TCP/IP Models</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div style="text-align: center; margin: 40px 0;">
+                <img src="https://i.imgur.com/PQR5678.png" alt="OSI TCP/IP Model" style="max-width: 700px; width: 100%; border-radius: 8px;">
+            </div>
+            <p style="text-align: center; font-size: 1em; color: #888;">The logical mapping between OSI basic reference model and the TCP/IP stack</p>
+        </div>
+    </div>
+    <div class="slide-number">20/40</div>
+</div>
+
+<!-- SLIDE 19: IP Addressing -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>IP Addressing and Subnetting</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div style="text-align: center; margin: 40px 0;">
+                <img src="https://i.imgur.com/STU9012.png" alt="IP Addresses Overview" style="max-width: 700px; width: 100%; border-radius: 8px;">
+            </div>
+            <div class="highlight-box">
+                <strong>Understanding Subnets</strong>
+                Subnets divide your network into smaller, manageable pieces. Essential for cloud architectures like AWS VPCs.
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">21/40</div>
+</div>
+
+<!-- SLIDE 20: AWS VPC Subnets -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Understanding AWS VPCs & Subnets</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div style="text-align: center; margin: 40px 0;">
+                <img src="https://i.imgur.com/VWX3456.png" alt="AWS VPC Subnets" style="max-width: 700px; width: 100%; border-radius: 8px;">
+            </div>
+            <p style="text-align: center; font-size: 1em;">VPCs contain subnets across availability zones, with Internet Gateways providing external access</p>
+        </div>
+    </div>
+    <div class="slide-number">22/40</div>
+</div>
+
+<!-- SLIDE 21: Common Protocols -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Common Network Protocols</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div style="text-align: center; margin: 40px 0;">
+                <img src="https://i.imgur.com/YZA7890.png" alt="8 Top Network Protocols" style="max-width: 650px; width: 100%; border-radius: 8px;">
+            </div>
+            <div class="two-column" style="font-size: 0.9em;">
+                <div class="column">
+                    <h3>Key Protocols</h3>
+                    <ul>
+                        <li><strong>HTTP/HTTPS:</strong> Web traffic</li>
+                        <li><strong>SSH:</strong> Secure remote access</li>
+                        <li><strong>TCP:</strong> Reliable connections</li>
+                        <li><strong>UDP:</strong> Fast, connectionless</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Supporting Protocols</h3>
+                    <ul>
+                        <li><strong>FTP:</strong> File transfer</li>
+                        <li><strong>SMTP:</strong> Email delivery</li>
+                        <li><strong>IP:</strong> Addressing & routing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">23/40</div>
+</div>
+
+<!-- SLIDE 22: Network Troubleshooting -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Network Troubleshooting</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div class="code-block">
+                <span class="comment"># Ping: Can I reach this host?</span>
+                ping 8.8.8.8                <span class="comment"># Ping Google DNS</span>
+                ping google.com             <span class="comment"># Ping by domain name</span>
+
+                <span class="comment"># Traceroute: What path does traffic take?</span>
+                traceroute google.com       <span class="comment"># Shows each hop</span>
+
+                <span class="comment"># Netstat: What ports are open?</span>
+                netstat -tuln               <span class="comment"># List all listening ports</span>
+                netstat -tuln | grep 8080   <span class="comment"># Is port 8080 listening?</span>
+
+                <span class="comment"># Curl: Test HTTP endpoints</span>
+                curl http://localhost:8080/health
+                curl -I https://google.com  <span class="comment"># Just headers</span>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">24/40</div>
+</div>
+
+<!-- SLIDE 23: Version Control in DevOps -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Version Control in DevOps</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div class="two-column">
+                <div class="column">
+                    <h3>Traditional Development</h3>
+                    <ul>
+                        <li>Git = backup and version history</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>DevOps</h3>
+                    <ul style="font-size: 0.9em;">
+                        <li>Git = backup + version history</li>
+                        <li><strong>+ deployment trigger</strong></li>
+                        <li><strong>+ collaboration platform</strong></li>
+                        <li><strong>+ audit trail</strong></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 30px;">
+                <strong>Git in DevOps:</strong>
+                Every commit can trigger automated tests, builds, and deployments
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">25/40</div>
+</div>
+
+<!-- SLIDE 24: Branching Strategies -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Branching Strategies</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div class="two-column">
+                <div class="column">
+                    <h3>GitFlow (Traditional)</h3>
+                    <div class="code-block" style="font-size: 0.85em;">
+                        main (production)
+                        ↓
+                        develop (integration)
+                        ↓
+                        feature branches
+                        ↓
+                        release branches
+                        ↓
+                        hotfix branches
+                    </div>
+                    <ul style="font-size: 0.85em;">
+                        <li>More structure</li>
+                        <li>Good for scheduled releases</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Trunk-Based (Modern)</h3>
+                    <div class="code-block" style="font-size: 0.85em;">
+                        main (always deployable)
+                        ↓
+                        short-lived branches
+                        (1-2 days max)
+                    </div>
+                    <ul style="font-size: 0.85em;">
+                        <li>Fewer branches</li>
+                        <li>Deploy multiple times/day</li>
+                        <li>Reduces merge conflicts</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">26/40</div>
+</div>
+
+<!-- SLIDE 25: Pull Requests -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Pull Requests & Code Reviews</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div class="two-column">
+                <div class="column">
+                    <h3>Automated Checks</h3>
+                    <ul>
+                        <li>Unit tests must pass ✓</li>
+                        <li>Code style checks ✓</li>
+                        <li>Security scans ✓</li>
+                        <li>Build succeeds ✓</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Code Review Benefits</h3>
+                    <ul>
+                        <li>Catches bugs before production</li>
+                        <li>Shares knowledge across team</li>
+                        <li>Maintains code quality</li>
+                        <li>Multiple eyes on infrastructure changes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">27/40</div>
+</div>
+
+<!-- SLIDE 26: Containerization Intro -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Introduction to Docker</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div class="two-column">
+                <div class="column">
+                    <h3>Docker Image</h3>
+                    <ul>
+                        <li>Contains app + dependencies + OS libraries</li>
+                        <li>Immutable (doesn't change)</li>
+                        <li>Can be stored and shared</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Docker Container</h3>
+                    <ul>
+                        <li>Lightweight (shares host OS kernel)</li>
+                        <li>Isolated (can't interfere with others)</li>
+                        <li>Disposable (stop and start easily)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 30px;">
+                <strong>Think of it this way:</strong>
+                Image = Recipe | Container = Meal cooked from that recipe
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">28/40</div>
+</div>
+
+<!-- SLIDE 27: Dockerfile -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Dockerfile Example</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div class="code-block">
+                <span class="comment"># Example Dockerfile for discount service</span>
+                <span class="keyword">FROM</span> openjdk:17-slim          <span class="comment"># Start with Java base image</span>
+                <span class="keyword">WORKDIR</span> /app                   <span class="comment"># Set working directory</span>
+                <span class="keyword">COPY</span> target/discount.jar .     <span class="comment"># Copy your JAR file</span>
+                <span class="keyword">EXPOSE</span> 8080                    <span class="comment"># Declare which port to use</span>
+                <span class="keyword">CMD</span> ["java", "-jar", "discount.jar"]  <span class="comment"># Command to run</span>
+            </div>
+
+            <div class="code-block" style="margin-top: 20px;">
+                <span class="comment"># Build and run</span>
+                docker build -t discount-service .
+                docker run -p 8080:8080 discount-service
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">29/40</div>
+</div>
+
+<!-- SLIDE 28: Container Registries -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Container Registries</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div class="highlight-box">
+                <strong>Common registries:</strong>
+                <ul>
+                    <li><strong>Docker Hub:</strong> Public registry (like NPM for Docker)</li>
+                    <li><strong>Amazon ECR:</strong> AWS's registry (we use this!)</li>
+                    <li><strong>Google GCR, Azure ACR:</strong> Cloud provider registries</li>
+                </ul>
+            </div>
+
+            <div class="code-block" style="margin-top: 20px;">
+                <span class="comment"># Typical workflow</span>
+                docker build -t discount-service:v1.0 .
+                docker tag discount-service:v1.0 account.ecr.aws/discount-service:v1.0
+                docker push account.ecr.aws/discount-service:v1.0
+
+                <span class="comment"># On production server</span>
+                docker pull account.ecr.aws/discount-service:v1.0
+                docker run account.ecr.aws/discount-service:v1.0
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">30/40</div>
+</div>
+
+<!-- SLIDE 29: Docker Compose -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Docker Compose</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <p>For local development with multiple containers:</p>
+            <div class="code-block" style="font-size: 0.85em;">
+                <span class="comment"># docker-compose.yml example</span>
+                <span class="keyword">version:</span> '3'
+                <span class="keyword">services:</span>
+                <span class="keyword">discount-service:</span>
+                <span class="keyword">build:</span> ./discount
+                <span class="keyword">ports:</span>
+                - "8080:8080"
+                <span class="keyword">environment:</span>
+                - DB_HOST=database
+
+                <span class="keyword">database:</span>
+                <span class="keyword">image:</span> postgres:14
+                <span class="keyword">environment:</span>
+                - POSTGRES_PASSWORD=secret
+            </div>
+            <div class="code-block" style="margin-top: 15px;">
+                docker-compose up    <span class="comment"># Start all services</span>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">31/40</div>
+</div>
+
+<!-- SLIDE 30: Container Best Practices -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Container Best Practices</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <ul>
+                <li><strong>Keep images small:</strong> Use slim/alpine base images (200MB vs 500MB+)</li>
+                <li><strong>One process per container:</strong> Don't run app + database + nginx together</li>
+                <li><strong>Don't run as root:</strong> Create a non-root user for security</li>
+                <li><strong>Use .dockerignore:</strong> Like .gitignore, prevents copying unnecessary files</li>
+                <li><strong>Version your images:</strong> Never use <code>latest</code> in production - use <code>v1.2.3</code></li>
+            </ul>
+            <div class="code-block" style="margin-top: 20px;">
+                <span class="keyword">RUN</span> useradd -m appuser
+                <span class="keyword">USER</span> appuser
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">32/40</div>
+</div>
+
+<!-- SLIDE 31: Container Security -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Container Security</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div class="warning-box">
+                <strong>Security concerns to watch for:</strong>
+            </div>
+            <ul>
+                <li><strong>Vulnerable base images:</strong> Scan images for known vulnerabilities</li>
+                <li><strong>Secrets in images:</strong> Never put passwords in Dockerfiles</li>
+                <li><strong>Privileged containers:</strong> Avoid running with elevated privileges</li>
+                <li><strong>Outdated images:</strong> Regularly rebuild with updated base images</li>
+            </ul>
+            <div class="highlight-box" style="margin-top: 20px;">
+                <strong>Best practice:</strong> Use environment variables or secret management services for sensitive data
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">33/40</div>
+</div>
+
+<!-- SLIDE 32: When to Use Containers -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>When to Use Containers</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div class="two-column">
+                <div class="column">
+                    <h3 style="color: #4CAF50;">✅ Great For</h3>
+                    <ul style="font-size: 0.9em;">
+                        <li>Microservices architectures</li>
+                        <li>Cloud deployments (ECS, K8s)</li>
+                        <li>Ensuring environment consistency</li>
+                        <li>Complex dependencies</li>
+                        <li>Rapid scaling</li>
+                        <li>Local development</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3 style="color: #ff9800;">❌ Might Be Overkill</h3>
+                    <ul style="font-size: 0.9em;">
+                        <li>Very simple scripts</li>
+                        <li>Bare-metal performance needs</li>
+                        <li>Legacy monoliths</li>
+                        <li>Team lacks container knowledge</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">34/40</div>
+</div>
+
+<!-- SLIDE 33: Connecting to Day 2 -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Connecting the Dots</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div class="highlight-box">
+                <strong>Tomorrow we'll see these concepts in action:</strong>
+                <ul style="margin-top: 15px;">
+                    <li>These Linux commands will help you troubleshoot deployments</li>
+                    <li>Networking knowledge applies to AWS VPCs and Load Balancers</li>
+                    <li>Git workflows trigger our CI/CD pipelines</li>
+                    <li>Docker containers run our services in ECS (POS Discount Service!)</li>
+                </ul>
+            </div>
+            <div class="diagram-landscape" style="margin-top: 30px; font-size: 1.2em;">
+                <div class="item"><span class="icon">💻</span><span class="label">Your Code</span></div>
+                <span class="arrow">→</span>
+                <div class="item"><span class="icon">🐳</span><span class="label">Container</span></div>
+                <span class="arrow">→</span>
+                <div class="item"><span class="icon">☁️</span><span class="label">AWS/Cloud</span></div>
+                <span class="arrow">→</span>
+                <div class="item"><span class="icon">👥</span><span class="label">Users</span></div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">35/40</div>
+</div>
+
+<!-- SLIDE 34: Preview of Day 2 -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Preview: Day 2 Topics</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div class="two-column">
+                <div class="column">
+                    <h3>Terraform Demo</h3>
+                    <ul>
+                        <li>Infrastructure as Code</li>
+                        <li>Building POS Discount Service</li>
+                        <li>ECR, ECS, ALB, Security Groups</li>
+                        <li>Terragrunt for multi-region</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>CI/CD Workflows</h3>
+                    <ul>
+                        <li>Automated testing</li>
+                        <li>Build pipelines</li>
+                        <li>Deployment automation</li>
+                        <li>Monitoring and rollbacks</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 30px;">
+                <strong>Get ready to see theory become practice!</strong>
+                Mark will demonstrate the actual infrastructure we built for the POS system
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">36/40</div>
+</div>
+
+<!-- SLIDE 35: Practice Exercise -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Practice Exercise</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <h3>Try these on your own machine:</h3>
+            <div class="command-list">
+                <div class="command-item">
+                    <span class="cmd">Create a simple web server container</span>
+                    <span class="desc">Write a Dockerfile, build it, run it on port 8080</span>
+                </div>
+                <div class="command-item">
+                    <span class="cmd">Use networking commands</span>
+                    <span class="desc">Ping your container, curl its endpoint, check listening ports</span>
+                </div>
+                <div class="command-item">
+                    <span class="cmd">Practice Git workflow</span>
+                    <span class="desc">Create a branch, make changes, create a pull request</span>
+                </div>
+                <div class="command-item">
+                    <span class="cmd">Explore logs</span>
+                    <span class="desc">Use tail -f to follow a log file in real-time</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">37/40</div>
+</div>
+
+<!-- SLIDE 36: Q&A Topics -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Questions to Consider</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <ul>
+                <li>How does DevOps culture differ from traditional development at your organization?</li>
+                <li>What Linux commands do you already use? Which ones are new?</li>
+                <li>How do containers solve the "it works on my machine" problem?</li>
+                <li>Why is automation crucial for DevOps success?</li>
+                <li>How does version control integrate with deployment pipelines?</li>
+                <li>What security concerns should we consider with containers?</li>
+            </ul>
+            <div class="highlight-box" style="margin-top: 30px;">
+                <strong>Take notes on concepts you want to explore deeper!</strong>
+            </div>
+        </div>
+    </div>
+    <div class="slide-number">38/40</div>
+</div>
+
+<!-- SLIDE 37: Resources -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Additional Resources</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <div class="two-column" style="font-size: 0.95em;">
+                <div class="column">
+                    <h3>Learning Platforms</h3>
+                    <ul>
+                        <li>Docker documentation</li>
+                        <li>Linux command line tutorials</li>
+                        <li>AWS free tier for practice</li>
+                        <li>GitHub Learning Lab</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Books & Articles</h3>
+                    <ul>
+                        <li>The Phoenix Project</li>
+                        <li>The DevOps Handbook</li>
+                        <li>Site Reliability Engineering (SRE)</li>
+                        <li>AWS Well-Architected Framework</li>
+                    </ul>
+                </div>
+            </div>
+            <a href="https://rocketpartners.atlassian.net/wiki/spaces/RPPHDev" class="link-button" style="margin-top: 20px;">📄 Team Documentation</a>
+        </div>
+    </div>
+    <div class="slide-number">39/40</div>
+</div>
+
+<!-- SLIDE 38: Summary -->
+<div class="slide">
+    <div class="slide-content">
+        <h2>Day 1 Summary</h2>
+        <div class="divider"></div>
+        <div class="content">
+            <h3>What We Covered:</h3>
+            <ul>
+                <li><strong>Module 1:</strong> DevOps culture, lifecycle, collaboration, benefits</li>
+                <li><strong>Module 2:</strong> Linux fundamentals, networking basics, version control, containers</li>
+            </ul>
+
+            <div class="highlight-box" style="margin-top: 30px;">
+                <strong>Key Takeaway:</strong>
+                DevOps is about breaking down silos, automating workflows, and delivering value faster. The tools and commands we learned today are your building blocks for tomorrow's hands-on work.
+            </div>
+
+            <p style="text-align: center; margin-top: 40px; font-size: 1.3em; color: #7B42BC;">
+                <strong>Tomorrow: We build real infrastructure! 🚀</strong>
+            </p>
+        </div>
+    </div>
+    <div class="slide-number">40/40</div>
+</div>
+
+<div class="nav-buttons">
+    <button class="nav-button" id="prevBtn" onclick="changeSlide(-1)">← Previous</button>
+    <button class="nav-button" id="nextBtn" onclick="changeSlide(1)">Next →</button>
+</div>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
