@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Day 1 - Introduction & Fundamentals</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#7B42BC',
+                        secondary: '#4ECDC4',
+                        accent: '#ff9800',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+        }
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-zinc-900 dark:bg-zinc-900 transition-colors duration-300">
+
+<!-- Theme Toggle Button -->
+<button onclick="toggleTheme()"
+        class="fixed top-6 right-6 z-50 bg-primary/20 backdrop-blur-md border border-primary/30 text-primary w-12 h-12 rounded-full hover:bg-primary/30 hover:scale-110 transition-all duration-300 flex items-center justify-center shadow-lg"
+        title="Toggle Dark/Light Mode">
+    <span id="themeIcon" class="text-2xl">🌙</span>
+</button>
+
+<!-- Slide Counter -->
+<div class="fixed bottom-8 right-8 z-40 bg-gradient-to-br from-primary to-secondary px-6 py-3 rounded-full shadow-2xl border-2 border-white/30 backdrop-blur-md">
+    <div class="flex items-center gap-3">
+        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+        <span id="slideCounter" class="text-white font-bold text-lg tracking-wider">1/33</span>
+    </div>
+</div>
+
+<!-- SLIDE 1: Title -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 min-h-screen p-8 md:p-20">
+    <div class="max-w-5xl w-full text-left">
+        <h1 class="text-6xl md:text-7xl font-light mb-8 tracking-tight text-gray-900 dark:text-white">DevOps Training</h1>
+        <p class="text-3xl md:text-4xl mb-12 font-light text-gray-600 dark:text-gray-300">Day 1: Introduction & Core Fundamentals</p>
+        <div class="w-20 h-1 bg-purple-600 dark:bg-purple-400 mb-16"></div>
+        <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed">
+            Modules 1-2: DevOps Concepts, Linux, Networking, Version Control & Containers<br>
+            Rocket Partners Data Platform Team
+        </p>
+    </div>
+</div>
+
+<!-- MODULE 1 TITLE -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Module 1: Introduction to DevOps</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <p style="font-size: 1.3em; color: #7B42BC;">Understanding the cultural foundation and lifecycle</p>
+    </div>
+</div>
+
+<!-- SLIDE 2: What is DevOps -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">What is DevOps?</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <div>
+            <h3 class="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-6">The Cultural Foundation</h3>
+            <p class="text-2xl text-gray-600 dark:text-gray-300 mb-8">DevOps is fundamentally a <strong>cultural movement</strong>.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4">Classic Scene</h3>
+                    <ul class="space-y-3 text-xl text-gray-600 dark:text-gray-300">
+                        <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Developers want to ship features fast, experiment, and innovate</span></li>
+                        <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Operations wants stability, reliability, and predictable systems</span></li>
+                        <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Goals seem to conflict, creating friction and blame games</span></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4">DevOps Scene</h3>
+                    <ul class="space-y-3 text-xl text-gray-600 dark:text-gray-300">
+                        <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Stop treating these as opposing forces</span></li>
+                        <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Shared responsibility, automation, and continuous improvement</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 3: Dev vs Ops Battle -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">The Battle: Dev vs Ops</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <div style="text-align: center; margin: 40px 0;">
+            <img src="images/mod1-2/dev-vs-ops-battle.jpg" alt="Dev vs Ops Battle" style="max-width: 700px; width: 100%; border-radius: 8px;">
+        </div>
+        <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 dark:border-purple-400 p-6 rounded-lg">
+            <strong class="text-xl text-gray-800 dark:text-white">The Classic Conflict</strong><br>
+            <span class="text-lg text-gray-700 dark:text-gray-300">Developers: "I need change!" vs Operations: "I need stability!"</span>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 4: Development vs Operations -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Development vs Operations</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <div style="text-align: center; margin: 40px 0;">
+            <img src="images/mod1-2/development-vs-operations.png" alt="Development vs Operations" style="max-width: 600px; width: 100%; border-radius: 8px;">
+        </div>
+        <p style="text-align: left; font-size: 1.1em; color: #888; margin-top: 20px;">Agile developers moving fast vs SysAdmins protecting stability</p>
+    </div>
+</div>
+
+<!-- SLIDE 5: Traditional Siloed Approach -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Traditional Siloed Approach</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <div style="text-align: center; margin: 40px 0;">
+            <img src="images/mod1-2/works-on-machine-meme.jpg" alt="Works on My Machine" style="max-width: 600px; width: 100%; border-radius: 8px;">
+        </div>
+        <p style="text-align: left; font-size: 1.2em; color: #888; margin-top: 20px;">"Breaks in production? Say the line, Bart! But it works on my machine..."</p>
+    </div>
+</div>
+
+<!-- SLIDE 6: QA Meme -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">The Blame Game</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <div style="text-align: center; margin: 40px 0;">
+            <img src="images/mod1-2/qa-meme.jpg" alt="Dev QA Conflict" style="max-width: 500px; width: 100%; border-radius: 8px;">
+        </div>
+        <p style="text-align: center; font-size: 1.1em; color: #888; margin-top: 20px;">Traditional silos create adversarial relationships</p>
+    </div>
+</div>
+
+<!-- SLIDE 7: DevOps Collaborative Approach -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">DevOps Collaborative Approach</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <div style="text-align: center; margin: 40px 0;">
+            <img src="images/mod1-2/devops-collaboration.png" alt="DevOps Collaboration" style="max-width: 700px; width: 100%; border-radius: 8px;">
+        </div>
+        <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 dark:border-purple-400 p-6 rounded-lg">
+            <strong class="text-xl text-gray-800 dark:text-white">Bridging the Gap</strong><br>
+            <span class="text-lg text-gray-700 dark:text-gray-300">Collaboration, automation, and shared responsibility create DevOps success</span>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 8: Agile and DevOps -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Agile and DevOps</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 dark:border-purple-400 p-6 rounded-lg mb-8">
+            <strong class="text-xl text-gray-800 dark:text-white block mb-3">Two complementary approaches:</strong>
+            <p class="text-lg text-gray-700 dark:text-gray-300"><strong>Agile</strong> answers: "How do we build the right thing?"</p>
+            <p class="text-lg text-gray-700 dark:text-gray-300"><strong>DevOps</strong> answers: "How do we deliver it quickly and keep it running reliably?"</p>
+        </div>
+        <div style="text-align: center; margin: 40px 0;">
+            <img src="images/mod1-2/agile-devops.png" alt="Agile DevOps Integration" style="max-width: 600px; width: 100%; border-radius: 8px;">
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 9: Wall of Confusion -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Breaking Down the Wall</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <div style="text-align: center; margin: 40px 0;">
+            <img src="images/mod1-2/wall-of-confusion.png" alt="Wall of Confusion" style="max-width: 700px; width: 100%; border-radius: 8px;">
+        </div>
+        <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 dark:border-purple-400 p-6 rounded-lg">
+            <strong class="text-xl text-gray-800 dark:text-white">The Wall of Confusion</strong><br>
+            <span class="text-lg text-gray-700 dark:text-gray-300">DevOps removes the barrier between development and operations teams</span>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 10: DevOps Brief History -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">DevOps: Brief History</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <div style="text-align: center; margin: 40px 0;">
+            <img src="images/mod1-2/devops-timeline.png" alt="DevOps History Timeline" style="max-width: 800px; width: 100%; border-radius: 8px;">
+        </div>
+        <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 dark:border-purple-400 p-6 rounded-lg">
+            <strong class="text-xl text-gray-800 dark:text-white">2009: The Birth of DevOps</strong><br>
+            <span class="text-lg text-gray-700 dark:text-gray-300">Patrick Debois created the DevOps hashtag on Twitter to advertise a conference on 'agile system administration' as a solution to the 'finger pointing' problem between Dev and Ops teams</span>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 11: DevOps Lifecycle -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">The DevOps Lifecycle</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <p class="text-2xl text-gray-600 dark:text-gray-300 mb-8">The DevOps lifecycle is an <strong>infinite loop of continuous improvement</strong>:</p>
+        <div style="text-align: center; margin: 40px 0;">
+            <img src="images/mod1-2/devops-lifecycle.png" alt="DevOps Lifecycle" style="max-width: 600px; width: 100%; border-radius: 8px;">
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 12: DevOps Lifecycle Phases -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">DevOps Lifecycle: 8 Phases</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <ul class="space-y-4 text-xl text-gray-600 dark:text-gray-300">
+            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Plan:</strong> Define requirements, track work, prioritize features (project management tools)</span></li>
+            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Code:</strong> Write and version control your code</span></li>
+            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Build:</strong> Compile code, manage dependencies, create artifacts</span></li>
+            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Test:</strong> Automated testing to catch issues early</span></li>
+            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Release:</strong> Prepare for deployment, manage release schedules</span></li>
+            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Deploy:</strong> Get your code into production</span></li>
+            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Operate:</strong> Keep systems running, manage infrastructure</span></li>
+            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Monitor:</strong> Track performance, logs, user experience</span></li>
+        </ul>
+    </div>
+</div>
+
+<!-- SLIDE 13: Benefits of DevOps -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Benefits of DevOps</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <ul class="space-y-4 text-xl text-gray-600 dark:text-gray-300">
+            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Faster Delivery:</strong> Deploy multiple times per day instead of waiting days or weeks</span></li>
+            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Improved Collaboration:</strong> Less blame, more teamwork between Dev and Ops</span></li>
+            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Greater Reliability:</strong> Automation reduces human error and ensures consistent environments</span></li>
+            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Reduced Stress:</strong> Fewer 3 AM pages, fewer deployment nightmares</span></li>
+            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Complete Developer:</strong> Understanding the full software delivery lifecycle makes you more effective</span></li>
+        </ul>
+    </div>
+</div>
+
+<!-- SLIDE 14: Key Roles -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Key Roles in DevOps</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div>
+                <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4">Developers</h3>
+                <ul class="space-y-3 text-lg text-gray-600 dark:text-gray-300 mb-6">
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Writing code with deployability in mind</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Configure CI/CD pipelines</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Respond to production alerts</span></li>
+                </ul>
+
+                <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4 mt-6">DevOps Engineers</h3>
+                <ul class="space-y-3 text-lg text-gray-600 dark:text-gray-300">
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Build pipelines and automation</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Create self-service platforms</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Enable teams, not gatekeep</span></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4">Operations/SREs</h3>
+                <ul class="space-y-3 text-lg text-gray-600 dark:text-gray-300 mb-6">
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Building automation</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Creating self-service platforms</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Working alongside developers</span></li>
+                </ul>
+
+                <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4 mt-6">Everyone</h3>
+                <ul class="space-y-3 text-lg text-gray-600 dark:text-gray-300">
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Shared responsibility</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Collective goal of delivering value</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 15: Key Takeaways Module 1 -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Module 1: Key Takeaways</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <ul class="space-y-4 text-xl text-gray-600 dark:text-gray-300">
+            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>DevOps is a <strong>culture first</strong>, tools second</span></li>
+            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>It breaks down silos between development and operations</span></li>
+            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Automation</strong> is core to DevOps success</span></li>
+            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Continuous everything:</strong> integration, delivery, monitoring, improvement</span></li>
+            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Security must be integrated throughout (DevSecOps)</span></li>
+            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Measure what matters: deployment frequency, lead time, MTTR, quality</span></li>
+            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>DevOps enables organizations to deliver software <strong>faster, safer, and more reliably</strong></span></li>
+        </ul>
+    </div>
+</div>
+
+<!-- MODULE 2 TITLE -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Module 2: Core Fundamentals</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <p style="font-size: 1.3em; color: #7B42BC;">Linux, Networking, Version Control & Containers</p>
+    </div>
+</div>
+
+<!-- SLIDE 16: File System Navigation -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">File System Navigation & Manipulation</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <p class="text-2xl text-gray-600 dark:text-gray-300 mb-6">Essential commands you'll use daily:</p>
+        <div class="bg-zinc-900 dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-purple-400 dark:text-purple-400 font-mono text-base p-6 rounded-lg overflow-x-auto">
+            <div class="text-gray-500 dark:text-gray-600 italic"># Navigation and Listing</div>
+            <div>ls              <span class="text-gray-500 dark:text-gray-600 italic"># List files in current directory</span></div>
+            <div>ls -la          <span class="text-gray-500 dark:text-gray-600 italic"># List all files including hidden, with details</span></div>
+            <div>pwd             <span class="text-gray-500 dark:text-gray-600 italic"># Print working directory (where am I?)</span></div>
+            <div>cd /path        <span class="text-gray-500 dark:text-gray-600 italic"># Change directory</span></div>
+            <div>&nbsp;</div>
+            <div class="text-gray-500 dark:text-gray-600 italic"># File Operations</div>
+            <div>cp file.txt backup.txt        <span class="text-gray-500 dark:text-gray-600 italic"># Copy file</span></div>
+            <div>cp -r folder/ backup/         <span class="text-gray-500 dark:text-gray-600 italic"># Copy directory recursively</span></div>
+            <div>mv old.txt new.txt            <span class="text-gray-500 dark:text-gray-600 italic"># Move/rename file</span></div>
+            <div>rm file.txt                   <span class="text-gray-500 dark:text-gray-600 italic"># Remove file</span></div>
+            <div>rm -rf folder/                <span class="text-gray-500 dark:text-gray-600 italic"># Remove directory (careful!)</span></div>
+            <div>&nbsp;</div>
+            <div class="text-gray-500 dark:text-gray-600 italic"># Viewing Files</div>
+            <div>cat file.txt                  <span class="text-gray-500 dark:text-gray-600 italic"># Display entire file</span></div>
+            <div>less file.txt                 <span class="text-gray-500 dark:text-gray-600 italic"># View file with scrolling</span></div>
+            <div>head -n 10 file.txt          <span class="text-gray-500 dark:text-gray-600 italic"># First 10 lines</span></div>
+            <div>tail -f /var/log/app.log     <span class="text-gray-500 dark:text-gray-600 italic"># Follow log file in real-time (crucial!)</span></div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 17: Real DevOps Scenario -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Real DevOps Scenario</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 dark:border-purple-400 p-6 rounded-lg mb-6">
+            <strong class="text-xl text-gray-800 dark:text-white">Scenario:</strong>
+            <span class="text-lg text-gray-700 dark:text-gray-300"> You deploy your app and it's not working. You'll need to:</span>
+        </div>
+        <div class="bg-zinc-900 dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-purple-400 dark:text-purple-400 font-mono text-base p-6 rounded-lg overflow-x-auto">
+            <div>cd /var/log/app</div>
+            <div>tail -f application.log      <span class="text-gray-500 dark:text-gray-600 italic"># Watch logs in real-time</span></div>
+            <div>less error.log               <span class="text-gray-500 dark:text-gray-600 italic"># Check error logs</span></div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 18: Permissions -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Permissions (chmod, chown)</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <div class="bg-zinc-900 dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-purple-400 dark:text-purple-400 font-mono text-base p-6 rounded-lg overflow-x-auto">
+            <div class="text-gray-500 dark:text-gray-600 italic"># Understanding permissions</div>
+            <div class="text-gray-500 dark:text-gray-600 italic"># -rwxr-xr--  means:</div>
+            <div class="text-gray-500 dark:text-gray-600 italic"># Owner: read, write, execute (rwx)</div>
+            <div class="text-gray-500 dark:text-gray-600 italic"># Group: read, execute (r-x)</div>
+            <div class="text-gray-500 dark:text-gray-600 italic"># Others: read only (r--)</div>
+            <div>&nbsp;</div>
+            <div class="text-gray-500 dark:text-gray-600 italic"># Changing permissions</div>
+            <div>chmod +x script.sh           <span class="text-gray-500 dark:text-gray-600 italic"># Make script executable</span></div>
+            <div>chmod 755 file.txt           <span class="text-gray-500 dark:text-gray-600 italic"># Owner: rwx, Group: rx, Others: rx</span></div>
+            <div>chmod 644 config.yml         <span class="text-gray-500 dark:text-gray-600 italic"># Owner: rw, Group: r, Others: r</span></div>
+            <div>&nbsp;</div>
+            <div class="text-gray-500 dark:text-gray-600 italic"># Changing ownership</div>
+            <div>chown user:group file.txt    <span class="text-gray-500 dark:text-gray-600 italic"># Change owner and group</span></div>
+            <div>sudo chown root:root app     <span class="text-gray-500 dark:text-gray-600 italic"># Change to root (needs sudo)</span></div>
+        </div>
+        <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 dark:border-purple-400 p-6 rounded-lg mt-6">
+            <strong class="text-xl text-gray-800 dark:text-white">Real DevOps scenario:</strong>
+            <span class="text-lg text-gray-700 dark:text-gray-300"> Your deployment script fails because it's not executable</span>
+        </div>
+        <div class="bg-zinc-900 dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-purple-400 dark:text-purple-400 font-mono text-base p-6 rounded-lg overflow-x-auto">
+            <div>chmod +x deploy.sh</div>
+            <div>./deploy.sh</div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 19: Process Management -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Process Management</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <div class="bg-zinc-900 dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-purple-400 dark:text-purple-400 font-mono text-base p-6 rounded-lg overflow-x-auto">
+            <div class="text-gray-500 dark:text-gray-600 italic"># Viewing processes</div>
+            <div>ps aux                       <span class="text-gray-500 dark:text-gray-600 italic"># All running processes</span></div>
+            <div>ps aux | grep java          <span class="text-gray-500 dark:text-gray-600 italic"># Find Java processes</span></div>
+            <div>top                         <span class="text-gray-500 dark:text-gray-600 italic"># Interactive process viewer (like Task Manager)</span></div>
+            <div>htop                        <span class="text-gray-500 dark:text-gray-600 italic"># Better version of top (if installed)</span></div>
+            <div>&nbsp;</div>
+            <div class="text-gray-500 dark:text-gray-600 italic"># Controlling processes</div>
+            <div>kill 1234                   <span class="text-gray-500 dark:text-gray-600 italic"># Gracefully stop process with ID 1234</span></div>
+            <div>kill -9 1234               <span class="text-gray-500 dark:text-gray-600 italic"># Force kill process</span></div>
+            <div>pkill java                 <span class="text-gray-500 dark:text-gray-600 italic"># Kill all Java processes</span></div>
+        </div>
+        <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 dark:border-purple-400 p-6 rounded-lg mt-6">
+            <strong class="text-xl text-gray-800 dark:text-white">Real DevOps scenario:</strong>
+            <span class="text-lg text-gray-700 dark:text-gray-300"> Your app is hanging</span>
+        </div>
+        <div class="bg-zinc-900 dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-purple-400 dark:text-purple-400 font-mono text-base p-6 rounded-lg overflow-x-auto">
+            <div>ps aux | grep java          <span class="text-gray-500 dark:text-gray-600 italic"># Find the process ID</span></div>
+            <div>kill 12345                  <span class="text-gray-500 dark:text-gray-600 italic"># Try graceful shutdown</span></div>
+            <div>kill -9 12345              <span class="text-gray-500 dark:text-gray-600 italic"># Force kill if needed</span></div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 20: Package Management -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Package Management (apt)</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <div class="bg-zinc-900 dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-purple-400 dark:text-purple-400 font-mono text-base p-6 rounded-lg overflow-x-auto">
+            <div class="text-gray-500 dark:text-gray-600 italic"># Updating package lists</div>
+            <div>sudo apt update             <span class="text-gray-500 dark:text-gray-600 italic"># Update package list</span></div>
+            <div>&nbsp;</div>
+            <div class="text-gray-500 dark:text-gray-600 italic"># Installing packages</div>
+            <div>sudo apt install docker.io  <span class="text-gray-500 dark:text-gray-600 italic"># Install Docker</span></div>
+            <div>sudo apt install nginx      <span class="text-gray-500 dark:text-gray-600 italic"># Install Nginx</span></div>
+            <div>&nbsp;</div>
+            <div class="text-gray-500 dark:text-gray-600 italic"># Removing packages</div>
+            <div>sudo apt remove nginx       <span class="text-gray-500 dark:text-gray-600 italic"># Remove package</span></div>
+            <div>sudo apt autoremove        <span class="text-gray-500 dark:text-gray-600 italic"># Remove unused dependencies</span></div>
+            <div>&nbsp;</div>
+            <div class="text-gray-500 dark:text-gray-600 italic"># Searching packages</div>
+            <div>apt search kubernetes       <span class="text-gray-500 dark:text-gray-600 italic"># Find packages</span></div>
+        </div>
+        <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 dark:border-purple-400 p-6 rounded-lg mt-6">
+            <strong class="text-xl text-gray-800 dark:text-white">Real DevOps scenario:</strong>
+            <span class="text-lg text-gray-700 dark:text-gray-300"> Setting up a new server</span>
+        </div>
+        <div class="bg-zinc-900 dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-purple-400 dark:text-purple-400 font-mono text-base p-6 rounded-lg overflow-x-auto">
+            <div>sudo apt update</div>
+            <div>sudo apt install docker.io git curl</div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 21: Networking - OSI Model -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Networking: OSI & TCP/IP Models</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <div style="text-align: center; margin: 40px 0;">
+            <img src="images/mod1-2/osi-tcpip-model.png" alt="OSI TCP/IP Model" style="max-width: 700px; width: 100%; border-radius: 8px;">
+        </div>
+        <p style="text-align: center; font-size: 1em; color: #888;">The logical mapping between OSI basic reference model and the TCP/IP stack</p>
+    </div>
+</div>
+
+<!-- SLIDE 22: AWS VPC Subnets -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Understanding AWS VPCs & Subnets</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <div style="text-align: center; margin: 40px 0;">
+            <img src="images/mod1-2/aws-subnetting.png" alt="AWS VPC Subnets" style="max-width: 700px; width: 100%; border-radius: 8px;">
+        </div>
+        <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 dark:border-purple-400 p-6 rounded-lg">
+            <strong class="text-xl text-gray-800 dark:text-white">Understanding Subnets</strong><br>
+            <span class="text-lg text-gray-700 dark:text-gray-300">VPCs contain subnets across availability zones, with Internet Gateways providing external access. Essential for cloud architectures!</span>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 23: Common Protocols -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Common Network Protocols</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <div style="text-align: center; margin: 40px 0;">
+            <img src="images/mod1-2/network-protocols.png" alt="8 Top Network Protocols" style="max-width: 650px; width: 100%; border-radius: 8px;">
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div>
+                <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4">Key Protocols</h3>
+                <ul class="space-y-3 text-lg text-gray-600 dark:text-gray-300">
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>HTTP/HTTPS:</strong> Web traffic</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>SSH:</strong> Secure remote access</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>TCP:</strong> Reliable connections</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>UDP:</strong> Fast, connectionless</span></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4">Supporting Protocols</h3>
+                <ul class="space-y-3 text-lg text-gray-600 dark:text-gray-300">
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>FTP:</strong> File transfer</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>SMTP:</strong> Email delivery</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>IP:</strong> Addressing & routing</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 24: AWS Security Groups -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Firewalls and Security Groups</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <div style="text-align: center; margin: 40px 0;">
+            <img src="images/mod1-2/aws-security-groups.png" alt="AWS Security Groups" style="max-width: 700px; width: 100%; border-radius: 8px;">
+        </div>
+        <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 dark:border-purple-400 p-6 rounded-lg">
+            <strong class="text-xl text-gray-800 dark:text-white">Security Groups act as virtual firewalls</strong><br>
+            <span class="text-lg text-gray-700 dark:text-gray-300">They control inbound and outbound traffic to your AWS resources. Essential for securing your infrastructure!</span>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 25: Network Troubleshooting -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Basic Network Troubleshooting</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <div class="bg-zinc-900 dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-purple-400 dark:text-purple-400 font-mono text-base p-6 rounded-lg overflow-x-auto">
+            <div class="text-gray-500 dark:text-gray-600 italic"># Ping: Can I reach this host?</div>
+            <div>ping 8.8.8.8               <span class="text-gray-500 dark:text-gray-600 italic"># Ping Google DNS</span></div>
+            <div>ping google.com            <span class="text-gray-500 dark:text-gray-600 italic"># Ping by domain name</span></div>
+            <div>&nbsp;</div>
+            <div class="text-gray-500 dark:text-gray-600 italic"># Traceroute: What path does traffic take?</div>
+            <div>traceroute google.com      <span class="text-gray-500 dark:text-gray-600 italic"># Shows each hop</span></div>
+            <div>&nbsp;</div>
+            <div class="text-gray-500 dark:text-gray-600 italic"># Netstat: What ports are open on my machine?</div>
+            <div>netstat -tuln              <span class="text-gray-500 dark:text-gray-600 italic"># List all listening ports</span></div>
+            <div>netstat -tuln | grep 8080  <span class="text-gray-500 dark:text-gray-600 italic"># Is port 8080 listening?</span></div>
+            <div>&nbsp;</div>
+            <div class="text-gray-500 dark:text-gray-600 italic"># Curl: Test HTTP endpoints</div>
+            <div>curl http://localhost:8080/health</div>
+            <div>curl -I https://google.com <span class="text-gray-500 dark:text-gray-600 italic"># Just headers</span></div>
+            <div>&nbsp;</div>
+            <div class="text-gray-500 dark:text-gray-600 italic"># Telnet: Test if port is open</div>
+            <div>telnet server-ip 22        <span class="text-gray-500 dark:text-gray-600 italic"># Can I reach SSH?</span></div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 26: Real Troubleshooting Flow -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Real Troubleshooting Flow</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+                <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4">App won't connect?</h3>
+                <div class="bg-zinc-900 dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-purple-400 dark:text-purple-400 font-mono text-base p-6 rounded-lg overflow-x-auto">
+                    <div>ping server-ip           <span class="text-gray-500 dark:text-gray-600 italic"># Can I reach the server at all?</span></div>
+                    <div>telnet server-ip 8080    <span class="text-gray-500 dark:text-gray-600 italic"># Is the port open?</span></div>
+                    <div>curl http://server-ip:8080  <span class="text-gray-500 dark:text-gray-600 italic"># Can I get HTTP response?</span></div>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4 mt-6">Service won't start?</h3>
+                <div class="bg-zinc-900 dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-purple-400 dark:text-purple-400 font-mono text-base p-6 rounded-lg overflow-x-auto">
+                    <div>netstat -tuln | grep 8080   <span class="text-gray-500 dark:text-gray-600 italic"># Is something already on that port?</span></div>
+                    <div>ps aux | grep java          <span class="text-gray-500 dark:text-gray-600 italic"># Is my app actually running?</span></div>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4">Slow performance?</h3>
+                <div class="bg-zinc-900 dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-purple-400 dark:text-purple-400 font-mono text-base p-6 rounded-lg overflow-x-auto">
+                    <div>traceroute server-ip     <span class="text-gray-500 dark:text-gray-600 italic"># Where is the bottleneck?</span></div>
+                    <div>ping -c 100 server-ip    <span class="text-gray-500 dark:text-gray-600 italic"># Check packet loss</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 27: Version Control in DevOps -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Version Control in DevOps</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div>
+                <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4">Traditional Development</h3>
+                <ul class="space-y-3 text-xl text-gray-600 dark:text-gray-300">
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Git = backup and version history</span></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4">DevOps</h3>
+                <ul class="space-y-3 text-lg text-gray-600 dark:text-gray-300">
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Git = backup + version history</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>+ deployment trigger</strong></span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>+ collaboration platform</strong></span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>+ audit trail</strong></span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 dark:border-purple-400 p-6 rounded-lg mt-8">
+            <strong class="text-xl text-gray-800 dark:text-white">Git in DevOps:</strong><br>
+            <span class="text-lg text-gray-700 dark:text-gray-300">Every commit can trigger automated tests, builds, and deployments</span>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 28: Branching Strategies -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Branching Strategies</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div>
+                <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4">GitFlow (Traditional)</h3>
+                <div class="bg-zinc-900 dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-purple-400 dark:text-purple-400 font-mono text-base p-6 rounded-lg overflow-x-auto">
+                    <div>main (production)</div>
+                    <div>&nbsp;&nbsp;↓</div>
+                    <div>develop (integration)</div>
+                    <div>&nbsp;&nbsp;↓</div>
+                    <div>feature branches (your work)</div>
+                    <div>&nbsp;&nbsp;↓</div>
+                    <div>release branches (preparing for deployment)</div>
+                    <div>&nbsp;&nbsp;↓</div>
+                    <div>hotfix branches (emergency fixes)</div>
+                </div>
+                <ul class="space-y-2 text-lg text-gray-600 dark:text-gray-300 mt-4">
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>More structure, more branches</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Good for scheduled releases (monthly, quarterly)</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Common in enterprise environments</span></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4">Trunk-Based (Modern)</h3>
+                <div class="bg-zinc-900 dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-purple-400 dark:text-purple-400 font-mono text-base p-6 rounded-lg overflow-x-auto">
+                    <div>main (always deployable)</div>
+                    <div>&nbsp;&nbsp;↓</div>
+                    <div>short-lived feature branches (1-2 days max)</div>
+                </div>
+                <ul class="space-y-2 text-lg text-gray-600 dark:text-gray-300 mt-4">
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Fewer branches, faster integration</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Deploy multiple times per day</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Requires good testing and feature flags</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Reduces merge conflicts</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 29: Pull Requests -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Pull Requests & Code Reviews</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div>
+                <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4">Automated Checks</h3>
+                <ul class="space-y-3 text-xl text-gray-600 dark:text-gray-300">
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Unit tests must pass ✓</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Code style checks ✓</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Security scans ✓</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Build succeeds ✓</span></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4">Code Review Benefits</h3>
+                <ul class="space-y-3 text-xl text-gray-600 dark:text-gray-300">
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Catches bugs before production</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Shares knowledge across team</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Maintains code quality</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Multiple eyes on infrastructure changes</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 30: Containerization Intro -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Introduction to Docker</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div>
+                <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4">Docker Image</h3>
+                <ul class="space-y-3 text-xl text-gray-600 dark:text-gray-300">
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Contains your app, dependencies, OS libraries, everything needed to run</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Immutable (doesn't change)</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Can be stored and shared</span></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4">Docker Container</h3>
+                <ul class="space-y-3 text-xl text-gray-600 dark:text-gray-300">
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Lightweight (shares the host OS kernel)</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Isolated (can't interfere with other containers)</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Disposable (can stop and start easily)</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 dark:border-purple-400 p-6 rounded-lg mt-8">
+            <strong class="text-xl text-gray-800 dark:text-white">Think of it this way:</strong><br>
+            <span class="text-lg text-gray-700 dark:text-gray-300">Image = Recipe | Container = Meal cooked from that recipe</span>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 31: Dockerfile -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Dockerfile Example</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <div class="bg-zinc-900 dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-mono text-base p-6 rounded-lg overflow-x-auto">
+            <div class="text-gray-500 dark:text-gray-600 italic"># Example Dockerfile for our discount service</div>
+            <div><span class="text-blue-600 dark:text-cyan-400">FROM</span> openjdk:17-slim          <span class="text-gray-500 dark:text-gray-600 italic"># Start with Java base image</span></div>
+            <div><span class="text-blue-600 dark:text-cyan-400">WORKDIR</span> /app                   <span class="text-gray-500 dark:text-gray-600 italic"># Set working directory</span></div>
+            <div><span class="text-blue-600 dark:text-cyan-400">COPY</span> target/discount.jar .     <span class="text-gray-500 dark:text-gray-600 italic"># Copy your JAR file</span></div>
+            <div><span class="text-blue-600 dark:text-cyan-400">EXPOSE</span> 8080                    <span class="text-gray-500 dark:text-gray-600 italic"># Declare which port to use</span></div>
+            <div><span class="text-blue-600 dark:text-cyan-400">CMD</span> [<span class="text-purple-600 dark:text-purple-400">"java"</span>, <span class="text-purple-600 dark:text-purple-400">"-jar"</span>, <span class="text-purple-600 dark:text-purple-400">"discount.jar"</span>]  <span class="text-gray-500 dark:text-gray-600 italic"># Command to run</span></div>
+        </div>
+
+        <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 dark:border-purple-400 p-6 rounded-lg mt-6">
+            <strong class="text-xl text-gray-800 dark:text-white">Build and run:</strong>
+        </div>
+        <div class="bg-zinc-900 dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-purple-400 dark:text-purple-400 font-mono text-base p-6 rounded-lg overflow-x-auto">
+            <div>docker build -t discount-service .     <span class="text-gray-500 dark:text-gray-600 italic"># Build image from Dockerfile</span></div>
+            <div>docker run -p 8080:8080 discount-service  <span class="text-gray-500 dark:text-gray-600 italic"># Run container</span></div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 32: Container Registries -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Container Registries</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 dark:border-purple-400 p-6 rounded-lg mb-6">
+            <strong class="text-xl text-gray-800 dark:text-white block mb-3">Common registries:</strong>
+            <ul class="space-y-2 text-lg text-gray-700 dark:text-gray-300">
+                <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Docker Hub:</strong> Public registry (like NPM for Docker)</span></li>
+                <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Amazon ECR:</strong> AWS's registry (we use this!)</span></li>
+                <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Google GCR, Azure ACR:</strong> Cloud provider registries</span></li>
+            </ul>
+        </div>
+
+        <div class="bg-zinc-900 dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-purple-400 dark:text-purple-400 font-mono text-base p-6 rounded-lg overflow-x-auto">
+            <div class="text-gray-500 dark:text-gray-600 italic"># Typical workflow</div>
+            <div>docker build -t discount-service:v1.0 .</div>
+            <div>docker tag discount-service:v1.0 \</div>
+            <div>&nbsp;&nbsp;account.ecr.aws/discount-service:v1.0</div>
+            <div>docker push account.ecr.aws/discount-service:v1.0</div>
+            <div>&nbsp;</div>
+            <div class="text-gray-500 dark:text-gray-600 italic"># On production server</div>
+            <div>docker pull account.ecr.aws/discount-service:v1.0</div>
+            <div>docker run account.ecr.aws/discount-service:v1.0</div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 33: Container Best Practices -->
+<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="max-w-7xl w-full">
+        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Container Best Practices</h2>
+        <div class="w-16 h-1 bg-primary mb-10"></div>
+        <ul class="space-y-4 text-xl text-gray-600 dark:text-gray-300">
+            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Keep images small:</strong> Use slim/alpine base images (200MB vs 500MB+)</span></li>
+            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>One process per container:</strong> Don't run app + database + nginx together</span></li>
+            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Don't run as root:</strong> Create a non-root user for security</span></li>
+            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Use .dockerignore:</strong> Like .gitignore, prevents copying unnecessary files</span></li>
+            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Version your images:</strong> Never use <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded">latest</code> in production - use <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded">v1.2.3</code></span></li>
+        </ul>
+        <div class="bg-zinc-900 dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-mono text-base p-6 rounded-lg overflow-x-auto mt-8">
+            <div><span class="text-blue-600 dark:text-cyan-400">RUN</span> useradd -m appuser</div>
+            <div><span class="text-blue-600 dark:text-cyan-400">USER</span> appuser</div>
+        </div>
+    </div>
+</div>
+
+<!-- Navigation Buttons -->
+<div class="fixed bottom-8 left-1/2 transform -translate-x-1/2 flex gap-4 z-50">
+    <button
+            id="prevBtn"
+            onclick="changeSlide(-1)"
+            class="group flex items-center gap-2 bg-white dark:bg-zinc-800 hover:bg-purple-50 dark:hover:bg-zinc-700 border-2 border-purple-600 dark:border-purple-500 text-purple-600 dark:text-purple-400 font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:scale-105">
+        <span class="text-xl group-hover:-translate-x-1 transition-transform duration-300">←</span>
+        <span class="text-base">Previous</span>
+    </button>
+
+    <button
+            id="nextBtn"
+            onclick="changeSlide(1)"
+            class="group flex items-center gap-2 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:shadow-xl hover:scale-105">
+        <span class="text-base">Next</span>
+        <span class="text-xl group-hover:translate-x-1 transition-transform duration-300">→</span>
+    </button>
+</div>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>

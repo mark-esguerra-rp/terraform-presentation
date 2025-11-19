@@ -1,0 +1,2927 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CI/CD & Terraform at RocketPartners</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#7B42BC',
+                        secondary: '#4ECDC4',
+                        accent: '#ff9800',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body class="bg-zinc-800100 dark:bg-zinc-800900 transition-colors duration-300">
+
+    <!-- Theme Toggle Button -->
+    <button onclick="toggleTheme()"
+        class="fixed top-6 right-6 z-50 bg-primary/20 backdrop-blur-md border border-primary/30 text-primary w-12 h-12 rounded-full hover:bg-primary/30 hover:scale-110 transition-all duration-300 flex items-center justify-center shadow-lg"
+        title="Toggle Dark/Light Mode">
+        <span id="themeIcon" class="text-2xl">🌙</span>
+    </button>
+
+    <!-- Dynamic Slide Counter -->
+    <div
+        class="fixed bottom-8 right-8 z-40 bg-gradient-to-br from-primary to-secondary px-6 py-3 rounded-full shadow-2xl border-2 border-white/30 backdrop-blur-md">
+        <div class="flex items-center gap-3">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <span id="slideCounter" class="text-white font-bold text-lg tracking-wider">1/49</span>
+        </div>
+    </div>
+
+    <!-- CI/CD PRESENTATION STARTS -->
+
+    <!-- Slide 1: Title -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 min-h-screen p-8 md:p-20">
+        <div class="max-w-5xl w-full text-left">
+            <h1 class="text-6xl md:text-7xl font-light mb-8 tracking-tight text-gray-900 dark:text-white">CI/CD at RocketPartners</h1>
+            <p class="text-3xl md:text-4xl mb-12 font-light text-gray-600 dark:text-gray-300">Continuous Integration & Continuous Delivery</p>
+            <div class="w-20 h-1 bg-purple-600 dark:bg-purple-400 mb-16"></div>
+            <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed">
+                The 8 Phases in Practice at RocketPartners<br>
+                Part 2 of DevOps 101
+            </p>
+        </div>
+    </div>
+
+        <!-- Slide 2: The 8 CI/CD Phases -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">The 8 CI/CD Phases</h2>
+            <div class="w-16 h-1 bg-primary mb-10"></div>
+            <p class="text-2xl text-gray-600 dark:text-gray-300 mb-12 font-medium">An infinite loop of continuous
+                improvement</p>
+            <div class="grid grid-cols-4 gap-6">
+                <div
+                    class="bg-blue-500 text-white p-8 rounded-xl hover:scale-105 transition-transform cursor-pointer flex flex-col items-center justify-center text-center">
+                    <span class="text-6xl mb-4">📋</span>
+                    <span class="text-4xl font-bold mb-2">1</span>
+                    <span class="text-2xl font-semibold">Plan</span>
+                </div>
+                <div
+                    class="bg-purple-500 text-white p-8 rounded-xl hover:scale-105 transition-transform cursor-pointer flex flex-col items-center justify-center text-center">
+                    <span class="text-6xl mb-4">💻</span>
+                    <span class="text-4xl font-bold mb-2">2</span>
+                    <span class="text-2xl font-semibold">Code</span>
+                </div>
+                <div
+                    class="bg-green-500 text-white p-8 rounded-xl hover:scale-105 transition-transform cursor-pointer flex flex-col items-center justify-center text-center">
+                    <span class="text-6xl mb-4">📦</span>
+                    <span class="text-4xl font-bold mb-2">3</span>
+                    <span class="text-2xl font-semibold">Build</span>
+                </div>
+                <div
+                    class="bg-yellow-500 text-white p-8 rounded-xl hover:scale-105 transition-transform cursor-pointer flex flex-col items-center justify-center text-center">
+                    <span class="text-6xl mb-4">🧪</span>
+                    <span class="text-4xl font-bold mb-2">4</span>
+                    <span class="text-2xl font-semibold">Test</span>
+                </div>
+                <div
+                    class="bg-indigo-500 text-white p-8 rounded-xl hover:scale-105 transition-transform cursor-pointer flex flex-col items-center justify-center text-center">
+                    <span class="text-6xl mb-4">🚀</span>
+                    <span class="text-4xl font-bold mb-2">5</span>
+                    <span class="text-2xl font-semibold">Release</span>
+                </div>
+                <div
+                    class="bg-red-500 text-white p-8 rounded-xl hover:scale-105 transition-transform cursor-pointer flex flex-col items-center justify-center text-center">
+                    <span class="text-6xl mb-4">🌐</span>
+                    <span class="text-4xl font-bold mb-2">6</span>
+                    <span class="text-2xl font-semibold">Deploy</span>
+                </div>
+                <div
+                    class="bg-orange-500 text-white p-8 rounded-xl hover:scale-105 transition-transform cursor-pointer flex flex-col items-center justify-center text-center">
+                    <span class="text-6xl mb-4">🔧</span>
+                    <span class="text-4xl font-bold mb-2">7</span>
+                    <span class="text-2xl font-semibold">Operate</span>
+                </div>
+                <div
+                    class="bg-pink-500 text-white p-8 rounded-xl hover:scale-105 transition-transform cursor-pointer flex flex-col items-center justify-center text-center">
+                    <span class="text-6xl mb-4">📊</span>
+                    <span class="text-4xl font-bold mb-2">8</span>
+                    <span class="text-2xl font-semibold">Monitor</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Phase 1: Plan -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Phase 1: Plan 📋</h2>
+            <div class="w-16 h-1 bg-primary mb-10"></div>
+            <p class="text-2xl text-gray-600 dark:text-gray-300 mb-12 font-medium">Define project requirements,
+                features, and roadmap</p>
+            <div class="grid grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-4">🎯 Objectives</h3>
+                    <ul class="space-y-3 text-xl text-gray-600 dark:text-gray-300 mb-6">
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Define clear project requirements and acceptance criteria</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Establish feature priorities and development roadmap</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Identify dependencies and technical constraints</span>
+                        </li>
+                    </ul>
+                    <h3 class="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-4 mt-6">🚀 At RocketPartners
+                    </h3>
+                    <ul class="space-y-3 text-xl text-gray-600 dark:text-gray-300">
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>CircleK Lift workstreams</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Release Train – LoA</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Terraform infrastructure planning</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Multi-team sprint coordination</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-6">🛠️ Technologies</h3>
+                    <div class="space-y-4">
+                        <div
+                            class="flex items-center justify-between p-4 bg-zinc-50 dark:bg-zinc-700 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors">
+                            <span class="font-mono text-lg font-semibold text-primary">Jira</span>
+                            <span class="text-gray-600 dark:text-gray-400">Sprint planning, backlog</span>
+                        </div>
+                        <div
+                            class="flex items-center justify-between p-4 bg-zinc-50 dark:bg-zinc-700 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors">
+                            <span class="font-mono text-lg font-semibold text-primary">Confluence</span>
+                            <span class="text-gray-600 dark:text-gray-400">Documentation, requirements</span>
+                        </div>
+                        <div
+                            class="flex items-center justify-between p-4 bg-zinc-50 dark:bg-zinc-700 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors">
+                            <span class="font-mono text-lg font-semibold text-primary">Slack</span>
+                            <span class="text-gray-600 dark:text-gray-400">Team communication</span>
+                        </div>
+                        <div
+                            class="flex items-center justify-between p-4 bg-zinc-50 dark:bg-zinc-700 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors">
+                            <span class="font-mono text-lg font-semibold text-primary">Lucid Chart</span>
+                            <span class="text-gray-600 dark:text-gray-400">Design and visualization</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Phase 2: Code -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Phase 2: Code 💻</h2>
+            <div class="w-16 h-1 bg-primary mb-10"></div>
+            <p class="text-2xl text-gray-600 dark:text-gray-300 mb-12 font-medium">Write code according to plan and
+                standards</p>
+            <div class="grid grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-4">🎯 Objectives</h3>
+                    <ul class="space-y-3 text-xl text-gray-600 dark:text-gray-300 mb-6">
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Implement features per requirements</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Write clean, testable code</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Follow coding standards</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Perform peer code reviews</span>
+                        </li>
+                    </ul>
+                    <h3 class="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-4 mt-6">🚀 At RocketPartners
+                    </h3>
+                    <ul class="space-y-3 text-xl text-gray-600 dark:text-gray-300">
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Angular for Lift Portal</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>TypeScript across projects</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>React for modern web apps</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Java Spring Boot services</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-6">🛠️ Technologies</h3>
+                    <div class="space-y-4">
+                        <div
+                            class="flex items-center justify-between p-4 bg-zinc-50 dark:bg-zinc-700 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors">
+                            <span class="font-mono text-lg font-semibold text-primary">GitHub</span>
+                            <span class="text-gray-600 dark:text-gray-400">Version control</span>
+                        </div>
+                        <div
+                            class="flex items-center justify-between p-4 bg-zinc-50 dark:bg-zinc-700 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors">
+                            <span class="font-mono text-lg font-semibold text-primary">IntelliJ IDEA</span>
+                            <span class="text-gray-600 dark:text-gray-400">Development environment</span>
+                        </div>
+                        <div
+                            class="flex items-center justify-between p-4 bg-zinc-50 dark:bg-zinc-700 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors">
+                            <span class="font-mono text-lg font-semibold text-primary">Claude AI</span>
+                            <span class="text-gray-600 dark:text-gray-400">Coding Assistant</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Phase 3: Build -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Phase 3: Build 📦</h2>
+            <div class="w-16 h-1 bg-primary mb-10"></div>
+            <p class="text-2xl text-gray-600 dark:text-gray-300 mb-12 font-medium">Compile code into runnable instances
+            </p>
+            <div class="grid grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-4">🎯 Objectives</h3>
+                    <ul class="space-y-3 text-xl text-gray-600 dark:text-gray-300 mb-6">
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Compile source code successfully</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Resolve and bundle dependencies</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Create deployable artifacts</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Ensure build reproducibility</span>
+                        </li>
+                    </ul>
+                    <h3 class="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-4 mt-6">🚀 At RocketPartners
+                    </h3>
+                    <ul class="space-y-3 text-xl text-gray-600 dark:text-gray-300">
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Docker images for Discount Service</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>ECR for storing container images</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>GitHub Actions for builds</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Spring Boot JAR packaging</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-6">🛠️ Technologies</h3>
+                    <div class="space-y-4">
+                        <div
+                            class="flex items-center justify-between p-4 bg-zinc-50 dark:bg-zinc-700 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors">
+                            <span class="font-mono text-lg font-semibold text-primary">Docker</span>
+                            <span class="text-gray-600 dark:text-gray-400">Container image creation</span>
+                        </div>
+                        <div
+                            class="flex items-center justify-between p-4 bg-zinc-50 dark:bg-zinc-700 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors">
+                            <span class="font-mono text-lg font-semibold text-primary">ECR</span>
+                            <span class="text-gray-600 dark:text-gray-400">Container registry</span>
+                        </div>
+                        <div
+                            class="flex items-center justify-between p-4 bg-zinc-50 dark:bg-zinc-700 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors">
+                            <span class="font-mono text-lg font-semibold text-primary">GitHub Actions</span>
+                            <span class="text-gray-600 dark:text-gray-400">CI/CD automation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Phase 4: Test -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Phase 4: Test 🧪</h2>
+            <div class="w-16 h-1 bg-primary mb-10"></div>
+            <p class="text-2xl text-gray-600 dark:text-gray-300 mb-12 font-medium">Ensure build meets quality standards
+            </p>
+            <div class="grid grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-4">🎯 Objectives</h3>
+                    <ul class="space-y-3 text-xl text-gray-600 dark:text-gray-300 mb-6">
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Verify functionality matches requirements</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Ensure code quality</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Identify defects before production</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Validate security & performance</span>
+                        </li>
+                    </ul>
+                    <h3 class="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-4 mt-6">🚀 At RocketPartners
+                    </h3>
+                    <ul class="space-y-3 text-xl text-gray-600 dark:text-gray-300">
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Playwright tests for LoA TC Ads</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>SonarQube quality gates</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Automated ad behavior validation</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-6">🛠️ Technologies</h3>
+                    <div class="space-y-4">
+                        <div
+                            class="flex items-center justify-between p-4 bg-zinc-50 dark:bg-zinc-700 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors">
+                            <span class="font-mono text-lg font-semibold text-primary">Jest / Vitest</span>
+                            <span class="text-gray-600 dark:text-gray-400">Unit testing</span>
+                        </div>
+                        <div
+                            class="flex items-center justify-between p-4 bg-zinc-50 dark:bg-zinc-700 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors">
+                            <span class="font-mono text-lg font-semibold text-primary">Playwright</span>
+                            <span class="text-gray-600 dark:text-gray-400">E2E testing</span>
+                        </div>
+                        <div
+                            class="flex items-center justify-between p-4 bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-accent rounded-lg hover:bg-yellow-100 dark:hover:bg-yellow-900/30 transition-colors">
+                            <span class="font-mono text-lg font-semibold text-primary">SonarQube</span>
+                            <span class="text-gray-600 dark:text-gray-400">Code quality & security</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Phase 5: Release -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Phase 5: Release 🚀</h2>
+            <div class="w-16 h-1 bg-primary mb-10"></div>
+            <p class="text-2xl text-gray-600 dark:text-gray-300 mb-12 font-medium">Package software for release</p>
+            <div class="grid grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-4">🎯 Objectives</h3>
+                    <ul class="space-y-3 text-xl text-gray-600 dark:text-gray-300 mb-6">
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Create versioned release candidates</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Generate release notes</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Tag releases in version control</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Obtain necessary approvals</span>
+                        </li>
+                    </ul>
+                    <h3 class="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-4 mt-6">🚀 At RocketPartners
+                    </h3>
+                    <ul class="space-y-3 text-xl text-gray-600 dark:text-gray-300">
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Docker images tagged & pushed to ECR</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>GitHub releases for version tracking</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Version management for Lift Portal</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Multi-region coordination (US & EU)</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-6">🛠️ Technologies</h3>
+                    <div class="space-y-4">
+                        <div
+                            class="flex items-center justify-between p-4 bg-zinc-50 dark:bg-zinc-700 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors">
+                            <span class="font-mono text-lg font-semibold text-primary">Semantic Release</span>
+                            <span class="text-gray-600 dark:text-gray-400">Automated versioning</span>
+                        </div>
+                        <div
+                            class="flex items-center justify-between p-4 bg-zinc-50 dark:bg-zinc-700 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors">
+                            <span class="font-mono text-lg font-semibold text-primary">GitHub Releases</span>
+                            <span class="text-gray-600 dark:text-gray-400">Release tracking</span>
+                        </div>
+                        <div
+                            class="flex items-center justify-between p-4 bg-zinc-50 dark:bg-zinc-700 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors">
+                            <span class="font-mono text-lg font-semibold text-primary">ECR</span>
+                            <span class="text-gray-600 dark:text-gray-400">Artifact storage</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Phase 6: Deploy -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Phase 6: Deploy 🌐</h2>
+            <div class="w-16 h-1 bg-primary mb-10"></div>
+            <p class="text-2xl text-gray-600 dark:text-gray-300 mb-12 font-medium">Deploy to production environments</p>
+            <div class="grid grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-4">🎯 Objectives</h3>
+                    <ul class="space-y-3 text-xl text-gray-600 dark:text-gray-300 mb-6">
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Deploy artifacts to production safely</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Minimize deployment downtime</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Validate deployment health</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Enable quick rollback if needed</span>
+                        </li>
+                    </ul>
+                    <h3 class="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-4 mt-6">🚀 At RocketPartners
+                    </h3>
+                    <ul class="space-y-3 text-xl text-gray-600 dark:text-gray-300">
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Terraform manages ECS clusters</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Terragrunt handles multi-region</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>AWS: ECR, ECS, ALB, Security Groups</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Lambda for ContentStack</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-6">🛠️ Technologies</h3>
+                    <div class="space-y-4">
+                        <div
+                            class="flex items-center justify-between p-4 bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-accent rounded-lg hover:bg-yellow-100 dark:hover:bg-yellow-900/30 transition-colors">
+                            <span class="font-mono text-lg font-semibold text-primary">Terraform</span>
+                            <span class="text-gray-600 dark:text-gray-400">Infrastructure as Code</span>
+                        </div>
+                        <div
+                            class="flex items-center justify-between p-4 bg-zinc-50 dark:bg-zinc-700 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors">
+                            <span class="font-mono text-lg font-semibold text-primary">ECS</span>
+                            <span class="text-gray-600 dark:text-gray-400">Container orchestration</span>
+                        </div>
+                        <div
+                            class="flex items-center justify-between p-4 bg-zinc-50 dark:bg-zinc-700 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors">
+                            <span class="font-mono text-lg font-semibold text-primary">GitHub Actions</span>
+                            <span class="text-gray-600 dark:text-gray-400">Deployment automation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Phase 7: Operate -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Phase 7: Operate 🔧</h2>
+            <div class="w-16 h-1 bg-primary mb-10"></div>
+            <p class="text-2xl text-gray-600 dark:text-gray-300 mb-12 font-medium">Manage released software in
+                production</p>
+            <div class="grid grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-4">🎯 Objectives</h3>
+                    <ul class="space-y-3 text-xl text-gray-600 dark:text-gray-300 mb-6">
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Ensure system availability</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Respond to incidents</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Manage infrastructure & resources</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Perform routine maintenance</span>
+                        </li>
+                    </ul>
+                    <h3 class="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-4 mt-6">🚀 At RocketPartners
+                    </h3>
+                    <ul class="space-y-3 text-xl text-gray-600 dark:text-gray-300">
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>ECS task scaling for Discount Service</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Multi-region operations (US & EU)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Automated incident response</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>CircleK POS system uptime</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-6">🛠️ Technologies</h3>
+                    <div class="space-y-4">
+                        <div
+                            class="flex items-center justify-between p-4 bg-zinc-50 dark:bg-zinc-700 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors">
+                            <span class="font-mono text-lg font-semibold text-primary">ECS</span>
+                            <span class="text-gray-600 dark:text-gray-400">Container orchestration</span>
+                        </div>
+                        <div
+                            class="flex items-center justify-between p-4 bg-zinc-50 dark:bg-zinc-700 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors">
+                            <span class="font-mono text-lg font-semibold text-primary">CloudWatch</span>
+                            <span class="text-gray-600 dark:text-gray-400">Monitoring & alerting</span>
+                        </div>
+                        <div
+                            class="flex items-center justify-between p-4 bg-zinc-50 dark:bg-zinc-700 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors">
+                            <span class="font-mono text-lg font-semibold text-primary">PagerDuty</span>
+                            <span class="text-gray-600 dark:text-gray-400">Incident management</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Phase 8: Monitor -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Phase 8: Monitor 📊</h2>
+            <div class="w-16 h-1 bg-primary mb-10"></div>
+            <p class="text-2xl text-gray-600 dark:text-gray-300 mb-12 font-medium">Monitor software performance and
+                health</p>
+            <div class="grid grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-4">🎯 Objectives</h3>
+                    <ul class="space-y-3 text-xl text-gray-600 dark:text-gray-300 mb-6">
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Gain visibility into system behavior</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Detect issues before users</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Track business & technical metrics</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Support data-driven decisions</span>
+                        </li>
+                    </ul>
+                    <h3 class="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-4 mt-6">🚀 At RocketPartners
+                    </h3>
+                    <ul class="space-y-3 text-xl text-gray-600 dark:text-gray-300">
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>CloudWatch metrics for AWS</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>Real-time dashboards for alerts</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>ECS task health monitoring</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span>API Gateway request tracking</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-6">🛠️ Technologies</h3>
+                    <div class="space-y-4">
+                        <div
+                            class="flex items-center justify-between p-4 bg-zinc-50 dark:bg-zinc-700 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors">
+                            <span class="font-mono text-lg font-semibold text-primary">CloudWatch</span>
+                            <span class="text-gray-600 dark:text-gray-400">AWS monitoring</span>
+                        </div>
+                        <div
+                            class="flex items-center justify-between p-4 bg-zinc-50 dark:bg-zinc-700 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors">
+                            <span class="font-mono text-lg font-semibold text-primary">Prometheus</span>
+                            <span class="text-gray-600 dark:text-gray-400">Metrics collection</span>
+                        </div>
+                        <div
+                            class="flex items-center justify-between p-4 bg-zinc-50 dark:bg-zinc-700 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors">
+                            <span class="font-mono text-lg font-semibold text-primary">Grafana</span>
+                            <span class="text-gray-600 dark:text-gray-400">Visualization</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Technology Connections Diagram -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">CI/CD Pipeline at RocketPartners</h2>
+            <div class="w-16 h-1 bg-primary mb-10"></div>
+            <p class="text-2xl text-gray-600 dark:text-gray-300 mb-12 font-medium">Connecting the Phases with RP
+                Technologies</p>
+            <div class="grid grid-cols-2 gap-8">
+                <div class="space-y-6">
+                    <div
+                        class="bg-gradient-to-r from-blue-500/10 to-blue-500/5 border-l-4 border-blue-500 p-6 rounded-lg">
+                        <strong class="text-2xl text-gray-800 dark:text-white">📋 Plan</strong><br>
+                        <span class="text-xl text-gray-600 dark:text-gray-300">Jira • Confluence • Slack</span>
+                    </div>
+                    <div
+                        class="bg-gradient-to-r from-purple-500/10 to-purple-500/5 border-l-4 border-purple-500 p-6 rounded-lg">
+                        <strong class="text-2xl text-gray-800 dark:text-white">💻 Code</strong><br>
+                        <span class="text-xl text-gray-600 dark:text-gray-300">GitHub • VS Code • SonarQube</span>
+                    </div>
+                    <div
+                        class="bg-gradient-to-r from-green-500/10 to-green-500/5 border-l-4 border-green-500 p-6 rounded-lg">
+                        <strong class="text-2xl text-gray-800 dark:text-white">📦 Build</strong><br>
+                        <span class="text-xl text-gray-600 dark:text-gray-300">Docker • ECR • GitHub Actions</span>
+                    </div>
+                    <div
+                        class="bg-gradient-to-r from-yellow-500/10 to-yellow-500/5 border-l-4 border-yellow-500 p-6 rounded-lg">
+                        <strong class="text-2xl text-gray-800 dark:text-white">🧪 Test</strong><br>
+                        <span class="text-xl text-gray-600 dark:text-gray-300">Playwright • Jest • SonarQube</span>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <div
+                        class="bg-gradient-to-r from-indigo-500/10 to-indigo-500/5 border-l-4 border-indigo-500 p-6 rounded-lg">
+                        <strong class="text-2xl text-gray-800 dark:text-white">🚀 Release</strong><br>
+                        <span class="text-xl text-gray-600 dark:text-gray-300">GitHub Releases • ECR</span>
+                    </div>
+                    <div class="bg-gradient-to-r from-red-500/10 to-red-500/5 border-l-4 border-red-500 p-6 rounded-lg">
+                        <strong class="text-2xl text-gray-800 dark:text-white">🌐 Deploy</strong><br>
+                        <span class="text-xl text-gray-600 dark:text-gray-300">Terraform • ECS • AWS</span>
+                    </div>
+                    <div
+                        class="bg-gradient-to-r from-orange-500/10 to-orange-500/5 border-l-4 border-orange-500 p-6 rounded-lg">
+                        <strong class="text-2xl text-gray-800 dark:text-white">🔧 Operate</strong><br>
+                        <span class="text-xl text-gray-600 dark:text-gray-300">CloudWatch • PagerDuty</span>
+                    </div>
+                    <div
+                        class="bg-gradient-to-r from-pink-500/10 to-pink-500/5 border-l-4 border-pink-500 p-6 rounded-lg">
+                        <strong class="text-2xl text-gray-800 dark:text-white">📊 Monitor</strong><br>
+                        <span class="text-xl text-gray-600 dark:text-gray-300">Prometheus • Grafana • CloudWatch</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Demo Introduction -->
+    <div
+        class="slide flex items-center justify-center bg-gradient-to-br from-green-600 to-blue-700 dark:from-green-800 dark:to-blue-900 text-white">
+        <div class="max-w-5xl w-full px-20 text-center">
+            <h1 class="text-7xl font-light mb-6 tracking-tight">Live Demo</h1>
+            <p class="text-4xl mb-10 font-light text-white/90">Seeing the CI/CD Pipeline in Practice</p>
+            <div class="w-20 h-1 bg-primary mx-auto my-8"></div>
+            <div class="text-left mx-auto max-w-3xl">
+                <ul class="space-y-4 text-2xl">
+                    <li class="flex items-start">
+                        <span class="text-white/80 mr-4">1.</span>
+                        <span>Jira → GitHub → GitHub Actions workflow</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-white/80 mr-4">2.</span>
+                        <span>Understanding .yml workflow files</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-white/80 mr-4">3.</span>
+                        <span>Connecting phases with actual runs</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-white/80 mr-4">4.</span>
+                        <span>liftck-player pipeline walkthrough</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-white/80 mr-4">5.</span>
+                        <span>loa-player pipeline walkthrough</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Demo: Tools Overview -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Demo: The Tools We Use</h2>
+            <div class="w-16 h-1 bg-primary mb-10"></div>
+            <div class="space-y-6">
+                <div class="bg-gradient-to-r from-blue-500/10 to-blue-500/5 border-l-4 border-blue-500 p-8 rounded-lg">
+                    <strong class="text-2xl text-gray-800 dark:text-white block mb-2">Jira</strong>
+                    <span class="text-xl text-gray-700 dark:text-gray-200 block mb-2">Where it all starts - task
+                        tracking and sprint management</span>
+                    <span class="text-lg text-gray-500 dark:text-gray-400">Demo: Active sprint board, user stories,
+                        linking to GitHub PRs</span>
+                </div>
+                <div
+                    class="bg-gradient-to-r from-purple-500/10 to-purple-500/5 border-l-4 border-purple-500 p-8 rounded-lg">
+                    <strong class="text-2xl text-gray-800 dark:text-white block mb-2">GitHub</strong>
+                    <span class="text-xl text-gray-700 dark:text-gray-200 block mb-2">Code repository and automation
+                        hub</span>
+                    <span class="text-lg text-gray-500 dark:text-gray-400">Demo: Repository structure, pull requests,
+                        Actions tab</span>
+                </div>
+                <div
+                    class="bg-gradient-to-r from-green-500/10 to-green-500/5 border-l-4 border-green-500 p-8 rounded-lg">
+                    <strong class="text-2xl text-gray-800 dark:text-white block mb-2">GitHub Actions</strong>
+                    <span class="text-xl text-gray-700 dark:text-gray-200 block mb-2">CI/CD automation engine</span>
+                    <span class="text-lg text-gray-500 dark:text-gray-400">Demo: Workflow runs, logs, status
+                        checks</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Demo: YML Workflows -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Demo: Understanding .yml Workflows</h2>
+            <div class="w-16 h-1 bg-primary mb-10"></div>
+            <p class="text-2xl text-gray-600 dark:text-gray-300 mb-12 font-medium">YAML files that define our automation
+            </p>
+            <div class="grid grid-cols-2 gap-12">
+                <div>
+                    <div class="bg-zinc-900 text-green-400 font-mono text-lg p-6 rounded-lg overflow-x-auto">
+                        <span class="text-yellow-400">on:</span><br />
+                        &nbsp;&nbsp;<span class="text-yellow-400">push:</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-yellow-400">branches:</span> [main]<br />
+                        <br />
+                        <span class="text-yellow-400">jobs:</span><br />
+                        &nbsp;&nbsp;<span class="text-yellow-400">build:</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-yellow-400">runs-on:</span> ubuntu-latest<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-yellow-400">steps:</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- uses: actions/checkout@v3<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- run: npm test
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-6">Structure</h3>
+                    <ul class="space-y-4 text-xl text-gray-600 dark:text-gray-300 mb-6">
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span><strong>Trigger:</strong> When does this run? (push, PR)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span><strong>Jobs:</strong> What tasks need to be done?</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-3 mt-1">▸</span>
+                            <span><strong>Steps:</strong> Individual actions in each job</span>
+                        </li>
+                    </ul>
+                    <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-accent p-6 rounded-lg mt-6">
+                        <strong class="text-xl text-gray-800 dark:text-white">Demo:</strong>
+                        <span class="text-lg text-gray-700 dark:text-gray-300"> Show actual .yml from
+                            liftck-player</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Demo: Phase Connections -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Demo: From Code to Production</h2>
+            <div class="w-16 h-1 bg-primary mb-10"></div>
+            <div class="space-y-3">
+                <div class="flex items-center justify-between bg-zinc-100 dark:bg-zinc-700 p-4 rounded-lg">
+                    <span class="text-lg font-semibold text-gray-800 dark:text-white">1. Developer commits code</span>
+                    <span class="text-primary font-medium">Code → git push</span>
+                </div>
+                <div class="flex items-center justify-between bg-zinc-100 dark:bg-zinc-700 p-4 rounded-lg">
+                    <span class="text-lg font-semibold text-gray-800 dark:text-white">2. GitHub Actions triggered</span>
+                    <span class="text-primary font-medium">Build → Workflow starts</span>
+                </div>
+                <div class="flex items-center justify-between bg-zinc-100 dark:bg-zinc-700 p-4 rounded-lg">
+                    <span class="text-lg font-semibold text-gray-800 dark:text-white">3. Code compiled & packaged</span>
+                    <span class="text-primary font-medium">Build → Docker build</span>
+                </div>
+                <div class="flex items-center justify-between bg-zinc-100 dark:bg-zinc-700 p-4 rounded-lg">
+                    <span class="text-lg font-semibold text-gray-800 dark:text-white">4. Tests run automatically</span>
+                    <span class="text-primary font-medium">Test → Jest, Playwright</span>
+                </div>
+                <div class="flex items-center justify-between bg-zinc-100 dark:bg-zinc-700 p-4 rounded-lg">
+                    <span class="text-lg font-semibold text-gray-800 dark:text-white">5. Docker image tagged</span>
+                    <span class="text-primary font-medium">Release → ECR push</span>
+                </div>
+                <div class="flex items-center justify-between bg-zinc-100 dark:bg-zinc-700 p-4 rounded-lg">
+                    <span class="text-lg font-semibold text-gray-800 dark:text-white">6. Deploy to environment</span>
+                    <span class="text-primary font-medium">Deploy → ECS update</span>
+                </div>
+                <div class="flex items-center justify-between bg-zinc-100 dark:bg-zinc-700 p-4 rounded-lg">
+                    <span class="text-lg font-semibold text-gray-800 dark:text-white">7. Health checks pass</span>
+                    <span class="text-primary font-medium">Operate → Monitoring</span>
+                </div>
+                <div class="flex items-center justify-between bg-zinc-100 dark:bg-zinc-700 p-4 rounded-lg">
+                    <span class="text-lg font-semibold text-gray-800 dark:text-white">8. Metrics collected</span>
+                    <span class="text-primary font-medium">Monitor → CloudWatch</span>
+                </div>
+            </div>
+            <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-accent p-6 rounded-lg mt-6">
+                <strong class="text-lg text-gray-800 dark:text-gray-200">🎬 Demo:</strong>
+                <span class="text-gray-700 dark:text-gray-300"> Show diagram with actual GitHub Actions run</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- liftck-player Demo Overview -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">liftck-player: Java/Gradle Application CI/CD</h2>
+            <div class="w-16 h-1 bg-primary mb-10"></div>
+            <p class="text-2xl text-gray-600 dark:text-gray-300 mb-12 font-medium">JavaFX application with comprehensive quality gates</p>
+            
+            <!-- 3 Main Workflows -->
+            <div class="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-500/10 dark:to-indigo-500/10 border border-blue-200 dark:border-blue-500/30 rounded-xl p-6 mb-6">
+                <h3 class="text-3xl font-semibold text-gray-800 dark:text-white mb-6 flex items-center gap-3">
+                    <span class="text-4xl">⚙️</span>
+                    3 Main Workflows
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Pull Request CI -->
+                    <div class="bg-white dark:bg-zinc-700 rounded-lg p-6 border-l-4 border-blue-500">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="text-3xl">🔍</span>
+                            <div>
+                                <h4 class="text-xl font-semibold text-gray-800 dark:text-white">Pull Request CI</h4>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 font-mono">pullrequest.yml</p>
+                            </div>
+                        </div>
+                        <p class="text-base text-gray-600 dark:text-gray-300">Automatic on PRs</p>
+                    </div>
+                    
+                    <!-- Deploy to Environment -->
+                    <div class="bg-white dark:bg-zinc-700 rounded-lg p-6 border-l-4 border-orange-500">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="text-3xl">🚀</span>
+                            <div>
+                                <h4 class="text-xl font-semibold text-gray-800 dark:text-white">Deploy to Environment</h4>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 font-mono">deploy.yml</p>
+                            </div>
+                        </div>
+                        <p class="text-base text-gray-600 dark:text-gray-300">Manual dispatch</p>
+                    </div>
+                    
+                    <!-- SonarQube Release Scan -->
+                    <div class="bg-white dark:bg-zinc-700 rounded-lg p-6 border-l-4 border-green-500">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="text-3xl">📊</span>
+                            <div>
+                                <h4 class="text-xl font-semibold text-gray-800 dark:text-white">SonarQube Release Scan</h4>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 font-mono">sonarqube-release-scan.yml</p>
+                            </div>
+                        </div>
+                        <p class="text-base text-gray-600 dark:text-gray-300">Push to release/**</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Example: SonarQube Release Scan Timeline -->
+            <div class="bg-white dark:bg-zinc-700 rounded-xl p-6 border border-gray-200 dark:border-gray-600">
+                <h3 class="text-3xl font-semibold text-gray-800 dark:text-white mb-4">
+                    Example: SonarQube Release Scan <span class="text-gray-500 dark:text-gray-400 text-xl">(6m 17s total)</span>
+                </h3>
+                <div class="space-y-2 font-mono text-lg">
+                    <div class="flex items-center justify-between py-3 border-b border-gray-100 dark:border-gray-600">
+                        <div class="flex items-center gap-3">
+                            <span class="text-blue-500 dark:text-blue-400">⚙️</span>
+                            <span class="text-gray-700 dark:text-gray-300">Set up job</span>
+                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 rounded text-sm">Setup</span>
+                        </div>
+                        <span class="text-gray-500 dark:text-gray-400">3s</span>
+                    </div>
+                    <div class="flex items-center justify-between py-3 border-b border-gray-100 dark:border-gray-600">
+                        <div class="flex items-center gap-3">
+                            <span class="text-purple-500 dark:text-purple-400">📥</span>
+                            <span class="text-gray-700 dark:text-gray-300">Run actions/checkout@v4</span>
+                            <span class="px-2 py-1 bg-purple-100 dark:bg-purple-500/20 text-purple-700 dark:text-purple-300 rounded text-sm">Code</span>
+                        </div>
+                        <span class="text-gray-500 dark:text-gray-400">37s</span>
+                    </div>
+                    <div class="flex items-center justify-between py-3 border-b border-gray-100 dark:border-gray-600">
+                        <div class="flex items-center gap-3">
+                            <span class="text-orange-500 dark:text-orange-400">☕</span>
+                            <span class="text-gray-700 dark:text-gray-300">Set up JDK 11</span>
+                            <span class="px-2 py-1 bg-orange-100 dark:bg-orange-500/20 text-orange-700 dark:text-orange-300 rounded text-sm">Build</span>
+                        </div>
+                        <span class="text-gray-500 dark:text-gray-400">11s</span>
+                    </div>
+                    <div class="flex items-center justify-between py-3 border-b border-gray-100 dark:border-gray-600">
+                        <div class="flex items-center gap-3">
+                            <span class="text-gray-500 dark:text-gray-400">🔧</span>
+                            <span class="text-gray-700 dark:text-gray-300">Setup Gradle</span>
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-500/20 text-gray-700 dark:text-gray-300 rounded text-sm">Build</span>
+                        </div>
+                        <span class="text-gray-500 dark:text-gray-400">1s</span>
+                    </div>
+                    <div class="flex items-center justify-between py-3 border-b border-gray-100 dark:border-gray-600">
+                        <div class="flex items-center gap-3">
+                            <span class="text-green-500 dark:text-green-400">🌿</span>
+                            <span class="text-gray-700 dark:text-gray-300">Get branch name</span>
+                            <span class="px-2 py-1 bg-green-100 dark:bg-green-500/20 text-green-700 dark:text-green-300 rounded text-sm">Code</span>
+                        </div>
+                        <span class="text-gray-500 dark:text-gray-400">0s</span>
+                    </div>
+                    <div class="flex items-center justify-between py-3 border-b border-gray-100 dark:border-gray-600 bg-yellow-50 dark:bg-yellow-500/10">
+                        <div class="flex items-center gap-3">
+                            <span class="text-yellow-600 dark:text-yellow-400">🧪</span>
+                            <span class="text-gray-800 dark:text-white font-semibold">Run tests with coverage</span>
+                            <span class="px-2 py-1 bg-yellow-200 dark:bg-yellow-500/30 text-yellow-800 dark:text-yellow-200 rounded text-sm font-semibold">Test</span>
+                        </div>
+                        <span class="text-gray-800 dark:text-white font-semibold">3m 36s</span>
+                    </div>
+                    <div class="flex items-center justify-between py-3 border-b border-gray-100 dark:border-gray-600 bg-yellow-50 dark:bg-yellow-500/10">
+                        <div class="flex items-center gap-3">
+                            <span class="text-yellow-600 dark:text-yellow-400">📊</span>
+                            <span class="text-gray-800 dark:text-white font-semibold">Run SonarQube analysis</span>
+                            <span class="px-2 py-1 bg-yellow-200 dark:bg-yellow-500/30 text-yellow-800 dark:text-yellow-200 rounded text-sm font-semibold">Test</span>
+                        </div>
+                        <span class="text-gray-800 dark:text-white font-semibold">1m 36s</span>
+                    </div>
+                    <div class="flex items-center justify-between py-3 border-b border-gray-100 dark:border-gray-600">
+                        <div class="flex items-center gap-3">
+                            <span class="text-gray-400">🧹</span>
+                            <span class="text-gray-500 dark:text-gray-400">Post Setup Gradle</span>
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-500/20 text-gray-600 dark:text-gray-400 rounded text-sm">Cleanup</span>
+                        </div>
+                        <span class="text-gray-500 dark:text-gray-400">11s</span>
+                    </div>
+                    <div class="flex items-center justify-between py-3 border-b border-gray-100 dark:border-gray-600">
+                        <div class="flex items-center gap-3">
+                            <span class="text-gray-400">🧹</span>
+                            <span class="text-gray-500 dark:text-gray-400">Post Set up JDK 11</span>
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-500/20 text-gray-600 dark:text-gray-400 rounded text-sm">Cleanup</span>
+                        </div>
+                        <span class="text-gray-500 dark:text-gray-400">0s</span>
+                    </div>
+                    <div class="flex items-center justify-between py-3 border-b border-gray-100 dark:border-gray-600">
+                        <div class="flex items-center gap-3">
+                            <span class="text-gray-400">🧹</span>
+                            <span class="text-gray-500 dark:text-gray-400">Post Run actions/checkout@v4</span>
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-500/20 text-gray-600 dark:text-gray-400 rounded text-sm">Cleanup</span>
+                        </div>
+                        <span class="text-gray-500 dark:text-gray-400">1s</span>
+                    </div>
+                    <div class="flex items-center justify-between py-3 bg-green-50 dark:bg-green-500/10 rounded-lg px-3 mt-2">
+                        <div class="flex items-center gap-3">
+                            <span class="text-green-600 dark:text-green-400">✅</span>
+                            <span class="text-green-700 dark:text-green-300 font-semibold">Complete job</span>
+                            <span class="px-2 py-1 bg-green-200 dark:bg-green-500/30 text-green-800 dark:text-green-200 rounded text-sm font-semibold">Done</span>
+                        </div>
+                        <span class="text-green-700 dark:text-green-300 font-semibold">0s</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- liftck-player: Workflow Details -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">liftck-player: Workflow Details</h2>
+            <div class="w-16 h-1 bg-primary mb-10"></div>
+
+            <!-- Three Workflow Cards -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                <!-- Pull Request CI -->
+                <div class="bg-white dark:bg-zinc-700 rounded-lg p-6 border-2 border-green-500 shadow-lg hover:shadow-xl transition-shadow">
+                    <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4 flex items-center gap-3">
+                        <span class="text-3xl">🔍</span>
+                        Pull Request CI
+                    </h3>
+                    <ul class="space-y-3 text-lg">
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 mt-0.5">✅</span>
+                            <span class="text-gray-700 dark:text-gray-300">Validates changelog was updated</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-gray-500 mt-0.5">🔍</span>
+                            <span class="text-gray-700 dark:text-gray-300">Runs linting checks</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 mt-0.5">🧪</span>
+                            <span class="text-gray-700 dark:text-gray-300">Executes unit tests with JaCoCo coverage</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-500 mt-0.5">📊</span>
+                            <span class="text-gray-700 dark:text-gray-300">SonarQube analysis with ENFORCED quality gates</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-gray-500 mt-0.5">💬</span>
+                            <span class="text-gray-700 dark:text-gray-300">Posts results to Slack (#lift-build)</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-0.5">🚫</span>
+                            <span class="text-gray-700 dark:text-gray-300">Blocks merge if quality gates fail</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Deploy to Environment -->
+                <div class="bg-white dark:bg-zinc-700 rounded-lg p-6 border-2 border-green-500 shadow-lg hover:shadow-xl transition-shadow">
+                    <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4 flex items-center gap-3">
+                        <span class="text-3xl">🚀</span>
+                        Deploy to Environment
+                    </h3>
+                    <ul class="space-y-3 text-lg">
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 mt-0.5">✅</span>
+                            <span class="text-gray-700 dark:text-gray-300">Runs all tests before deployment</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-orange-500 mt-0.5">📦</span>
+                            <span class="text-gray-700 dark:text-gray-300">Builds application with Gradle</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-500 mt-0.5">☁️</span>
+                            <span class="text-gray-700 dark:text-gray-300">Deploys to AWS S3 (US + EU regions)</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-0.5">🔴</span>
+                            <span class="text-gray-700 dark:text-gray-300">Environments: dev, e2e, prod</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-gray-500 mt-0.5">💬</span>
+                            <span class="text-gray-700 dark:text-gray-300">Notifies Slack (#lift-deploy)</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-purple-500 mt-0.5">📝</span>
+                            <span class="text-gray-700 dark:text-gray-300">Tracks deployment metadata</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- SonarQube Release Scan -->
+                <div class="bg-white dark:bg-zinc-700 rounded-lg p-6 border-2 border-green-500 shadow-lg hover:shadow-xl transition-shadow">
+                    <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4 flex items-center gap-3">
+                        <span class="text-3xl">📊</span>
+                        SonarQube Release Scan
+                    </h3>
+                    <ul class="space-y-3 text-lg">
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 mt-0.5">✅</span>
+                            <span class="text-gray-700 dark:text-gray-300">Runs tests with code coverage</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-500 mt-0.5">📊</span>
+                            <span class="text-gray-700 dark:text-gray-300">Performs branch-specific analysis</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-purple-500 mt-0.5">�</span>
+                            <span class="text-gray-700 dark:text-gray-300">Tracks quality metrics over time</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-cyan-500 mt-0.5">ℹ️</span>
+                            <span class="text-gray-700 dark:text-gray-300">Informational only (no blocking)</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-indigo-500 mt-0.5">�</span>
+                            <span class="text-gray-700 dark:text-gray-300">Runs on every push to release branches</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Tech Stack & Key Points -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Tech Stack -->
+                <div class="bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-500/10 dark:to-indigo-500/10 rounded-lg p-6 border border-purple-200 dark:border-purple-500/30">
+                    <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4 flex items-center gap-3">
+                        <span class="text-3xl">🛠️</span>
+                        Tech Stack
+                    </h3>
+                    <div class="space-y-3 text-lg">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700 dark:text-gray-300 font-medium">Java:</span>
+                            <span class="text-gray-600 dark:text-gray-400">Zulu JDK 11 with JavaFX</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700 dark:text-gray-300 font-medium">Build Tool:</span>
+                            <span class="text-gray-600 dark:text-gray-400">Gradle with wrapper</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700 dark:text-gray-300 font-medium">Coverage:</span>
+                            <span class="text-gray-600 dark:text-gray-400">JaCoCo</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700 dark:text-gray-300 font-medium">Quality:</span>
+                            <span class="text-gray-600 dark:text-gray-400">SonarQube</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700 dark:text-gray-300 font-medium">Cloud:</span>
+                            <span class="text-gray-600 dark:text-gray-400">AWS S3 (Multi-region)</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700 dark:text-gray-300 font-medium">Notifications:</span>
+                            <span class="text-gray-600 dark:text-gray-400">Slack</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Points -->
+                <div class="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-500/10 dark:to-cyan-500/10 rounded-lg p-6 border border-blue-200 dark:border-blue-500/30">
+                    <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4 flex items-center gap-3">
+                        <span class="text-3xl">📝</span>
+                        Key Points
+                    </h3>
+                    <ul class="space-y-3 text-lg">
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-0.5">⚠️</span>
+                            <span class="text-gray-700 dark:text-gray-300">Pull Request CI enforces quality gates - PRs cannot merge if gates fail</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-orange-500 mt-0.5">🔒</span>
+                            <span class="text-gray-700 dark:text-gray-300">Deploy workflow requires environment-specific AWS credentials</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-500 mt-0.5">📊</span>
+                            <span class="text-gray-700 dark:text-gray-300">SonarQube Release Scan runs automatically on release branches</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-cyan-500 mt-0.5">🌍</span>
+                            <span class="text-gray-700 dark:text-gray-300">Multi-region deployment: US and EU S3 buckets</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 mt-0.5">⏱️</span>
+                            <span class="text-gray-700 dark:text-gray-300">Longest steps: Tests (3m 36s) + SonarQube (1m 36s) = 5m 12s</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-purple-500 mt-0.5">✅</span>
+                            <span class="text-gray-700 dark:text-gray-300">All workflows use Gradle for builds and JaCoCo for coverage</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Demo Note -->
+            <div class="mt-6 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-500/10 dark:to-emerald-500/10 border-l-4 border-green-500 rounded-lg p-6">
+                <div class="flex items-start gap-4">
+                    <span class="text-4xl">🎬</span>
+                    <div>
+                        <h4 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Demo:</h4>
+                        <p class="text-lg text-gray-700 dark:text-gray-300">Walk through the SonarQube Release Scan workflow, then show Pull Request CI quality gates</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- loa-player Demo -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">loa-player: Complete CI/CD Pipeline</h2>
+            <div class="w-16 h-1 bg-primary mb-10"></div>
+            <p class="text-2xl text-gray-600 dark:text-gray-300 mb-12 font-medium">Lift-on-Anything Player - Static web application with multi-region deployment</p>
+
+            <!-- Pipeline Workflows -->
+            <div class="grid grid-cols-1 gap-4 mb-8">
+                <!-- Code Quality -->
+                <div class="bg-yellow-50 dark:bg-yellow-500/10 border-l-4 border-yellow-500 rounded-lg p-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3 flex-1">
+                            <span class="text-2xl">📊</span>
+                            <div class="flex-1">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-lg font-semibold text-gray-800 dark:text-white">Code Quality (SonarQube)</span>
+                                    <span class="px-2 py-1 bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 rounded text-sm font-mono">Test</span>
+                                </div>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">sonar.yml - Coverage analysis, code smells, security</p>
+                            </div>
+                        </div>
+                        <span class="text-lg font-mono text-gray-600 dark:text-gray-400">~3–4m</span>
+                    </div>
+                </div>
+
+                <!-- Lint & Typecheck -->
+                <div class="bg-white dark:bg-zinc-700 border-l-4 border-gray-400 rounded-lg p-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3 flex-1">
+                            <span class="text-2xl">🔍</span>
+                            <div class="flex-1">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-lg font-semibold text-gray-800 dark:text-white">Lint & Typecheck</span>
+                                    <span class="px-2 py-1 bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 rounded text-sm font-mono">Test</span>
+                                </div>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">lint.yml + typecheck.yml - ESLint + TypeScript validation</p>
+                            </div>
+                        </div>
+                        <span class="text-lg font-mono text-gray-600 dark:text-gray-400">~1–2m</span>
+                    </div>
+                </div>
+
+                <!-- Unit Tests -->
+                <div class="bg-yellow-50 dark:bg-yellow-500/10 border-l-4 border-yellow-500 rounded-lg p-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3 flex-1">
+                            <span class="text-2xl">🧪</span>
+                            <div class="flex-1">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-lg font-semibold text-gray-800 dark:text-white">Unit Tests (Player + Emulator)</span>
+                                    <span class="px-2 py-1 bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 rounded text-sm font-mono">Test</span>
+                                </div>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">unit-tests.yml - Vitest tests for both applications</p>
+                            </div>
+                        </div>
+                        <span class="text-lg font-mono text-gray-600 dark:text-gray-400">~2–3m</span>
+                    </div>
+                </div>
+
+                <!-- Coverage Report -->
+                <div class="bg-white dark:bg-zinc-700 border-l-4 border-gray-400 rounded-lg p-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3 flex-1">
+                            <span class="text-2xl">📈</span>
+                            <div class="flex-1">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-lg font-semibold text-gray-800 dark:text-white">Coverage Report</span>
+                                    <span class="px-2 py-1 bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 rounded text-sm font-mono">Test</span>
+                                </div>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">pr-coverage-report.yml - Combined coverage from player + emulator</p>
+                            </div>
+                        </div>
+                        <span class="text-lg font-mono text-gray-600 dark:text-gray-400">~2m</span>
+                    </div>
+                </div>
+
+                <!-- Integration Tests -->
+                <div class="bg-yellow-50 dark:bg-yellow-500/10 border-l-4 border-yellow-500 rounded-lg p-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3 flex-1">
+                            <span class="text-2xl">🎭</span>
+                            <div class="flex-1">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-lg font-semibold text-gray-800 dark:text-white">Integration Tests (Playwright)</span>
+                                    <span class="px-2 py-1 bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 rounded text-sm font-mono">Test</span>
+                                </div>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">playwright.yml - E2E tests (basket, tc-ads, walkup)</p>
+                            </div>
+                        </div>
+                        <span class="text-lg font-mono text-gray-600 dark:text-gray-400">~10–15m</span>
+                    </div>
+                </div>
+
+                <!-- Build Application -->
+                <div class="bg-white dark:bg-zinc-700 border-l-4 border-orange-500 rounded-lg p-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3 flex-1">
+                            <span class="text-2xl">📦</span>
+                            <div class="flex-1">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-lg font-semibold text-gray-800 dark:text-white">Build Application</span>
+                                    <span class="px-2 py-1 bg-orange-100 dark:bg-orange-500/20 text-orange-700 dark:text-orange-300 rounded text-sm font-mono">Build</span>
+                                </div>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Part of deploy workflows - Webpack + Angular build</p>
+                            </div>
+                        </div>
+                        <span class="text-lg font-mono text-gray-600 dark:text-gray-400">~3–5m</span>
+                    </div>
+                </div>
+
+                <!-- Deploy to S3/CloudFront -->
+                <div class="bg-yellow-50 dark:bg-yellow-500/10 border-l-4 border-green-500 rounded-lg p-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3 flex-1">
+                            <span class="text-2xl">🚀</span>
+                            <div class="flex-1">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-lg font-semibold text-gray-800 dark:text-white">Deploy to S3/CloudFront (Multi-region)</span>
+                                    <span class="px-2 py-1 bg-green-100 dark:bg-green-500/20 text-green-700 dark:text-green-300 rounded text-sm font-mono">Deploy</span>
+                                </div>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">deploy-dynamic-na.yml + deploy-dynamic-eu.yml</p>
+                            </div>
+                        </div>
+                        <span class="text-lg font-mono text-gray-600 dark:text-gray-400">~2–3m</span>
+                    </div>
+                </div>
+
+                <!-- Release Record -->
+                <div class="bg-white dark:bg-zinc-700 border-l-4 border-purple-500 rounded-lg p-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3 flex-1">
+                            <span class="text-2xl">📢</span>
+                            <div class="flex-1">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-lg font-semibold text-gray-800 dark:text-white">Release Record + Notifications</span>
+                                    <span class="px-2 py-1 bg-purple-100 dark:bg-purple-500/20 text-purple-700 dark:text-purple-300 rounded text-sm font-mono">Release</span>
+                                </div>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Lift API + Slack (#loa-releases)</p>
+                            </div>
+                        </div>
+                        <span class="text-lg font-mono text-gray-600 dark:text-gray-400">~30s</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Information -->
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-500/10 dark:to-indigo-500/10 border-l-4 border-blue-500 p-6 rounded-xl">
+                <div class="flex items-start gap-4">
+                    <span class="text-3xl">✨</span>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-3">Key Difference:</h3>
+                        <p class="text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
+                            Deploys to S3/CloudFront (static files), not Docker/ECR
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- loa-player Architecture -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">loa-player: Deployment Architecture</h2>
+            <div class="w-16 h-1 bg-primary mb-10"></div>
+
+            <!-- Deployment Flow -->
+            <div class="mb-8">
+                <div class="bg-gradient-to-r from-purple-50 to-indigo-50 dark:from-purple-500/10 dark:to-indigo-500/10 border border-purple-200 dark:border-purple-500/30 rounded-xl p-6 mb-6">
+                    <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4 flex items-center gap-3">
+                        <span class="text-3xl">🏗️</span>
+                        Deployment Architecture
+                    </h3>
+                    <p class="text-xl text-gray-700 dark:text-gray-300 font-mono mb-4">
+                        GitHub → Build (Webpack/Angular) → S3 Bucket → CloudFront CDN → Users
+                    </p>
+                </div>
+
+                <!-- Regional Deployment -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-white dark:bg-zinc-700 border-l-4 border-blue-500 rounded-lg p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="text-3xl">🌎</span>
+                            <h3 class="text-2xl font-semibold text-gray-800 dark:text-white">North America</h3>
+                        </div>
+                        <div class="space-y-2 text-lg">
+                            <div class="flex items-start gap-2">
+                                <span class="text-blue-500">🌐</span>
+                                <div>
+                                    <span class="font-semibold text-gray-700 dark:text-gray-300">Envs:</span>
+                                    <span class="text-gray-600 dark:text-gray-400"> dev (cyan), qa (green), prod (yellow)</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-blue-500">🏢</span>
+                                <div>
+                                    <span class="font-semibold text-gray-700 dark:text-gray-300">Tenants:</span>
+                                    <span class="text-gray-600 dark:text-gray-400"> US, CA</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-zinc-700 border-l-4 border-green-500 rounded-lg p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="text-3xl">🌍</span>
+                            <h3 class="text-2xl font-semibold text-gray-800 dark:text-white">Europe</h3>
+                        </div>
+                        <div class="space-y-2 text-lg">
+                            <div class="flex items-start gap-2">
+                                <span class="text-green-500">🌐</span>
+                                <div>
+                                    <span class="font-semibold text-gray-700 dark:text-gray-300">Envs:</span>
+                                    <span class="text-gray-600 dark:text-gray-400"> eu-dev (teal), eu-qa (dark green), eu-prod (orange)</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-green-500">🏢</span>
+                                <div>
+                                    <span class="font-semibold text-gray-700 dark:text-gray-300">Tenants:</span>
+                                    <span class="text-gray-600 dark:text-gray-400"> SE</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notes Section -->
+            <div class="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-500/10 dark:to-cyan-500/10 border border-blue-200 dark:border-blue-500/30 rounded-xl p-6">
+                <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4 flex items-center gap-3">
+                    <span class="text-3xl">📝</span>
+                    Notes
+                </h3>
+                <ul class="space-y-3 text-lg text-gray-700 dark:text-gray-300">
+                    <li class="flex items-start gap-3">
+                        <span class="text-yellow-500 mt-1">✨</span>
+                        <div><span class="font-semibold">Key Difference:</span> Deploys to S3/CloudFront (static files), not Docker/ECR</div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-blue-500 mt-1">🌐</span>
+                        <div><span class="font-semibold">Multi-region:</span> Separate NA and EU deployments with different domains</div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-orange-500 mt-1">📦</span>
+                        <div><span class="font-semibold">Version Strategy:</span> YYYYMMDDHHMMSS.{git-hash} (e.g., 20251114153045.a7b3c2d)</div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-cyan-500 mt-1">📂</span>
+                        <div><span class="font-semibold">Zero-downtime:</span> Versioned folders + redirect files enable instant rollback</div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-red-500 mt-1">�</span>
+                        <div><span class="font-semibold">6 Parallel Test Workflows:</span> SonarQube, Lint, Typecheck, Unit, Coverage, Playwright</div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-purple-500 mt-1">🚀</span>
+                        <div><span class="font-semibold">3 Environments per Region:</span> dev, qa, prod (triggered by branch)</div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-indigo-500 mt-1">📊</span>
+                        <div><span class="font-semibold">Branch Strategy:</span> dev → dev env, release/* → qa, master → prod</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Demo Note -->
+            <div class="mt-6 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-500/10 dark:to-emerald-500/10 border-l-4 border-green-500 rounded-lg p-6">
+                <div class="flex items-start gap-4">
+                    <span class="text-4xl">🎬</span>
+                    <div>
+                        <h4 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Demo:</h4>
+                        <p class="text-lg text-gray-700 dark:text-gray-300">Walk through the complete pipeline showing parallel test execution and multi-region deployment</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Architecture Comparison -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 min-h-screen p-8 md:p-20">
+        <div class="max-w-7xl w-full">
+            <!-- Header -->
+            <div class="mb-12">
+                <h2 class="text-4xl md:text-5xl font-light text-gray-800 dark:text-white mb-4">
+                    Different Deployment Patterns
+                </h2>
+                <div class="w-20 h-1 bg-primary rounded-full"></div>
+            </div>
+
+            <!-- Subtitle -->
+            <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 font-medium">
+                Not all applications follow the same deployment pattern
+            </p>
+
+            <!-- Deployment Pattern Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <!-- Container-based -->
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100/30 dark:from-blue-500/10 dark:to-blue-500/5 border-l-4 border-blue-500 p-8 rounded-2xl shadow-sm">
+                    <div class="flex items-start gap-4 mb-6">
+                        <span class="text-5xl">🐳</span>
+                        <div>
+                            <h3 class="text-2xl font-bold text-blue-700 dark:text-blue-300 mb-2">Container-based</h3>
+                            <p class="text-lg text-gray-600 dark:text-gray-400 font-mono">(liftck-player)</p>
+                        </div>
+                    </div>
+                    <div class="space-y-3 mb-6 text-lg text-gray-700 dark:text-gray-300">
+                        <div class="flex items-center gap-2">
+                            <span class="text-primary">→</span>
+                            <span>Build → Docker Image</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-primary">→</span>
+                            <span>Push to ECR</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-primary">→</span>
+                            <span>Deploy to ECS</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-primary">→</span>
+                            <span>Load Balancer distributes</span>
+                        </div>
+                    </div>
+                    <div class="pt-4 border-t-2 border-blue-200 dark:border-blue-700">
+                        <span class="font-semibold text-blue-800 dark:text-blue-200">Use Case:</span>
+                        <span class="text-gray-700 dark:text-gray-300"> Backend services, APIs, microservices</span>
+                    </div>
+                </div>
+
+                <!-- Static Site -->
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100/30 dark:from-blue-500/10 dark:to-blue-500/5 border-l-4 border-blue-500 p-8 rounded-2xl shadow-sm">
+                    <div class="flex items-start gap-4 mb-6">
+                        <span class="text-5xl">📄</span>
+                        <div>
+                            <h3 class="text-2xl font-bold text-blue-700 dark:text-blue-300 mb-2">Static Site</h3>
+                            <p class="text-lg text-gray-600 dark:text-gray-400 font-mono">(loa-player)</p>
+                        </div>
+                    </div>
+                    <div class="space-y-3 mb-6 text-lg text-gray-700 dark:text-gray-300">
+                        <div class="flex items-center gap-2">
+                            <span class="text-primary">→</span>
+                            <span>Build → Static files</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-primary">→</span>
+                            <span>Upload to S3</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-primary">→</span>
+                            <span>Serve via CloudFront</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-primary">→</span>
+                            <span>Versioned folders</span>
+                        </div>
+                    </div>
+                    <div class="pt-4 border-t-2 border-blue-200 dark:border-blue-700">
+                        <span class="font-semibold text-blue-800 dark:text-blue-200">Use Case:</span>
+                        <span class="text-gray-700 dark:text-gray-300"> Frontend apps, SPAs, static content</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Point -->
+            <div class="bg-gradient-to-r from-yellow-50 to-amber-50 dark:from-yellow-900/20 dark:to-amber-900/20 border-l-4 border-accent p-8 rounded-2xl shadow-sm">
+                <div class="flex items-start gap-4">
+                    <span class="text-3xl">💡</span>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200 mb-3">Key Point:</h3>
+                        <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                            Both follow CI/CD principles, but adapt the deployment stage to match application architecture
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Transition to Terraform -->
+    <div class="slide flex items-center justify-center bg-gradient-to-br from-blue-600 to-purple-700 dark:from-blue-800 dark:to-purple-900 text-white p-8 md:p-20">
+        <div class="max-w-7xl w-full">
+            <!-- Title Section -->
+            <div class="mb-12">
+                <p class="text-xl md:text-2xl text-white/70 mb-4">Bridging to Infrastructure as Code</p>
+                <h1 class="text-5xl md:text-6xl font-light mb-6">How Terraform Powers Our Deployments</h1>
+                <div class="w-24 h-1 bg-white/50 rounded-full"></div>
+            </div>
+
+            <!-- Key Questions -->
+            <div class="space-y-8">
+                <h3 class="text-3xl font-semibold text-white/90 mb-8">Key Questions:</h3>
+                
+                <div class="space-y-6">
+                    <!-- Question 1 -->
+                    <div class="bg-white/10 backdrop-blur-sm border-l-4 border-white/50 p-6 rounded-xl">
+                        <p class="text-2xl font-medium text-white/90 mb-3">
+                            <span class="text-white/60">Q:</span> Where does our code actually run?
+                        </p>
+                        <p class="text-xl text-white/80 flex items-center gap-3">
+                            <span class="text-2xl">→</span> AWS infrastructure managed by Terraform
+                        </p>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="bg-white/10 backdrop-blur-sm border-l-4 border-white/50 p-6 rounded-xl">
+                        <p class="text-2xl font-medium text-white/90 mb-3">
+                            <span class="text-white/60">Q:</span> How do we create consistent environments?
+                        </p>
+                        <p class="text-xl text-white/80 flex items-center gap-3">
+                            <span class="text-2xl">→</span> Infrastructure as Code with Terragrunt
+                        </p>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="bg-white/10 backdrop-blur-sm border-l-4 border-white/50 p-6 rounded-xl">
+                        <p class="text-2xl font-medium text-white/90 mb-3">
+                            <span class="text-white/60">Q:</span> How do we deploy to multiple regions?
+                        </p>
+                        <p class="text-xl text-white/80 flex items-center gap-3">
+                            <span class="text-2xl">→</span> Reusable Terraform modules
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- What Terraform Manages -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 min-h-screen p-8 md:p-20">
+        <div class="max-w-7xl w-full">
+            <!-- Header -->
+            <div class="mb-12">
+                <h2 class="text-4xl md:text-5xl font-light text-gray-800 dark:text-white mb-4">
+                    What Terraform Manages
+                </h2>
+                <div class="w-20 h-1 bg-primary rounded-full"></div>
+            </div>
+
+            <!-- Resource List -->
+            <div class="space-y-4 mb-8">
+                <div class="flex items-start gap-4 p-4 bg-gradient-to-r from-blue-50 to-transparent dark:from-blue-900/20 dark:to-transparent rounded-lg">
+                    <span class="text-primary text-2xl">▸</span>
+                    <div>
+                        <span class="text-xl font-bold text-gray-800 dark:text-white">ECS Clusters</span>
+                        <span class="text-lg text-gray-600 dark:text-gray-300"> that run our containers</span>
+                    </div>
+                </div>
+                
+                <div class="flex items-start gap-4 p-4 bg-gradient-to-r from-blue-50 to-transparent dark:from-blue-900/20 dark:to-transparent rounded-lg">
+                    <span class="text-primary text-2xl">▸</span>
+                    <div>
+                        <span class="text-xl font-bold text-gray-800 dark:text-white">Load Balancers</span>
+                        <span class="text-lg text-gray-600 dark:text-gray-300"> that distribute traffic</span>
+                    </div>
+                </div>
+                
+                <div class="flex items-start gap-4 p-4 bg-gradient-to-r from-blue-50 to-transparent dark:from-blue-900/20 dark:to-transparent rounded-lg">
+                    <span class="text-primary text-2xl">▸</span>
+                    <div>
+                        <span class="text-xl font-bold text-gray-800 dark:text-white">Security Groups</span>
+                        <span class="text-lg text-gray-600 dark:text-gray-300"> that protect our services</span>
+                    </div>
+                </div>
+                
+                <div class="flex items-start gap-4 p-4 bg-gradient-to-r from-blue-50 to-transparent dark:from-blue-900/20 dark:to-transparent rounded-lg">
+                    <span class="text-primary text-2xl">▸</span>
+                    <div>
+                        <span class="text-xl font-bold text-gray-800 dark:text-white">Multi-region deployment</span>
+                        <span class="text-lg text-gray-600 dark:text-gray-300"> (US & EU)</span>
+                    </div>
+                </div>
+                
+                <div class="flex items-start gap-4 p-4 bg-gradient-to-r from-blue-50 to-transparent dark:from-blue-900/20 dark:to-transparent rounded-lg">
+                    <span class="text-primary text-2xl">▸</span>
+                    <div>
+                        <span class="text-xl font-bold text-gray-800 dark:text-white">All version-controlled</span>
+                        <span class="text-lg text-gray-600 dark:text-gray-300"> and reproducible</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="bg-gradient-to-r from-blue-50 to-blue-100/30 dark:from-blue-500/10 dark:to-blue-500/5 border-l-4 border-blue-500 p-8 rounded-2xl shadow-sm">
+                <p class="text-2xl font-bold text-gray-800 dark:text-white">
+                    Mark will now show you how Terraform makes all of this possible...
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- TERRAFORM PRESENTATION STARTS -->
+
+    <!-- Terraform Introduction Title Slide -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 min-h-screen p-8 md:p-20">
+        <div class="max-w-7xl w-full text-left">
+            <h1 class="text-6xl md:text-7xl font-light text-gray-900 dark:text-white mb-6 tracking-tight">Terraform Introduction</h1>
+            <p class="text-3xl md:text-4xl text-gray-600 dark:text-gray-300 mb-16 font-light">Infrastructure as Code at Rocket Partners</p>
+            <div class="w-20 h-1 bg-purple-600 dark:bg-purple-400 mb-16"></div>
+            
+            <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-3 leading-relaxed">Data Platform Team • PH Team</p>
+            <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 leading-relaxed">AWS Infrastructure Management</p>
+        </div>
+    </div>
+
+    <!-- What is Terraform? -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 min-h-screen p-8 md:p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">What is Terraform?</h2>
+            <div class="w-16 h-1 bg-primary mb-12"></div>
+
+            <p class="text-2xl text-gray-700 dark:text-gray-300 mb-6">
+                Terraform allows you to <strong>build, change, and version infrastructure safely</strong> and efficiently.
+            </p>
+            
+            <p class="text-2xl text-gray-700 dark:text-gray-300 mb-12">
+                In simpler terms: <strong>codify the process</strong> of managing infrastructure, almost like how we write application code.
+            </p>
+
+            <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 dark:border-purple-400 p-6 rounded-lg">
+                <p class="text-xl text-gray-800 dark:text-gray-200 font-semibold mb-2">
+                    Key Features
+                </p>
+                <p class="text-gray-700 dark:text-gray-300">
+                    It can execute and automate everything you do in the cloud. It's free and open-source.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Why Infrastructure as Code? -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 min-h-screen p-8 md:p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Why Infrastructure as Code?</h2>
+            <div class="w-16 h-1 bg-primary mb-12"></div>
+
+            <ul class="space-y-6 text-2xl text-gray-700 dark:text-gray-300">
+                <li class="flex items-start gap-4">
+                    <span class="text-purple-500 dark:text-purple-400 mt-2">→</span>
+                    <span><strong class="text-gray-800 dark:text-white">Version Control:</strong> Track every infrastructure change in Git</span>
+                </li>
+                <li class="flex items-start gap-4">
+                    <span class="text-purple-500 dark:text-purple-400 mt-2">→</span>
+                    <span><strong class="text-gray-800 dark:text-white">Repeatability:</strong> Create identical environments with confidence</span>
+                </li>
+                <li class="flex items-start gap-4">
+                    <span class="text-purple-500 dark:text-purple-400 mt-2">→</span>
+                    <span><strong class="text-gray-800 dark:text-white">Documentation:</strong> Your code IS your documentation, always up-to-date</span>
+                </li>
+                <li class="flex items-start gap-4">
+                    <span class="text-purple-500 dark:text-purple-400 mt-2">→</span>
+                    <span><strong class="text-gray-800 dark:text-white">Automation:</strong> No more manual clicking, reducing human error</span>
+                </li>
+                <li class="flex items-start gap-4">
+                    <span class="text-purple-500 dark:text-purple-400 mt-2">→</span>
+                    <span><strong class="text-gray-800 dark:text-white">Collaboration:</strong> Team reviews infrastructure changes through pull requests</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- HashiCorp Configuration Language -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 min-h-screen p-8 md:p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">HashiCorp Configuration Language</h2>
+            <div class="w-16 h-1 bg-primary mb-10"></div>
+
+            <p class="text-2xl text-gray-700 dark:text-gray-300 mb-12">
+                Terraform uses <strong>HCL</strong> to declaratively specify what resources should exist.
+            </p>
+
+            <div class="space-y-6">
+                <!-- Code Block -->
+                <div class="bg-white dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-blue-600 dark:text-blue-400 font-mono text-lg p-8 rounded-lg overflow-x-auto">
+                    <div><span class="text-blue-600 dark:text-cyan-400">resource</span> <span class="text-purple-600 dark:text-purple-400">"aws_s3_bucket"</span> <span class="text-purple-600 dark:text-purple-400">"data_lake"</span> {</div>
+                    <div class="pl-8"><span class="text-purple-600 dark:text-purple-400">bucket</span> = <span class="text-purple-600 dark:text-purple-400">"rocketpartners-data-lake"</span></div>
+                    <div class="pl-8"><span class="text-purple-600 dark:text-purple-400">region</span> = <span class="text-purple-600 dark:text-purple-400">"us-east-1"</span></div>
+                    <div>}</div>
+                    <div class="mt-6 text-gray-500 dark:text-gray-600 italic text-base">
+                        # You describe WHAT you want, not HOW to create it
+                    </div>
+                </div>
+
+                <p class="text-xl text-gray-700 dark:text-gray-300">
+                    Terraform can manage almost anything across any cloud provider.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terraform Code Glossary -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 min-h-screen p-8 md:p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">
+                Terraform Code Glossary
+            </h2>
+            <div class="w-16 h-1 bg-primary mb-10"></div>
+
+            <!-- Declarative Note -->
+            <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 dark:border-purple-400 p-6 rounded-lg mb-12">
+                <p class="text-xl text-gray-800 dark:text-gray-200 font-semibold mb-2">
+                    Terraform is Declarative
+                </p>
+                <p class="text-gray-700 dark:text-gray-300">
+                    You describe WHAT you want to exist, not HOW. Terraform figures out the steps.
+                </p>
+            </div>
+
+            <!-- Reference Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Code Structure -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-purple-600 dark:text-purple-400 mb-6">Code Structure</h3>
+                    <ul class="space-y-4 text-lg text-gray-700 dark:text-gray-300">
+                        <li class="flex items-start gap-3">
+                            <span class="text-purple-500 dark:text-purple-400">●</span>
+                            <span><strong class="text-gray-800 dark:text-gray-200">resource:</strong> Keyword to create infrastructure</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-purple-500 dark:text-purple-400">●</span>
+                            <span><strong class="text-gray-800 dark:text-gray-200">"aws_s3_bucket":</strong> Resource type</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-purple-500 dark:text-purple-400">●</span>
+                            <span><strong class="text-gray-800 dark:text-gray-200">"my_name":</strong> Your reference name</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-purple-500 dark:text-purple-400">●</span>
+                            <span><strong class="text-gray-800 dark:text-gray-200">tags:</strong> Metadata labels</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- AWS Terms -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-purple-600 dark:text-purple-400 mb-6">AWS Terms</h3>
+                    <ul class="space-y-4 text-lg text-gray-700 dark:text-gray-300">
+                        <li class="flex items-start gap-3">
+                            <span class="text-purple-500 dark:text-purple-400">●</span>
+                            <span><strong class="text-gray-800 dark:text-gray-200">bucket:</strong> S3 name (globally unique)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-purple-500 dark:text-purple-400">●</span>
+                            <span><strong class="text-gray-800 dark:text-gray-200">ami:</strong> Amazon Machine Image</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-purple-500 dark:text-purple-400">●</span>
+                            <span><strong class="text-gray-800 dark:text-gray-200">instance_type:</strong> Server size</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-purple-500 dark:text-purple-400">●</span>
+                            <span><strong class="text-gray-800 dark:text-gray-200">security_group:</strong> Firewall rules (who can access)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-purple-500 dark:text-purple-400">●</span>
+                            <span><strong class="text-gray-800 dark:text-gray-200">region:</strong> AWS data center</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Properties -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-purple-600 dark:text-purple-400 mb-6">Properties</h3>
+                    <ul class="space-y-4 text-lg text-gray-700 dark:text-gray-300">
+                        <li class="flex items-start gap-3">
+                            <span class="text-purple-500 dark:text-purple-400">●</span>
+                            <span><strong class="text-gray-800 dark:text-gray-200">var.something:</strong> Reference variable</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-purple-500 dark:text-purple-400">●</span>
+                            <span><strong class="text-gray-800 dark:text-gray-200">aws_resource.name.id:</strong> Reference resources</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-purple-500 dark:text-purple-400">●</span>
+                            <span><strong class="text-gray-800 dark:text-gray-200">ingress/egress:</strong> Inbound/outbound rules</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Container Terms -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-purple-600 dark:text-purple-400 mb-6">Container Terms</h3>
+                    <ul class="space-y-4 text-lg text-gray-700 dark:text-gray-300">
+                        <li class="flex items-start gap-3">
+                            <span class="text-purple-500 dark:text-purple-400">●</span>
+                            <span><strong class="text-gray-800 dark:text-gray-200">ECR:</strong> Elastic Container Registry (Docker images)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-purple-500 dark:text-purple-400">●</span>
+                            <span><strong class="text-gray-800 dark:text-gray-200">ECS:</strong> Elastic Container Service (runs containers)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-purple-500 dark:text-purple-400">●</span>
+                            <span><strong class="text-gray-800 dark:text-gray-200">Task Definition:</strong> Container configuration</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+
+    <!-- Installing Terraform -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 min-h-screen p-8 md:p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Installing Terraform</h2>
+            <div class="w-16 h-1 bg-primary mb-10"></div>
+
+            <div class="space-y-6">
+                <!-- Code Block -->
+                <div class="bg-zinc-900 dark:bg-black text-purple-400 font-mono text-lg p-8 rounded-lg overflow-x-auto border-2 border-gray-800 dark:border-gray-700">
+                    <div class="text-gray-500 dark:text-gray-600"># Install tfenv (version manager)</div>
+                    <div class="mb-4"><span class="text-purple-400">brew install tfenv</span></div>
+                    
+                    <div class="text-gray-500 dark:text-gray-600"># Install required version</div>
+                    <div><span class="text-purple-400">tfenv install 1.6.3</span></div>
+                    <div class="mb-4"><span class="text-purple-400">tfenv use 1.6.3</span></div>
+                    
+                    <div><span class="text-purple-400">terraform --version</span></div>
+                </div>
+
+                <!-- Warning Box -->
+                <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 dark:border-yellow-600 p-6 rounded-lg">
+                    <div class="flex items-start gap-3 mb-3">
+                        <span class="text-2xl">⚠️</span>
+                        <strong class="text-yellow-800 dark:text-yellow-300 text-xl">Required: Terraform 1.6.3</strong>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 mb-1">
+                        Defined in <code class="text-orange-600 dark:text-orange-400 font-mono">workflows/plan-prod-us.yml</code>
+                    </p>
+                    <p class="text-gray-700 dark:text-gray-300">Ensures team consistency.</p>
+                </div>
+
+                <!-- Button -->
+                <a href="https://github.com/RocketPartners/liftck_tf_infra/blob/main/.github/workflows/plan-prod-us.yml" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-8 py-4 rounded-2xl text-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg flex items-center gap-3 inline-flex">
+                    <span class="text-2xl">📄</span>
+                    View Workflow YAML
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Essential Terraform Commands -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 min-h-screen p-8 md:p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Essential Terraform Commands</h2>
+            <div class="w-16 h-1 bg-primary mb-12"></div>
+
+            <!-- Command Cards -->
+            <div class="space-y-6">
+                <!-- Init Command -->
+                <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 dark:border-purple-400 p-8 rounded-lg">
+                    <p class="font-mono text-2xl text-purple-600 dark:text-purple-400 font-semibold mb-3">terraform init</p>
+                    <p class="text-xl text-gray-700 dark:text-gray-300">Initialize working directory, download providers</p>
+                </div>
+
+                <!-- Plan Command -->
+                <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 dark:border-purple-400 p-8 rounded-lg">
+                    <p class="font-mono text-2xl text-purple-600 dark:text-purple-400 font-semibold mb-3">terraform plan</p>
+                    <p class="text-xl text-gray-700 dark:text-gray-300">Preview what will change (dry run)</p>
+                </div>
+
+                <!-- Apply Command -->
+                <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 dark:border-purple-400 p-8 rounded-lg">
+                    <p class="font-mono text-2xl text-purple-600 dark:text-purple-400 font-semibold mb-3">terraform apply</p>
+                    <p class="text-xl text-gray-700 dark:text-gray-300">Execute changes to match your code</p>
+                </div>
+
+                <!-- Destroy Command -->
+                <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 dark:border-purple-400 p-8 rounded-lg">
+                    <p class="font-mono text-2xl text-purple-600 dark:text-purple-400 font-semibold mb-3">terraform destroy</p>
+                    <p class="text-xl text-gray-700 dark:text-gray-300">Tear down all managed resources</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Real Example: POS Discount Service -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 min-h-screen p-8 md:p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Real Example: Our POS Discount Service</h2>
+            <div class="w-16 h-1 bg-primary mb-12"></div>
+            
+            <p class="text-2xl text-gray-700 dark:text-gray-300 mb-12">
+                This is similar to what we actually built:
+            </p>
+
+            <h3 class="text-3xl font-semibold text-purple-600 dark:text-purple-400 mb-8">We'll Create:</h3>
+
+            <ul class="space-y-6 text-2xl text-gray-700 dark:text-gray-300 mb-12">
+                <li class="flex items-start gap-4">
+                    <span class="text-purple-500 dark:text-purple-400 mt-2">→</span>
+                    <span><strong class="text-gray-800 dark:text-white">ECR Repository:</strong> Store Docker image for Discount Service</span>
+                </li>
+                <li class="flex items-start gap-4">
+                    <span class="text-purple-500 dark:text-purple-400 mt-2">→</span>
+                    <span><strong class="text-gray-800 dark:text-white">ECS Cluster:</strong> Run the containerized Discount Service</span>
+                </li>
+                <li class="flex items-start gap-4">
+                    <span class="text-purple-500 dark:text-purple-400 mt-2">→</span>
+                    <span><strong class="text-gray-800 dark:text-white">Load Balancer:</strong> Distribute traffic to ECS tasks</span>
+                </li>
+                <li class="flex items-start gap-4">
+                    <span class="text-purple-500 dark:text-purple-400 mt-2">→</span>
+                    <span><strong class="text-gray-800 dark:text-white">Security Groups:</strong> Control network access</span>
+                </li>
+                <li class="flex items-start gap-4">
+                    <span class="text-purple-500 dark:text-purple-400 mt-2">→</span>
+                    <span><strong class="text-gray-800 dark:text-white">Virtual Journal Integration:</strong> HTTP endpoint for POS data</span>
+                </li>
+            </ul>
+
+            <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 dark:border-purple-400 p-8 rounded-lg">
+                <p class="text-xl text-purple-600 dark:text-purple-400 font-semibold mb-3">
+                    Architecture:
+                </p>
+                <p class="text-lg text-gray-700 dark:text-gray-300">
+                    Java POS App → Virtual Journal (HTTP) → Discount Service (ECS) → Load Balancer
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Step 1: Create ECR Repository -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 min-h-screen p-8 md:p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Step 1: Create ECR Repository</h2>
+            <div class="w-16 h-1 bg-primary mb-12"></div>
+
+            <!-- Content Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Infrastructure -->
+                <div class="bg-zinc-100 dark:bg-zinc-700 border-2 border-gray-300 dark:border-gray-700 rounded-lg p-8">
+                    <h3 class="text-2xl font-semibold text-cyan-500 dark:text-cyan-400 mb-8">Infrastructure</h3>
+                    <div class="flex flex-col items-center justify-center py-12">
+                        <span class="text-8xl mb-6">📦</span>
+                        <p class="text-xl font-semibold text-gray-700 dark:text-gray-300 text-center">ECR Repository</p>
+                        <p class="text-lg text-gray-600 dark:text-gray-400 text-center">Discount Service Image</p>
+                    </div>
+                </div>
+
+                <!-- Terraform Code -->
+                <div class="bg-zinc-100 dark:bg-zinc-700 border-2 border-gray-300 dark:border-gray-700 rounded-lg p-8">
+                    <h3 class="text-2xl font-semibold text-cyan-500 dark:text-cyan-400 mb-8">Terraform Code</h3>
+                    <div class="bg-white dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-mono text-sm p-6 rounded-lg overflow-x-auto">
+                        <div class="space-y-1">
+                            <div><span class="text-blue-600 dark:text-cyan-400">resource</span> <span class="text-purple-600 dark:text-purple-400">"aws_ecr_repository"</span> <span class="text-purple-600 dark:text-purple-400">"discount_service"</span> {</div>
+                            <div>&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">name</span> = <span class="text-purple-600 dark:text-purple-400">"discount-service"</span></div>
+                            <div>&nbsp;&nbsp;<span class="text-gray-500 dark:text-gray-600 italic"># Repository name for Docker images</span></div>
+                            <div>&nbsp;</div>
+                            <div>&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">image_tag_mutability</span> = <span class="text-purple-600 dark:text-purple-400">"MUTABLE"</span></div>
+                            <div>&nbsp;&nbsp;<span class="text-gray-500 dark:text-gray-600 italic"># Allow tag updates</span></div>
+                            <div>&nbsp;</div>
+                            <div>&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">tags</span> = {</div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">Name</span> = <span class="text-purple-600 dark:text-purple-400">"discount-service"</span></div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">ManagedBy</span> = <span class="text-purple-600 dark:text-purple-400">"Terraform"</span></div>
+                            <div>&nbsp;&nbsp;}</div>
+                            <div>}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 min-h-screen p-8 md:p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Step 2: Create ECS Cluster</h2>
+            <div class="w-16 h-1 bg-primary mb-12"></div>
+
+            <!-- Content Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Infrastructure -->
+                <div class="bg-zinc-100 dark:bg-zinc-700 border-2 border-gray-300 dark:border-gray-700 rounded-lg p-8">
+                    <h3 class="text-2xl font-semibold text-cyan-500 dark:text-cyan-400 mb-8">Infrastructure</h3>
+                    <div class="flex items-center justify-center gap-6 py-12">
+                        <div class="flex flex-col items-center">
+                            <span class="text-6xl mb-2">📦</span>
+                            <span class="text-gray-700 dark:text-gray-300">ECR</span>
+                        </div>
+                        <span class="text-4xl text-cyan-500 dark:text-cyan-400">→</span>
+                        <div class="flex flex-col items-center">
+                            <span class="text-6xl mb-2">🐳</span>
+                            <span class="text-green-500 dark:text-green-400 font-semibold">ECS Cluster</span>
+                            <span class="text-green-500 dark:text-green-400">(NEW)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Terraform Code -->
+                <div class="bg-zinc-100 dark:bg-zinc-700 border-2 border-gray-300 dark:border-gray-700 rounded-lg p-8">
+                    <h3 class="text-2xl font-semibold text-cyan-500 dark:text-cyan-400 mb-8">Terraform Code</h3>
+                    <div class="bg-white dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-mono text-sm p-6 rounded-lg overflow-x-auto">
+                        <div class="space-y-1">
+                            <div><span class="text-blue-600 dark:text-cyan-400">resource</span> <span class="text-purple-600 dark:text-purple-400">"aws_ecs_cluster"</span> <span class="text-purple-600 dark:text-purple-400">"main"</span> {</div>
+                            <div>&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">name</span> = <span class="text-purple-600 dark:text-purple-400">"discount-service-cluster"</span></div>
+                            <div>&nbsp;&nbsp;<span class="text-gray-500 dark:text-gray-600 italic"># ECS cluster name</span></div>
+                            <div>}</div>
+                            <div>&nbsp;</div>
+                            <div><span class="text-blue-600 dark:text-cyan-400">resource</span> <span class="text-purple-600 dark:text-purple-400">"aws_ecs_task_definition"</span> <span class="text-purple-600 dark:text-purple-400">"discount"</span> {</div>
+                            <div>&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">family</span> = <span class="text-purple-600 dark:text-purple-400">"discount-service"</span></div>
+                            <div>&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">container_definitions</span> = jsonencode([{</div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">name</span> = <span class="text-purple-600 dark:text-purple-400">"discount"</span></div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">image</span> = <span class="text-purple-600 dark:text-purple-400">"${aws_ecr_repository.discount_service.repository_url}"</span></div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-gray-500 dark:text-gray-600 italic"># Uses ECR image!</span></div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">memory</span> = 512</div>
+                            <div>&nbsp;&nbsp;}])</div>
+                            <div>}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Step 3: Add Load Balancer</h2>
+            <div class="w-16 h-1 bg-primary mb-12"></div>
+
+            <!-- Content Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Infrastructure -->
+                <div class="bg-zinc-100 dark:bg-zinc-700 border-2 border-gray-300 dark:border-gray-700 rounded-lg p-8">
+                    <h3 class="text-2xl font-semibold text-cyan-500 dark:text-cyan-400 mb-8">Infrastructure</h3>
+                    <div class="flex items-center justify-center gap-6 py-8">
+                        <span class="text-5xl">📦</span>
+                        <span class="text-4xl text-cyan-500 dark:text-cyan-400">→</span>
+                        <div class="flex flex-col items-center">
+                            <span class="text-5xl mb-2">🐳</span>
+                            <span class="text-gray-700 dark:text-gray-300">ECS</span>
+                        </div>
+                        <span class="text-4xl text-cyan-500 dark:text-cyan-400">→</span>
+                        <div class="flex flex-col items-center">
+                            <span class="text-5xl mb-2">⚖️</span>
+                            <span class="text-green-500 dark:text-green-400 font-semibold">ALB</span>
+                            <span class="text-green-500 dark:text-green-400">(NEW)</span>
+                        </div>
+                    </div>
+                    <p class="text-center text-cyan-500 dark:text-cyan-400 mt-4">← Virtual Journal connects here</p>
+                </div>
+
+                <!-- Terraform Code -->
+                <div class="bg-zinc-100 dark:bg-zinc-700 border-2 border-gray-300 dark:border-gray-700 rounded-lg p-8">
+                    <h3 class="text-2xl font-semibold text-cyan-500 dark:text-cyan-400 mb-8">Terraform Code</h3>
+                    <div class="bg-white dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-mono text-sm p-6 rounded-lg overflow-x-auto">
+                        <div class="space-y-1">
+                            <div><span class="text-blue-600 dark:text-cyan-400">resource</span> <span class="text-purple-600 dark:text-purple-400">"aws_lb"</span> <span class="text-purple-600 dark:text-purple-400">"discount"</span> {</div>
+                            <div>&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">name</span> = <span class="text-purple-600 dark:text-purple-400">"discount-service-lb"</span></div>
+                            <div>&nbsp;&nbsp;<span class="text-gray-500 dark:text-gray-600 italic"># Load balancer name</span></div>
+                            <div>&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">load_balancer_type</span> = <span class="text-purple-600 dark:text-purple-400">"application"</span></div>
+                            <div>}</div>
+                            <div>&nbsp;</div>
+                            <div><span class="text-blue-600 dark:text-cyan-400">resource</span> <span class="text-purple-600 dark:text-purple-400">"aws_lb_target_group"</span> <span class="text-purple-600 dark:text-purple-400">"discount"</span> {</div>
+                            <div>&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">port</span> = 8080</div>
+                            <div>&nbsp;&nbsp;<span class="text-gray-500 dark:text-gray-600 italic"># Discount service port</span></div>
+                            <div>&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">protocol</span> = <span class="text-purple-600 dark:text-purple-400">"HTTP"</span></div>
+                            <div>&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">target_type</span> = <span class="text-purple-600 dark:text-purple-400">"ip"</span></div>
+                            <div>&nbsp;&nbsp;<span class="text-gray-500 dark:text-gray-600 italic"># For ECS Fargate tasks</span></div>
+                            <div>&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">vpc_id</span> = var.vpc_id</div>
+                            <div>}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 min-h-screen p-8 md:p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Step 4: Add Security Groups</h2>
+            <div class="w-16 h-1 bg-primary mb-12"></div>
+
+            <!-- Content Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Infrastructure -->
+                <div class="bg-zinc-100 dark:bg-zinc-700 border-2 border-gray-300 dark:border-gray-700 rounded-lg p-8">
+                    <h3 class="text-2xl font-semibold text-cyan-500 dark:text-cyan-400 mb-8">Infrastructure</h3>
+                    <div class="flex items-center justify-center gap-6 py-4">
+                        <span class="text-5xl">📦</span>
+                        <span class="text-4xl text-cyan-500 dark:text-cyan-400">→</span>
+                        <span class="text-5xl">🐳</span>
+                        <span class="text-4xl text-cyan-500 dark:text-cyan-400">→</span>
+                        <span class="text-5xl">⚖️</span>
+                    </div>
+                    <div class="flex flex-col items-center py-8">
+                        <span class="text-6xl mb-2">🛡️</span>
+                        <span class="text-green-500 dark:text-green-400 font-semibold">Security Groups</span>
+                        <span class="text-green-500 dark:text-green-400">(NEW)</span>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mt-2">(Controls network access)</p>
+                    </div>
+                </div>
+
+                <!-- Terraform Code -->
+                <div class="bg-zinc-100 dark:bg-zinc-700 border-2 border-gray-300 dark:border-gray-700 rounded-lg p-8">
+                    <h3 class="text-2xl font-semibold text-cyan-500 dark:text-cyan-400 mb-8">Terraform Code</h3>
+                    <div class="bg-white dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-mono text-sm p-6 rounded-lg overflow-x-auto">
+                        <div class="space-y-1">
+                            <div><span class="text-blue-600 dark:text-cyan-400">resource</span> <span class="text-purple-600 dark:text-purple-400">"aws_security_group"</span> <span class="text-purple-600 dark:text-purple-400">"ecs_tasks"</span> {</div>
+                            <div>&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">name</span> = <span class="text-purple-600 dark:text-purple-400">"discount-ecs-tasks"</span></div>
+                            <div>&nbsp;&nbsp;<span class="text-gray-500 dark:text-gray-600 italic"># For ECS containers</span></div>
+                            <div>&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">vpc_id</span> = var.vpc_id</div>
+                            <div>&nbsp;</div>
+                            <div>&nbsp;&nbsp;ingress {</div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">from_port</span> = 8080</div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-gray-500 dark:text-gray-600 italic"># Allow port 8080</span></div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">to_port</span> = 8080</div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">protocol</span> = <span class="text-purple-600 dark:text-purple-400">"tcp"</span></div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">security_groups</span> = [aws_security_group.lb.id]</div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-gray-500 dark:text-gray-600 italic"># Only from Load Balancer!</span></div>
+                            <div>&nbsp;&nbsp;}</div>
+                            <div>}</div>
+                            <div>&nbsp;</div>
+                            <div><span class="text-blue-600 dark:text-cyan-400">resource</span> <span class="text-purple-600 dark:text-purple-400">"aws_security_group"</span> <span class="text-purple-600 dark:text-purple-400">"lb"</span> {</div>
+                            <div>&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">name</span> = <span class="text-purple-600 dark:text-purple-400">"discount-lb"</span></div>
+                            <div>&nbsp;&nbsp;<span class="text-gray-500 dark:text-gray-600 italic"># For Load Balancer</span></div>
+                            <div>&nbsp;&nbsp;ingress {</div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">from_port</span> = 80</div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">to_port</span> = 80</div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">protocol</span> = <span class="text-purple-600 dark:text-purple-400">"tcp"</span></div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">cidr_blocks</span> = [<span class="text-purple-600 dark:text-purple-400">"0.0.0.0/0"</span>]</div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-gray-500 dark:text-gray-600 italic"># Public HTTP access</span></div>
+                            <div>&nbsp;&nbsp;}</div>
+                            <div>}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 min-h-screen p-8 md:p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Step 5: ECS Service</h2>
+            <div class="w-16 h-1 bg-primary mb-12"></div>
+
+            <!-- Content Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Infrastructure -->
+                <div class="bg-zinc-100 dark:bg-zinc-700 border-2 border-gray-300 dark:border-gray-700 rounded-lg p-8">
+                    <h3 class="text-2xl font-semibold text-cyan-500 dark:text-cyan-400 mb-8">Infrastructure</h3>
+                    <div class="flex items-center justify-center gap-6 py-8">
+                        <span class="text-5xl">📦</span>
+                        <span class="text-4xl text-cyan-500 dark:text-cyan-400">→</span>
+                        <span class="text-5xl">🐳</span>
+                        <span class="text-4xl text-cyan-500 dark:text-cyan-400">→</span>
+                        <span class="text-5xl">⚖️</span>
+                    </div>
+                    <div class="flex items-center justify-center gap-3 mt-6 text-gray-600 dark:text-gray-400">
+                        <span class="text-3xl">🛡️</span>
+                        <span>Security Groups protect all</span>
+                    </div>
+                </div>
+
+                <!-- Terraform Code -->
+                <div class="bg-zinc-100 dark:bg-zinc-700 border-2 border-gray-300 dark:border-gray-700 rounded-lg p-8">
+                    <h3 class="text-2xl font-semibold text-cyan-500 dark:text-cyan-400 mb-8">Terraform Code</h3>
+                    <div class="bg-white dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-mono text-sm p-6 rounded-lg overflow-x-auto">
+                        <div class="space-y-1">
+                            <div><span class="text-blue-600 dark:text-cyan-400">resource</span> <span class="text-purple-600 dark:text-purple-400">"aws_ecs_service"</span> <span class="text-purple-600 dark:text-purple-400">"discount"</span> {</div>
+                            <div>&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">name</span> = <span class="text-purple-600 dark:text-purple-400">"discount-service"</span></div>
+                            <div>&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">cluster</span> = aws_ecs_cluster.main.id</div>
+                            <div>&nbsp;&nbsp;<span class="text-gray-500 dark:text-gray-600 italic"># Uses cluster from earlier</span></div>
+                            <div>&nbsp;</div>
+                            <div>&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">task_definition</span> = aws_ecs_task_definition.discount.arn</div>
+                            <div>&nbsp;&nbsp;<span class="text-gray-500 dark:text-gray-600 italic"># Uses task definition</span></div>
+                            <div>&nbsp;</div>
+                            <div>&nbsp;&nbsp;load_balancer {</div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">target_group_arn</span> = aws_lb_target_group.discount.arn</div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-gray-500 dark:text-gray-600 italic"># Connect to LB</span></div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">container_name</span> = <span class="text-purple-600 dark:text-purple-400">"discount"</span></div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">container_port</span> = 8080</div>
+                            <div>&nbsp;&nbsp;}</div>
+                            <div>&nbsp;</div>
+                            <div>&nbsp;&nbsp;network_configuration {</div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">security_groups</span> = [aws_security_group.ecs_tasks.id]</div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-gray-500 dark:text-gray-600 italic"># Uses security group!</span></div>
+                            <div>&nbsp;&nbsp;}</div>
+                            <div>}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 min-h-screen p-8 md:p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Complete POS Discount Service</h2>
+            <div class="w-16 h-1 bg-primary mb-12"></div>
+            
+            <p class="text-xl text-gray-600 dark:text-gray-400 mb-12">POS App → Virtual Journal (HTTP) → Our Infrastructure</p>
+            
+            <div class="flex flex-wrap gap-6 items-center justify-center mb-12">
+                <div class="flex flex-col items-center">
+                    <span class="text-6xl mb-2">🖥️</span>
+                    <span class="text-lg text-gray-700 dark:text-gray-300 text-center">Java POS<br>App</span>
+                </div>
+                <span class="text-4xl text-cyan-500 dark:text-cyan-400">→</span>
+                <div class="flex flex-col items-center">
+                    <span class="text-6xl mb-2">📡</span>
+                    <span class="text-lg text-gray-700 dark:text-gray-300 text-center">Virtual<br>Journal<br>(HTTP)</span>
+                </div>
+                <span class="text-4xl text-cyan-500 dark:text-cyan-400">→</span>
+                <div class="flex flex-col items-center">
+                    <span class="text-6xl mb-2">⚖️</span>
+                    <span class="text-lg text-gray-700 dark:text-gray-300 text-center">Load<br>Balancer</span>
+                </div>
+                <span class="text-4xl text-cyan-500 dark:text-cyan-400">→</span>
+                <div class="flex flex-col items-center">
+                    <span class="text-6xl mb-2">🐳</span>
+                    <span class="text-lg text-gray-700 dark:text-gray-300 text-center">ECS<br>Discount<br>Service</span>
+                </div>
+                <span class="text-4xl text-cyan-500 dark:text-cyan-400">→</span>
+                <div class="flex flex-col items-center">
+                    <span class="text-6xl mb-2">📦</span>
+                    <span class="text-lg text-gray-700 dark:text-gray-300 text-center">ECR<br>Image</span>
+                </div>
+            </div>
+            
+            <div class="flex items-center justify-center gap-3 mb-12 text-gray-600 dark:text-gray-400">
+                <span class="text-4xl">🛡️</span>
+                <span class="text-lg">Security Groups protect ECS and LB</span>
+            </div>
+            
+            <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 dark:border-purple-400 p-8 rounded-lg">
+                <p class="text-xl text-purple-600 dark:text-purple-400 font-semibold mb-3">
+                    All managed with Terraform:
+                </p>
+                <p class="text-lg text-gray-700 dark:text-gray-300">
+                    ECR, ECS Cluster, Task Definition, Service, Load Balancer, Security Groups
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 min-h-screen p-8 md:p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Upgrading: Scale ECS Service</h2>
+            <div class="w-16 h-1 bg-primary mb-12"></div>
+
+            <!-- Content Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- What Changes -->
+                <div class="bg-zinc-100 dark:bg-zinc-700 border-2 border-gray-300 dark:border-gray-700 rounded-lg p-8">
+                    <h3 class="text-2xl font-semibold text-cyan-500 dark:text-cyan-400 mb-8">What Changes</h3>
+                    <div class="flex items-center justify-center gap-8 py-8">
+                        <div class="flex flex-col items-center">
+                            <span class="text-sm text-gray-500 dark:text-gray-400 uppercase mb-3">BEFORE</span>
+                            <span class="text-6xl mb-3">🐳</span>
+                            <span class="text-gray-700 dark:text-gray-300">512MB memory</span>
+                        </div>
+                        <span class="text-4xl text-cyan-500 dark:text-cyan-400">→</span>
+                        <div class="flex flex-col items-center">
+                            <span class="text-sm text-green-600 dark:text-green-400 uppercase mb-3">AFTER</span>
+                            <span class="text-6xl mb-3">🐳</span>
+                            <span class="text-green-600 dark:text-green-400 font-semibold">1024MB memory</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Code Change -->
+                <div class="bg-zinc-100 dark:bg-zinc-700 border-2 border-gray-300 dark:border-gray-700 rounded-lg p-8">
+                    <h3 class="text-2xl font-semibold text-cyan-500 dark:text-cyan-400 mb-8">Code Change</h3>
+                    <div class="bg-white dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-mono text-sm p-6 rounded-lg overflow-x-auto">
+                        <div class="space-y-1">
+                            <div><span class="text-blue-600 dark:text-cyan-400">resource</span> <span class="text-purple-600 dark:text-purple-400">"aws_ecs_task_definition"</span> <span class="text-purple-600 dark:text-purple-400">"discount"</span> {</div>
+                            <div>&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">container_definitions</span> = jsonencode([{</div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">memory</span> = 1024</div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-gray-500 dark:text-gray-600 italic"># Changed from 512!</span></div>
+                            <div>&nbsp;&nbsp;}])</div>
+                            <div>}</div>
+                            <div>&nbsp;</div>
+                            <div><span class="text-gray-500 dark:text-gray-600 italic"># terraform plan shows:</span></div>
+                            <div><span class="text-gray-500 dark:text-gray-600 italic"># ~ memory: 512 -> 1024</span></div>
+                            <div><span class="text-gray-500 dark:text-gray-600 italic"># Plan: 0 add, 1 change</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">What is Terragrunt?</h2>
+            <div class="w-16 h-1 bg-primary mb-10"></div>
+            <div>
+                <p class="text-2xl text-gray-600 dark:text-gray-300 mb-12 font-medium">Thin wrapper around
+                    Terraform</strong> - keeps code DRY</p>
+                <div class="grid grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-6">Problem</h3>
+                        <ul class="space-y-3 text-xl text-gray-600 dark:text-gray-300">
+                            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Multiple
+                                    environments</li>
+                            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Multiple
+                                    regions</li>
+                            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Repeated
+                                    code</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-6">Solution</h3>
+                        <ul class="space-y-3 text-xl text-gray-600 dark:text-gray-300">
+                            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Write once
+                            </li>
+                            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Reuse
+                                    everywhere</li>
+                            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Auto backend
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 min-h-screen p-8 md:p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Terragrunt Structure</h2>
+            <div class="w-16 h-1 bg-primary mb-12"></div>
+            
+            <div class="space-y-8">
+                <!-- Code Block with Tree Structure -->
+                <div class="bg-zinc-100 dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-purple-600 dark:text-purple-400 font-mono text-lg p-8 rounded-lg overflow-x-auto">
+                    <div class="space-y-1">
+                        <div>project/</div>
+                        <div>├── workflows/plan-prod-us.yml <span class="text-gray-500 dark:text-gray-600 italic"># TF 1.6.3, TG 0.53.2</span></div>
+                        <div>├── scripts/ <span class="text-gray-500 dark:text-gray-600 italic"># .js files</span></div>
+                        <div>├── <span class="text-cyan-500 dark:text-cyan-400 font-semibold">modules/contentstack/</span> <span class="text-gray-500 dark:text-gray-600 italic"># ONE copy!</span></div>
+                        <div>│ ├── iam.tf</div>
+                        <div>│ ├── main.tf</div>
+                        <div>│ └── variables.tf</div>
+                        <div>└── <span class="text-cyan-500 dark:text-cyan-400 font-semibold">live/</span></div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;├── dev/ <span class="text-gray-500 dark:text-gray-600 italic"># us-east-1, eu-central-1</span></div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;├── e2e/</div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;└── prod/</div>
+                    </div>
+                </div>
+
+                <!-- Purple Callout -->
+                <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 p-8 rounded-lg">
+                    <p class="text-2xl font-semibold text-purple-600 dark:text-purple-400">Fix once → Fixed everywhere!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 min-h-screen p-8 md:p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Setting Up Terragrunt</h2>
+            <div class="w-16 h-1 bg-primary mb-12"></div>
+            <div class="space-y-8">
+                <!-- 1. Install -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-purple-600 dark:text-purple-400 mb-4">1. Install</h3>
+                    <div class="bg-zinc-100 dark:bg-zinc-700 border-2 border-gray-300 dark:border-gray-700 text-purple-600 dark:text-purple-400 font-mono text-base p-6 rounded-lg">
+                        brew install terragrunt@0.53.2
+                    </div>
+                </div>
+
+                <!-- 2. Create terragrunt.hcl -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-purple-600 dark:text-purple-400 mb-4">2. Create terragrunt.hcl</h3>
+                    <div class="bg-zinc-100 dark:bg-zinc-700 border-2 border-gray-300 dark:border-gray-700 text-purple-600 dark:text-purple-400 font-mono text-base p-6 rounded-lg overflow-x-auto">
+                        <div class="space-y-1">
+                            <div>terraform {</div>
+                            <div>&nbsp;&nbsp;source = <span class="text-purple-600 dark:text-purple-400">"../../modules/web-app"</span></div>
+                            <div>}</div>
+                            <div>inputs = {</div>
+                            <div>&nbsp;&nbsp;region = <span class="text-purple-600 dark:text-purple-400">"us-east-1"</span></div>
+                            <div>}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Use It -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-purple-600 dark:text-purple-400 mb-4">3. Use It</h3>
+                    <div class="bg-zinc-100 dark:bg-zinc-700 border-2 border-gray-300 dark:border-gray-700 text-purple-600 dark:text-purple-400 font-mono text-base p-6 rounded-lg">
+                        <div class="space-y-1">
+                            <div>terragrunt init</div>
+                            <div>terragrunt apply</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 min-h-screen p-8 md:p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Simplest Way to Use Terragrunt</h2>
+            <div class="w-16 h-1 bg-primary mb-12"></div>
+            
+            <div class="space-y-8">
+                <!-- Just Like Terraform Callout -->
+                <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 p-8 rounded-lg">
+                    <h3 class="text-2xl font-semibold text-purple-600 dark:text-purple-400 mb-3">Just Like Terraform!</h3>
+                    <p class="text-xl text-gray-700 dark:text-gray-300">Replace "terraform" with "terragrunt"</p>
+                </div>
+
+                <!-- Two Column Comparison -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-3xl font-semibold text-purple-600 dark:text-purple-400 mb-6">Terraform</h3>
+                        <ul class="space-y-4 text-xl text-gray-700 dark:text-gray-300">
+                            <li class="flex items-start"><span class="text-purple-500 dark:text-purple-400 mr-3 mt-1">●</span><span>terraform init</span></li>
+                            <li class="flex items-start"><span class="text-purple-500 dark:text-purple-400 mr-3 mt-1">●</span><span>terraform plan</span></li>
+                            <li class="flex items-start"><span class="text-purple-500 dark:text-purple-400 mr-3 mt-1">●</span><span>terraform apply</span></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-semibold text-purple-600 dark:text-purple-400 mb-6">Terragrunt</h3>
+                        <ul class="space-y-4 text-xl text-gray-700 dark:text-gray-300">
+                            <li class="flex items-start"><span class="text-purple-500 dark:text-purple-400 mr-3 mt-1">●</span><span>terragrunt init</span></li>
+                            <li class="flex items-start"><span class="text-purple-500 dark:text-purple-400 mr-3 mt-1">●</span><span>terragrunt plan</span></li>
+                            <li class="flex items-start"><span class="text-purple-500 dark:text-purple-400 mr-3 mt-1">●</span><span>terragrunt apply</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Code Block -->
+                <div class="bg-zinc-100 dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-purple-600 dark:text-purple-400 font-mono text-lg p-6 rounded-lg overflow-x-auto">
+                    <div class="space-y-1">
+                        <div>terragrunt run-all plan</div>
+                        <div class="text-gray-500 dark:text-gray-600 italic"># Plans dev, e2e, AND prod!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 min-h-screen p-8 md:p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">
+                <span class="bg-blue-200 dark:bg-blue-900 px-6 py-2 rounded">Actual ContentStack Setup</span>
+            </h2>
+            <div class="w-16 h-1 bg-primary mb-12"></div>
+            
+            <div class="space-y-8">
+                <!-- Code Block with Tree Structure -->
+                <div class="bg-zinc-100 dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-purple-600 dark:text-purple-400 font-mono text-lg p-8 rounded-lg overflow-x-auto">
+                    <div class="space-y-1">
+                        <div>modules/contentstack/ <span class="text-gray-500 dark:text-gray-600 italic"># Infrastructure</span></div>
+                        <div>&nbsp;&nbsp;├── iam.tf, main.tf, variables.tf</div>
+                        <div>&nbsp;</div>
+                        <div>live/prod/</div>
+                        <div>├── us-east-1/lambda/</div>
+                        <div>│ ├── fetcher/terragrunt.hcl</div>
+                        <div>│ └── integration/terragrunt.hcl</div>
+                        <div>└── eu-central-1/lambda/</div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;├── fetcher/terragrunt.hcl</div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;└── integration/terragrunt.hcl</div>
+                    </div>
+                </div>
+
+                <!-- Orange Callout -->
+                <div class="bg-yellow-50 dark:bg-zinc-700 border-l-4 border-orange-500 p-8 rounded-lg">
+                    <h3 class="text-2xl font-semibold text-orange-600 dark:text-orange-400 mb-3">Each Lambda has terragrunt.hcl</h3>
+                    <p class="text-xl text-gray-700 dark:text-gray-300">Points to shared module with region config</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 min-h-screen p-8 md:p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">What is ContentStack?</h2>
+            <div class="w-16 h-1 bg-primary mb-12"></div>
+            
+            <div class="space-y-8">
+                <!-- Description -->
+                <p class="text-xl text-gray-700 dark:text-gray-300">
+                    <span class="font-semibold text-gray-900 dark:text-white">Headless CMS</span> - delivers content via APIs
+                </p>
+
+                <!-- Two Column Comparison -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-3xl font-semibold text-purple-600 dark:text-purple-400 mb-6">Traditional CMS</h3>
+                        <ul class="space-y-4 text-xl text-gray-700 dark:text-gray-300">
+                            <li class="flex items-start"><span class="text-purple-500 dark:text-purple-400 mr-3 mt-1">●</span><span>Content + Design tied</span></li>
+                            <li class="flex items-start"><span class="text-purple-500 dark:text-purple-400 mr-3 mt-1">●</span><span>Only websites</span></li>
+                            <li class="flex items-start"><span class="text-purple-500 dark:text-purple-400 mr-3 mt-1">●</span><span>Hard to reuse</span></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-semibold text-purple-600 dark:text-purple-400 mb-6">Headless CMS</h3>
+                        <ul class="space-y-4 text-xl text-gray-700 dark:text-gray-300">
+                            <li class="flex items-start"><span class="text-purple-500 dark:text-purple-400 mr-3 mt-1">●</span><span>Content separate</span></li>
+                            <li class="flex items-start"><span class="text-purple-500 dark:text-purple-400 mr-3 mt-1">●</span><span>Works everywhere</span></li>
+                            <li class="flex items-start"><span class="text-purple-500 dark:text-purple-400 mr-3 mt-1">●</span><span>Easy to reuse</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Purple Callout -->
+                <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 p-8 rounded-lg">
+                    <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-3">For Rocket Partners:</h3>
+                    <p class="text-xl text-gray-700 dark:text-gray-300">Update an ad or promotion once in ContentStack → Portal gets updated automatically without manual work and Portal issues.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 min-h-screen p-8 md:p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">ContentStack at Rocket Partners</h2>
+            <div class="w-16 h-1 bg-primary mb-16"></div>
+            
+            <!-- Flow Diagram -->
+            <div class="flex items-center justify-center gap-8 mb-16">
+                <div class="flex flex-col items-center">
+                    <span class="text-7xl mb-4">☁️</span>
+                    <span class="text-xl font-medium text-gray-700 dark:text-gray-300">ContentStack</span>
+                </div>
+                <span class="text-5xl text-cyan-500 dark:text-cyan-400">→</span>
+                <div class="flex flex-col items-center">
+                    <span class="text-7xl mb-4">⚙️</span>
+                    <span class="text-xl font-medium text-gray-700 dark:text-gray-300">Lambdas</span>
+                </div>
+                <span class="text-5xl text-cyan-500 dark:text-cyan-400">→</span>
+                <div class="flex flex-col items-center">
+                    <span class="text-7xl mb-4">🎛️</span>
+                    <span class="text-xl font-medium text-gray-700 dark:text-gray-300">Portal</span>
+                </div>
+                <span class="text-5xl text-cyan-500 dark:text-cyan-400">→</span>
+                <div class="flex flex-col items-center">
+                    <span class="text-7xl mb-4">🖥️</span>
+                    <span class="text-xl font-medium text-gray-700 dark:text-gray-300">POS</span>
+                </div>
+            </div>
+
+            <!-- The Flow Callout -->
+            <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 p-8 rounded-lg">
+                <h3 class="text-2xl font-semibold text-purple-600 dark:text-purple-400 mb-3">The Flow:</h3>
+                <p class="text-xl text-gray-700 dark:text-gray-300">Content → Through Lambdas → Managed in Portal → Displayed on POS</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 min-h-screen p-8 md:p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Portal & Player Integration</h2>
+            <div class="w-16 h-1 bg-primary mb-12"></div>
+            
+            <!-- Portal Description -->
+            <p class="text-xl text-gray-700 dark:text-gray-300 mb-16">
+                <span class="font-semibold text-gray-900 dark:text-white">Portal:</span> Internal tool for creating/managing ads
+            </p>
+
+            <!-- Flow Diagram -->
+            <div class="flex items-center justify-center gap-8 mb-16">
+                <div class="flex flex-col items-center">
+                    <span class="text-7xl mb-4">☁️</span>
+                    <span class="text-xl font-medium text-gray-700 dark:text-gray-300">ContentStack</span>
+                </div>
+                <span class="text-5xl text-cyan-500 dark:text-cyan-400">→</span>
+                <div class="flex flex-col items-center">
+                    <span class="text-7xl mb-4">🔌</span>
+                    <span class="text-xl font-medium text-gray-700 dark:text-gray-300">API</span>
+                </div>
+                <span class="text-5xl text-cyan-500 dark:text-cyan-400">→</span>
+                <div class="flex flex-col items-center">
+                    <span class="text-7xl mb-4">🎛️</span>
+                    <span class="text-xl font-medium text-green-600 dark:text-green-400">Portal</span>
+                </div>
+                <span class="text-5xl text-cyan-500 dark:text-cyan-400">→</span>
+                <div class="flex flex-col items-center">
+                    <span class="text-7xl mb-4">📺</span>
+                    <span class="text-xl font-medium text-gray-700 dark:text-gray-300">Player</span>
+                </div>
+            </div>
+
+            <!-- Why This Matters Callout -->
+            <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 p-8 rounded-lg">
+                <h3 class="text-2xl font-semibold text-purple-600 dark:text-purple-400 mb-3">Why This Matters:</h3>
+                <p class="text-xl text-gray-700 dark:text-gray-300">Portal uses ContentStack API - no manual work needed.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Multi-Region Deployment -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 min-h-screen p-8 md:p-20">
+        <div class="max-w-6xl w-full">
+            <!-- Header -->
+            <div class="mb-16">
+                <h2 class="text-4xl md:text-5xl font-light text-gray-800 dark:text-white mb-2">
+                    Multi-Region Deployment
+                </h2>
+                <div class="w-20 h-1 bg-primary rounded-full"></div>
+            </div>
+
+            <!-- Code Block -->
+            <div class="bg-zinc-50 dark:bg-zinc-700 border border-gray-200 dark:border-gray-700 rounded-xl p-8 mb-8 font-mono text-lg">
+                <div class="mb-6">
+                    <span class="text-blue-600 dark:text-blue-400 font-semibold">US:</span>
+                    <span class="text-purple-600 dark:text-purple-400 ml-2">ContentStack → Lambdas → Portal → Player</span>
+                </div>
+                <div class="ml-8 text-gray-600 dark:text-gray-400 mb-8">
+                    └─ S3, API Gateway, IAM
+                </div>
+
+                <div class="mb-6">
+                    <span class="text-blue-600 dark:text-blue-400 font-semibold">EU:</span>
+                    <span class="text-purple-600 dark:text-purple-400 ml-2">ContentStack → Lambdas → Portal → Player</span>
+                </div>
+                <div class="ml-8 text-gray-600 dark:text-gray-400 mb-8">
+                    └─ S3, API Gateway, IAM
+                </div>
+
+                <div class="text-gray-500 dark:text-gray-500 italic text-base mt-8">
+                    # Same code, different configs!
+                </div>
+            </div>
+
+            <!-- Bottom Note -->
+            <div class="bg-purple-50 dark:bg-purple-900/20 border-l-4 border-purple-500 rounded-lg p-6">
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Your EU Deployment:</h3>
+                <p class="text-lg text-gray-700 dark:text-gray-300">
+                    Terraform created all resources, Terragrunt reused code
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">The Complete Picture</h2>
+            <div class="w-16 h-1 bg-primary mb-10"></div>
+            <div>
+                <div class="bg-zinc-900 text-green-400 font-mono text-lg p-6 rounded-lg overflow-x-auto">
+                    <span class="keyword">1. Terraform</span> → Creates AWS resources<br>
+                    <span class="keyword">2. Terragrunt</span> → Manages multi-region<br>
+                    <span class="keyword">3. ContentStack</span> → Stores content<br>
+                    <span class="keyword">4. Integration</span> → Fetches/transforms<br>
+                    <span class="keyword">5. Portal</span> → Manages ads<br>
+                    <span class="keyword">6. POS/Player</span> → Displays ads
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Summary Slide -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-8 md:p-20">
+        <div class="max-w-6xl w-full">
+            <!-- Header -->
+            <div class="mb-12">
+                <h2 class="text-4xl md:text-5xl font-light text-gray-800 dark:text-white mb-2">Summary</h2>
+                <div class="w-20 h-1 bg-primary rounded-full"></div>
+            </div>
+
+            <!-- Summary List -->
+            <div class="space-y-6 mb-12">
+                <!-- Terraform -->
+                <div class="flex items-start gap-4 text-lg">
+                    <span class="text-primary font-bold text-xl">▸</span>
+                    <div>
+                        <strong class="text-gray-800 dark:text-white text-xl">Terraform:</strong>
+                        <span class="text-gray-600 dark:text-gray-300 text-lg ml-2">Declarative IaC, plan/apply workflow</span>
+                    </div>
+                </div>
+
+                <!-- Code Glossary -->
+                <div class="flex items-start gap-4 text-lg">
+                    <span class="text-primary font-bold text-xl">▸</span>
+                    <div>
+                        <strong class="text-gray-800 dark:text-white text-xl">Code Glossary:</strong>
+                        <span class="text-gray-600 dark:text-gray-300 text-lg ml-2">resource, tags, ami, instance_type, security groups</span>
+                    </div>
+                </div>
+
+                <!-- POS Example -->
+                <div class="flex items-start gap-4 text-lg">
+                    <span class="text-primary font-bold text-xl">▸</span>
+                    <div>
+                        <strong class="text-gray-800 dark:text-white text-xl">POS Example:</strong>
+                        <span class="text-gray-600 dark:text-gray-300 text-lg ml-2">Discount Service with ECR, ECS, ALB, Security Groups</span>
+                    </div>
+                </div>
+
+                <!-- Upgrading -->
+                <div class="flex items-start gap-4 text-lg">
+                    <span class="text-primary font-bold text-xl">▸</span>
+                    <div>
+                        <strong class="text-gray-800 dark:text-white text-xl">Upgrading:</strong>
+                        <span class="text-gray-600 dark:text-gray-300 text-lg ml-2">Change code, Terraform handles it</span>
+                    </div>
+                </div>
+
+                <!-- Terragrunt -->
+                <div class="flex items-start gap-4 text-lg">
+                    <span class="text-primary font-bold text-xl">▸</span>
+                    <div>
+                        <strong class="text-gray-800 dark:text-white text-xl">Terragrunt:</strong>
+                        <span class="text-gray-600 dark:text-gray-300 text-lg ml-2">No duplication across regions</span>
+                    </div>
+                </div>
+
+                <!-- ContentStack -->
+                <div class="flex items-start gap-4 text-lg">
+                    <span class="text-primary font-bold text-xl">▸</span>
+                    <div>
+                        <strong class="text-gray-800 dark:text-white text-xl">ContentStack:</strong>
+                        <span class="text-gray-600 dark:text-gray-300 text-lg ml-2">API → Portal → POS</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versions Box -->
+            <div class="bg-gradient-to-r from-yellow-50 to-amber-50 dark:from-yellow-900/20 dark:to-amber-900/20 border-l-4 border-amber-500 p-6 rounded-xl mb-8 shadow-sm">
+                <div class="text-lg text-gray-800 dark:text-white">
+                    <strong class="text-amber-800 dark:text-amber-300">Versions:</strong> 
+                    <span class="text-gray-700 dark:text-gray-300">TF 1.6.3 • TG 0.53.2</span>
+                </div>
+                <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                    (workflows/plan-prod-us.yml)
+                </div>
+            </div>
+
+            <!-- Documentation Button -->
+            <a href="https://rocketpartners.atlassian.net/wiki/spaces/RPPHDev/pages/1213530118/Local+Terraform+Terragrunt+Environment+Setup"
+                target="_blank"
+                class="inline-flex items-center gap-3 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-semibold text-xl px-8 py-4 rounded-2xl transition-all duration-200 hover:shadow-xl hover:scale-105">
+                <span class="text-3xl">📄</span>
+                <span>Documentation</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Fixed Navigation Buttons -->
+    <div class="fixed bottom-8 left-1/2 transform -translate-x-1/2 flex gap-4 z-50">
+        <button 
+            id="prevBtn" 
+            onclick="changeSlide(-1)"
+            class="group flex items-center gap-2 bg-white dark:bg-zinc-800 hover:bg-purple-50 dark:hover:bg-zinc-700 border-2 border-purple-600 dark:border-purple-500 text-purple-600 dark:text-purple-400 font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:scale-105 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none">
+            <span class="text-xl group-hover:-translate-x-1 transition-transform duration-300">←</span>
+            <span class="text-base">Previous</span>
+        </button>
+        
+        <button 
+            id="nextBtn" 
+            onclick="changeSlide(1)"
+            class="group flex items-center gap-2 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:shadow-xl hover:scale-105 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none">
+            <span class="text-base">Next</span>
+            <span class="text-xl group-hover:translate-x-1 transition-transform duration-300">→</span>
+        </button>
+    </div>
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
