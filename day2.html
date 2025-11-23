@@ -923,722 +923,1073 @@
         </div>
     </div>
 
-    <!-- liftck-player Demo Overview -->
+    <!-- liftck-player: Workflow 1 - Pull Request CI -->
     <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
         <div class="max-w-7xl w-full">
-            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">liftck-player: Java/Gradle Application CI/CD</h2>
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Workflow 1: Pull Request CI</h2>
             <div class="w-16 h-1 bg-primary mb-10"></div>
-            <p class="text-2xl text-gray-600 dark:text-gray-300 mb-12 font-medium">JavaFX application with comprehensive quality gates</p>
-            
-            <!-- 3 Main Workflows -->
-            <div class="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-500/10 dark:to-indigo-500/10 border border-blue-200 dark:border-blue-500/30 rounded-xl p-6 mb-6">
-                <h3 class="text-3xl font-semibold text-gray-800 dark:text-white mb-6 flex items-center gap-3">
-                    <span class="text-4xl">⚙️</span>
-                    3 Main Workflows
-                </h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- Pull Request CI -->
-                    <div class="bg-white dark:bg-zinc-700 rounded-lg p-6 border-l-4 border-blue-500">
-                        <div class="flex items-center gap-3 mb-3">
-                            <span class="text-3xl">🔍</span>
-                            <div>
-                                <h4 class="text-xl font-semibold text-gray-800 dark:text-white">Pull Request CI</h4>
-                                <p class="text-sm text-gray-500 dark:text-gray-400 font-mono">pullrequest.yml</p>
-                            </div>
-                        </div>
-                        <p class="text-base text-gray-600 dark:text-gray-300">Automatic on PRs</p>
-                    </div>
-                    
-                    <!-- Deploy to Environment -->
-                    <div class="bg-white dark:bg-zinc-700 rounded-lg p-6 border-l-4 border-orange-500">
-                        <div class="flex items-center gap-3 mb-3">
-                            <span class="text-3xl">🚀</span>
-                            <div>
-                                <h4 class="text-xl font-semibold text-gray-800 dark:text-white">Deploy to Environment</h4>
-                                <p class="text-sm text-gray-500 dark:text-gray-400 font-mono">deploy.yml</p>
-                            </div>
-                        </div>
-                        <p class="text-base text-gray-600 dark:text-gray-300">Manual dispatch</p>
-                    </div>
-                    
-                    <!-- SonarQube Release Scan -->
-                    <div class="bg-white dark:bg-zinc-700 rounded-lg p-6 border-l-4 border-green-500">
-                        <div class="flex items-center gap-3 mb-3">
-                            <span class="text-3xl">📊</span>
-                            <div>
-                                <h4 class="text-xl font-semibold text-gray-800 dark:text-white">SonarQube Release Scan</h4>
-                                <p class="text-sm text-gray-500 dark:text-gray-400 font-mono">sonarqube-release-scan.yml</p>
-                            </div>
-                        </div>
-                        <p class="text-base text-gray-600 dark:text-gray-300">Push to release/**</p>
-                    </div>
+            <p class="text-2xl text-gray-600 dark:text-gray-300 mb-4 font-medium">Automatic checks when you create a PR</p>
+            <p class="text-xl text-gray-500 dark:text-gray-400 mb-8">File: <code class="bg-gray-200 dark:bg-zinc-700 px-2 py-1 rounded">pullrequest.yml</code></p>
+
+            <!-- When does it run? -->
+            <div class="bg-blue-50 dark:bg-zinc-700 border-l-4 border-blue-600 p-6 rounded-lg mb-6">
+                <h3 class="text-2xl font-bold text-blue-700 dark:text-blue-400 mb-3">⏰ When does it run?</h3>
+                <p class="text-lg text-gray-700 dark:text-gray-300 mb-3">Every time you open or update a Pull Request</p>
+                <div class="bg-white dark:bg-zinc-900 p-4 rounded-lg">
+                    <p class="text-base text-gray-600 dark:text-gray-400">💡 <strong>Think of it as:</strong> Your automated code reviewer that checks your work before humans review it</p>
                 </div>
             </div>
 
-            <!-- Example: SonarQube Release Scan Timeline -->
-            <div class="bg-white dark:bg-zinc-700 rounded-xl p-6 border border-gray-200 dark:border-gray-600">
-                <h3 class="text-3xl font-semibold text-gray-800 dark:text-white mb-4">
-                    Example: SonarQube Release Scan <span class="text-gray-500 dark:text-gray-400 text-xl">(6m 17s total)</span>
-                </h3>
-                <div class="space-y-2 font-mono text-lg">
-                    <div class="flex items-center justify-between py-3 border-b border-gray-100 dark:border-gray-600">
-                        <div class="flex items-center gap-3">
-                            <span class="text-blue-500 dark:text-blue-400">⚙️</span>
-                            <span class="text-gray-700 dark:text-gray-300">Set up job</span>
-                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 rounded text-sm">Setup</span>
+            <!-- What does it do? -->
+            <div class="grid grid-cols-2 gap-6">
+                <div class="bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900/30 dark:to-purple-800/30 p-6 rounded-xl border-2 border-purple-400">
+                    <div class="text-3xl mb-3">📝</div>
+                    <h3 class="text-xl font-bold text-purple-700 dark:text-purple-400 mb-3">Check 1: Changelog</h3>
+                    <p class="text-base text-gray-700 dark:text-gray-300">Did you update the changelog?</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Important for tracking changes</p>
+                </div>
+                <div class="bg-gradient-to-br from-green-100 to-green-200 dark:from-green-900/30 dark:to-green-800/30 p-6 rounded-xl border-2 border-green-400">
+                    <div class="text-3xl mb-3">✅</div>
+                    <h3 class="text-xl font-bold text-green-700 dark:text-green-400 mb-3">Check 2: Code Quality</h3>
+                    <p class="text-base text-gray-700 dark:text-gray-300">Is your code clean and working?</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Runs tests and checks code style</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- liftck-player: PR Workflow Steps -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">What Happens Step-by-Step?</h2>
+            <div class="w-16 h-1 bg-primary mb-10"></div>
+            <p class="text-xl text-gray-600 dark:text-gray-300 mb-8">Let's follow the code through the pipeline...</p>
+
+            <div class="space-y-4">
+                <!-- Step 1 -->
+                <div class="bg-white dark:bg-zinc-700 border-l-4 border-blue-600 p-5 rounded-lg shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-blue-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0 text-lg">1</div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">📥 Get Your Code</h3>
+                            <p class="text-base text-gray-700 dark:text-gray-300 mb-2">Download your code from GitHub</p>
+                            <div class="bg-blue-50 dark:bg-zinc-800 p-3 rounded">
+                                <p class="text-sm text-gray-600 dark:text-gray-400">🎓 <strong>Why?</strong> The server needs your code to check it</p>
+                            </div>
                         </div>
-                        <span class="text-gray-500 dark:text-gray-400">3s</span>
                     </div>
-                    <div class="flex items-center justify-between py-3 border-b border-gray-100 dark:border-gray-600">
-                        <div class="flex items-center gap-3">
-                            <span class="text-purple-500 dark:text-purple-400">📥</span>
-                            <span class="text-gray-700 dark:text-gray-300">Run actions/checkout@v4</span>
-                            <span class="px-2 py-1 bg-purple-100 dark:bg-purple-500/20 text-purple-700 dark:text-purple-300 rounded text-sm">Code</span>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-white dark:bg-zinc-700 border-l-4 border-green-600 p-5 rounded-lg shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-green-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0 text-lg">2</div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">☕ Setup Java</h3>
+                            <p class="text-base text-gray-700 dark:text-gray-300 mb-2">Install Java 11 (the version this app needs)</p>
+                            <div class="bg-green-50 dark:bg-zinc-800 p-3 rounded">
+                                <p class="text-sm text-gray-600 dark:text-gray-400">🎓 <strong>Why?</strong> This is a Java app, so we need Java to run it</p>
+                            </div>
                         </div>
-                        <span class="text-gray-500 dark:text-gray-400">37s</span>
                     </div>
-                    <div class="flex items-center justify-between py-3 border-b border-gray-100 dark:border-gray-600">
-                        <div class="flex items-center gap-3">
-                            <span class="text-orange-500 dark:text-orange-400">☕</span>
-                            <span class="text-gray-700 dark:text-gray-300">Set up JDK 11</span>
-                            <span class="px-2 py-1 bg-orange-100 dark:bg-orange-500/20 text-orange-700 dark:text-orange-300 rounded text-sm">Build</span>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-white dark:bg-zinc-700 border-l-4 border-purple-600 p-5 rounded-lg shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-purple-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0 text-lg">3</div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">✨ Check Code Style</h3>
+                            <p class="text-base text-gray-700 dark:text-gray-300 mb-2">Is your code formatted correctly?</p>
+                            <div class="bg-purple-50 dark:bg-zinc-800 p-3 rounded">
+                                <p class="text-sm text-gray-600 dark:text-gray-400">🎓 <strong>Why?</strong> Consistent formatting makes code easier to read for everyone</p>
+                            </div>
                         </div>
-                        <span class="text-gray-500 dark:text-gray-400">11s</span>
                     </div>
-                    <div class="flex items-center justify-between py-3 border-b border-gray-100 dark:border-gray-600">
-                        <div class="flex items-center gap-3">
-                            <span class="text-gray-500 dark:text-gray-400">🔧</span>
-                            <span class="text-gray-700 dark:text-gray-300">Setup Gradle</span>
-                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-500/20 text-gray-700 dark:text-gray-300 rounded text-sm">Build</span>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="bg-white dark:bg-zinc-700 border-l-4 border-orange-600 p-5 rounded-lg shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-orange-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0 text-lg">4</div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">🧪 Run Tests</h3>
+                            <p class="text-base text-gray-700 dark:text-gray-300 mb-2">Do all your unit tests pass?</p>
+                            <div class="bg-orange-50 dark:bg-zinc-800 p-3 rounded">
+                                <p class="text-sm text-gray-600 dark:text-gray-400">🎓 <strong>Why?</strong> Tests make sure you didn't break anything</p>
+                            </div>
                         </div>
-                        <span class="text-gray-500 dark:text-gray-400">1s</span>
                     </div>
-                    <div class="flex items-center justify-between py-3 border-b border-gray-100 dark:border-gray-600">
-                        <div class="flex items-center gap-3">
-                            <span class="text-green-500 dark:text-green-400">🌿</span>
-                            <span class="text-gray-700 dark:text-gray-300">Get branch name</span>
-                            <span class="px-2 py-1 bg-green-100 dark:bg-green-500/20 text-green-700 dark:text-green-300 rounded text-sm">Code</span>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="bg-white dark:bg-zinc-700 border-l-4 border-red-600 p-5 rounded-lg shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-red-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0 text-lg">5</div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">📦 Build the App</h3>
+                            <p class="text-base text-gray-700 dark:text-gray-300 mb-2">Create the final package</p>
+                            <div class="bg-red-50 dark:bg-zinc-800 p-3 rounded">
+                                <p class="text-sm text-gray-600 dark:text-gray-400">🎓 <strong>Why?</strong> Make sure your code can actually be packaged and deployed</p>
+                            </div>
                         </div>
-                        <span class="text-gray-500 dark:text-gray-400">0s</span>
-                    </div>
-                    <div class="flex items-center justify-between py-3 border-b border-gray-100 dark:border-gray-600 bg-yellow-50 dark:bg-yellow-500/10">
-                        <div class="flex items-center gap-3">
-                            <span class="text-yellow-600 dark:text-yellow-400">🧪</span>
-                            <span class="text-gray-800 dark:text-white font-semibold">Run tests with coverage</span>
-                            <span class="px-2 py-1 bg-yellow-200 dark:bg-yellow-500/30 text-yellow-800 dark:text-yellow-200 rounded text-sm font-semibold">Test</span>
-                        </div>
-                        <span class="text-gray-800 dark:text-white font-semibold">3m 36s</span>
-                    </div>
-                    <div class="flex items-center justify-between py-3 border-b border-gray-100 dark:border-gray-600 bg-yellow-50 dark:bg-yellow-500/10">
-                        <div class="flex items-center gap-3">
-                            <span class="text-yellow-600 dark:text-yellow-400">📊</span>
-                            <span class="text-gray-800 dark:text-white font-semibold">Run SonarQube analysis</span>
-                            <span class="px-2 py-1 bg-yellow-200 dark:bg-yellow-500/30 text-yellow-800 dark:text-yellow-200 rounded text-sm font-semibold">Test</span>
-                        </div>
-                        <span class="text-gray-800 dark:text-white font-semibold">1m 36s</span>
-                    </div>
-                    <div class="flex items-center justify-between py-3 border-b border-gray-100 dark:border-gray-600">
-                        <div class="flex items-center gap-3">
-                            <span class="text-gray-400">🧹</span>
-                            <span class="text-gray-500 dark:text-gray-400">Post Setup Gradle</span>
-                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-500/20 text-gray-600 dark:text-gray-400 rounded text-sm">Cleanup</span>
-                        </div>
-                        <span class="text-gray-500 dark:text-gray-400">11s</span>
-                    </div>
-                    <div class="flex items-center justify-between py-3 border-b border-gray-100 dark:border-gray-600">
-                        <div class="flex items-center gap-3">
-                            <span class="text-gray-400">🧹</span>
-                            <span class="text-gray-500 dark:text-gray-400">Post Set up JDK 11</span>
-                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-500/20 text-gray-600 dark:text-gray-400 rounded text-sm">Cleanup</span>
-                        </div>
-                        <span class="text-gray-500 dark:text-gray-400">0s</span>
-                    </div>
-                    <div class="flex items-center justify-between py-3 border-b border-gray-100 dark:border-gray-600">
-                        <div class="flex items-center gap-3">
-                            <span class="text-gray-400">🧹</span>
-                            <span class="text-gray-500 dark:text-gray-400">Post Run actions/checkout@v4</span>
-                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-500/20 text-gray-600 dark:text-gray-400 rounded text-sm">Cleanup</span>
-                        </div>
-                        <span class="text-gray-500 dark:text-gray-400">1s</span>
-                    </div>
-                    <div class="flex items-center justify-between py-3 bg-green-50 dark:bg-green-500/10 rounded-lg px-3 mt-2">
-                        <div class="flex items-center gap-3">
-                            <span class="text-green-600 dark:text-green-400">✅</span>
-                            <span class="text-green-700 dark:text-green-300 font-semibold">Complete job</span>
-                            <span class="px-2 py-1 bg-green-200 dark:bg-green-500/30 text-green-800 dark:text-green-200 rounded text-sm font-semibold">Done</span>
-                        </div>
-                        <span class="text-green-700 dark:text-green-300 font-semibold">0s</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- liftck-player: Workflow Details -->
+    <!-- liftck-player: PR Workflow - SonarQube & Reporting -->
     <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
         <div class="max-w-7xl w-full">
-            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">liftck-player: Workflow Details</h2>
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Final Quality Checks</h2>
             <div class="w-16 h-1 bg-primary mb-10"></div>
+            <p class="text-xl text-gray-600 dark:text-gray-300 mb-8">These are the final gatekeepers before your code can be merged</p>
 
-            <!-- Three Workflow Cards -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-                <!-- Pull Request CI -->
-                <div class="bg-white dark:bg-zinc-700 rounded-lg p-6 border-2 border-green-500 shadow-lg hover:shadow-xl transition-shadow">
-                    <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4 flex items-center gap-3">
-                        <span class="text-3xl">🔍</span>
-                        Pull Request CI
-                    </h3>
-                    <ul class="space-y-3 text-lg">
-                        <li class="flex items-start gap-2">
-                            <span class="text-green-500 mt-0.5">✅</span>
-                            <span class="text-gray-700 dark:text-gray-300">Validates changelog was updated</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-gray-500 mt-0.5">🔍</span>
-                            <span class="text-gray-700 dark:text-gray-300">Runs linting checks</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-green-500 mt-0.5">🧪</span>
-                            <span class="text-gray-700 dark:text-gray-300">Executes unit tests with JaCoCo coverage</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-blue-500 mt-0.5">📊</span>
-                            <span class="text-gray-700 dark:text-gray-300">SonarQube analysis with ENFORCED quality gates</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-gray-500 mt-0.5">💬</span>
-                            <span class="text-gray-700 dark:text-gray-300">Posts results to Slack (#lift-build)</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-red-500 mt-0.5">🚫</span>
-                            <span class="text-gray-700 dark:text-gray-300">Blocks merge if quality gates fail</span>
-                        </li>
-                    </ul>
+            <div class="space-y-6">
+                <!-- Step 6: SonarQube -->
+                <div class="bg-gradient-to-r from-cyan-50 to-blue-50 dark:from-cyan-900/20 dark:to-blue-900/20 border-l-4 border-cyan-600 p-6 rounded-lg">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-cyan-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold flex-shrink-0 text-lg">6</div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-3">🔍 Code Quality Scan</h3>
+                            <p class="text-lg text-gray-700 dark:text-gray-300 mb-4">SonarQube checks your code for bugs, security issues, and code smells</p>
+                            
+                            <div class="bg-white dark:bg-zinc-800 p-4 rounded-lg mb-4">
+                                <h4 class="font-bold text-gray-800 dark:text-white mb-2">What does it check?</h4>
+                                <div class="grid grid-cols-2 gap-3 text-sm">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-red-500">🐛</span>
+                                        <span class="text-gray-700 dark:text-gray-300">Bugs in your code</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-orange-500">🔒</span>
+                                        <span class="text-gray-700 dark:text-gray-300">Security vulnerabilities</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-yellow-500">💩</span>
+                                        <span class="text-gray-700 dark:text-gray-300">Code smells (bad patterns)</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-green-500">📊</span>
+                                        <span class="text-gray-700 dark:text-gray-300">Test coverage %</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 p-3 rounded">
+                                <p class="text-sm font-semibold text-red-700 dark:text-red-400">⚠️ If quality gate fails → PR is BLOCKED</p>
+                                <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">You must fix the issues before merging</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Deploy to Environment -->
-                <div class="bg-white dark:bg-zinc-700 rounded-lg p-6 border-2 border-green-500 shadow-lg hover:shadow-xl transition-shadow">
-                    <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4 flex items-center gap-3">
-                        <span class="text-3xl">🚀</span>
-                        Deploy to Environment
-                    </h3>
-                    <ul class="space-y-3 text-lg">
-                        <li class="flex items-start gap-2">
-                            <span class="text-green-500 mt-0.5">✅</span>
-                            <span class="text-gray-700 dark:text-gray-300">Runs all tests before deployment</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-orange-500 mt-0.5">📦</span>
-                            <span class="text-gray-700 dark:text-gray-300">Builds application with Gradle</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-blue-500 mt-0.5">☁️</span>
-                            <span class="text-gray-700 dark:text-gray-300">Deploys to AWS S3 (US + EU regions)</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-red-500 mt-0.5">🔴</span>
-                            <span class="text-gray-700 dark:text-gray-300">Environments: dev, e2e, prod</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-gray-500 mt-0.5">💬</span>
-                            <span class="text-gray-700 dark:text-gray-300">Notifies Slack (#lift-deploy)</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-purple-500 mt-0.5">📝</span>
-                            <span class="text-gray-700 dark:text-gray-300">Tracks deployment metadata</span>
-                        </li>
-                    </ul>
+                <!-- Step 7: Test Reports -->
+                <div class="bg-white dark:bg-zinc-700 border-l-4 border-purple-600 p-6 rounded-lg shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-purple-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold flex-shrink-0 text-lg">7</div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">📊 Create Test Report</h3>
+                            <p class="text-base text-gray-700 dark:text-gray-300 mb-3">Shows which tests passed/failed in an easy-to-read format</p>
+                            <div class="bg-purple-50 dark:bg-zinc-800 p-3 rounded">
+                                <p class="text-sm text-gray-600 dark:text-gray-400">🎓 <strong>Why?</strong> Makes it easy to see what broke without reading logs</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 8: Slack Notification -->
+                <div class="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 border-l-4 border-yellow-600 p-6 rounded-lg">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-yellow-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold flex-shrink-0 text-lg">8</div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">💬 Notify Team on Slack</h3>
+                            <p class="text-base text-gray-700 dark:text-gray-300 mb-3">Send a message to the team's Slack channel with results</p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="bg-white dark:bg-zinc-800 px-3 py-1 rounded text-sm">✅ All passed</span>
+                                <span class="bg-white dark:bg-zinc-800 px-3 py-1 rounded text-sm">❌ Something failed</span>
+                                <span class="bg-white dark:bg-zinc-800 px-3 py-1 rounded text-sm">📊 SonarQube link</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- liftck-player: Workflow 2 - SonarQube Release Scan -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Workflow 2: Release Branch Scanner</h2>
+            <div class="w-16 h-1 bg-primary mb-10"></div>
+            <p class="text-2xl text-gray-600 dark:text-gray-300 mb-4 font-medium">Automatic quality tracking for releases</p>
+            <p class="text-xl text-gray-500 dark:text-gray-400 mb-8">File: <code class="bg-gray-200 dark:bg-zinc-700 px-2 py-1 rounded">sonarqube-release-scan.yml</code></p>
+
+            <!-- When does it run? -->
+            <div class="bg-cyan-50 dark:bg-zinc-700 border-l-4 border-cyan-600 p-6 rounded-lg mb-8">
+                <h3 class="text-2xl font-bold text-cyan-700 dark:text-cyan-400 mb-3">⏰ When does it run?</h3>
+                <p class="text-lg text-gray-700 dark:text-gray-300 mb-3">Automatically runs when you push to release branches</p>
+                <div class="bg-white dark:bg-zinc-900 p-4 rounded-lg mb-3">
+                    <p class="text-base font-mono text-gray-700 dark:text-gray-300">release/v1.0.0 ✅</p>
+                    <p class="text-base font-mono text-gray-700 dark:text-gray-300">release/v2.3.1 ✅</p>
+                    <p class="text-base font-mono text-gray-400 dark:text-gray-500">main ❌</p>
+                </div>
+                <div class="bg-white dark:bg-zinc-900 p-4 rounded-lg">
+                    <p class="text-base text-gray-600 dark:text-gray-400">💡 <strong>Think of it as:</strong> A quality report card for each release version</p>
+                </div>
+            </div>
+
+            <!-- What does it do? -->
+            <div class="grid grid-cols-2 gap-6">
+                <div class="bg-gradient-to-br from-green-100 to-emerald-200 dark:from-green-900/30 dark:to-emerald-800/30 p-6 rounded-xl border-2 border-green-400">
+                    <div class="text-4xl mb-3">🧪</div>
+                    <h3 class="text-xl font-bold text-green-700 dark:text-green-400 mb-3">Run Tests</h3>
+                    <p class="text-base text-gray-700 dark:text-gray-300">Execute all tests and measure code coverage</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Shows which parts of code are tested</p>
+                </div>
+                <div class="bg-gradient-to-br from-cyan-100 to-blue-200 dark:from-cyan-900/30 dark:to-blue-800/30 p-6 rounded-xl border-2 border-cyan-400">
+                    <div class="text-4xl mb-3">📊</div>
+                    <h3 class="text-xl font-bold text-cyan-700 dark:text-cyan-400 mb-3">Track Quality</h3>
+                    <p class="text-base text-gray-700 dark:text-gray-300">Send metrics to SonarQube for this release</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Compare quality across releases</p>
+                </div>
+            </div>
+
+            <!-- Key Difference -->
+            <div class="mt-8 bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-400 dark:border-blue-600 p-6 rounded-lg">
+                <h3 class="text-xl font-bold text-blue-700 dark:text-blue-400 mb-3">🔑 Key Difference from PR Workflow</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white dark:bg-zinc-800 p-4 rounded-lg">
+                        <p class="font-semibold text-gray-800 dark:text-white mb-2">PR Workflow:</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">❌ Blocks merge if fails</p>
+                    </div>
+                    <div class="bg-white dark:bg-zinc-800 p-4 rounded-lg">
+                        <p class="font-semibold text-gray-800 dark:text-white mb-2">Release Scan:</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">ℹ️ Just tracks quality (doesn't block)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- liftck-player: Workflow 3 - Deploy to Environment -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Workflow 3: Deploy to Cloud</h2>
+            <div class="w-16 h-1 bg-primary mb-10"></div>
+            <p class="text-2xl text-gray-600 dark:text-gray-300 mb-4 font-medium">Manual deployment to different environments</p>
+            <p class="text-xl text-gray-500 dark:text-gray-400 mb-8">File: <code class="bg-gray-200 dark:bg-zinc-700 px-2 py-1 rounded">deploy.yml</code></p>
+
+            <!-- When does it run? -->
+            <div class="bg-green-50 dark:bg-zinc-700 border-l-4 border-green-600 p-6 rounded-lg mb-8">
+                <h3 class="text-2xl font-bold text-green-700 dark:text-green-400 mb-4">⏰ When does it run?</h3>
+                <p class="text-lg text-gray-700 dark:text-gray-300 mb-4">Only when YOU manually trigger it (not automatic)</p>
+                <div class="bg-white dark:bg-zinc-900 p-4 rounded-lg">
+                    <p class="text-base text-gray-600 dark:text-gray-400">💡 <strong>Think of it as:</strong> Pressing the "Ship It!" button to send your app to AWS</p>
+                </div>
+            </div>
+
+            <!-- What you choose -->
+            <div class="mb-8">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">🎯 You Choose:</h3>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="bg-white dark:bg-zinc-800 p-5 rounded-lg border-2 border-green-300 dark:border-green-700 text-center">
+                        <div class="text-3xl mb-2">🌍</div>
+                        <p class="font-bold text-green-700 dark:text-green-400 mb-2">Environment</p>
+                        <div class="space-y-1 text-sm text-gray-700 dark:text-gray-300">
+                            <div class="bg-green-100 dark:bg-green-900/30 px-2 py-1 rounded">dev (testing)</div>
+                            <div class="bg-green-100 dark:bg-green-900/30 px-2 py-1 rounded">e2e (staging)</div>
+                            <div class="bg-green-100 dark:bg-green-900/30 px-2 py-1 rounded">prod (live users)</div>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-zinc-800 p-5 rounded-lg border-2 border-blue-300 dark:border-blue-700 text-center">
+                        <div class="text-3xl mb-2">🔖</div>
+                        <p class="font-bold text-blue-700 dark:text-blue-400 mb-2">Which Version</p>
+                        <p class="text-sm text-gray-700 dark:text-gray-300">Branch, tag, or commit</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">Example: v1.2.3</p>
+                    </div>
+                    <div class="bg-white dark:bg-zinc-800 p-5 rounded-lg border-2 border-purple-300 dark:border-purple-700 text-center">
+                        <div class="text-3xl mb-2">📝</div>
+                        <p class="font-bold text-purple-700 dark:text-purple-400 mb-2">Description</p>
+                        <p class="text-sm text-gray-700 dark:text-gray-300">Optional note</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">What's new?</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- What it does -->
+            <div class="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 p-6 rounded-lg border-2 border-blue-400">
+                <h3 class="text-xl font-bold text-blue-700 dark:text-blue-400 mb-4">✨ What happens automatically:</h3>
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+                        <span class="text-green-500 text-xl">✓</span>
+                        <span>Runs all tests first</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+                        <span class="text-green-500 text-xl">✓</span>
+                        <span>Builds the app package</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+                        <span class="text-green-500 text-xl">✓</span>
+                        <span>Uploads to AWS (US region)</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+                        <span class="text-green-500 text-xl">✓</span>
+                        <span>Uploads to AWS (EU region)</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+                        <span class="text-green-500 text-xl">✓</span>
+                        <span>Sends Slack notification</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+                        <span class="text-red-500 text-xl">⚠️</span>
+                        <span>Stops if tests fail</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- liftck-player: Deploy Workflow Steps -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Deployment: Step-by-Step</h2>
+            <div class="w-16 h-1 bg-primary mb-10"></div>
+            <p class="text-xl text-gray-600 dark:text-gray-300 mb-8">What happens when you click "Deploy"</p>
+
+            <div class="space-y-4">
+                <!-- Step 1-2 -->
+                <div class="bg-white dark:bg-zinc-700 border-l-4 border-blue-600 p-5 rounded-lg shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-blue-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0 text-lg">1-2</div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">📥 Get Ready</h3>
+                            <p class="text-base text-gray-700 dark:text-gray-300 mb-2">Download code + Setup Java</p>
+                            <div class="bg-blue-50 dark:bg-zinc-800 p-3 rounded">
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Same as the PR workflow - get the code and install Java</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 border-l-4 border-orange-600 p-5 rounded-lg">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-orange-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0 text-lg">3</div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">🛑 Safety Check</h3>
+                            <p class="text-base text-gray-700 dark:text-gray-300 mb-3">Run ALL tests before deploying</p>
+                            <div class="bg-white dark:bg-zinc-900 p-3 rounded-lg border-l-4 border-red-500">
+                                <p class="text-sm font-semibold text-red-700 dark:text-red-400">⚠️ If any test fails → STOP! Don't deploy!</p>
+                                <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">Better to catch bugs now than in production</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="bg-white dark:bg-zinc-700 border-l-4 border-purple-600 p-5 rounded-lg shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-purple-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0 text-lg">4</div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">🔑 Connect to AWS</h3>
+                            <p class="text-base text-gray-700 dark:text-gray-300 mb-2">Login to AWS with the right credentials</p>
+                            <div class="bg-purple-50 dark:bg-zinc-800 p-3 rounded">
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Each environment (dev/e2e/prod) has its own password</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5-6 -->
+                <div class="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 border-l-4 border-blue-600 p-5 rounded-lg">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-blue-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0 text-lg">5-6</div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3">🌍 Upload to Cloud</h3>
+                            <p class="text-base text-gray-700 dark:text-gray-300 mb-3">Send your app to AWS S3 in two regions</p>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-white dark:bg-zinc-800 p-4 rounded-lg border-2 border-blue-300">
+                                    <p class="font-bold text-blue-700 dark:text-blue-400 mb-1">🇺🇸 US Region</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">For American users</p>
+                                </div>
+                                <div class="bg-white dark:bg-zinc-800 p-4 rounded-lg border-2 border-blue-300">
+                                    <p class="font-bold text-blue-700 dark:text-blue-400 mb-1">🇪🇺 EU Region</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">For European users</p>
+                                </div>
+                            </div>
+                            <div class="mt-3 bg-white dark:bg-zinc-900 p-3 rounded">
+                                <p class="text-sm text-gray-600 dark:text-gray-400">💡 <strong>Why both?</strong> Faster download speeds for users closer to that region</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 7 -->
+                <div class="bg-white dark:bg-zinc-700 border-l-4 border-green-600 p-5 rounded-lg shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-green-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0 text-lg">7</div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">💬 Announce on Slack</h3>
+                            <p class="text-base text-gray-700 dark:text-gray-300 mb-2">Tell the team: "Deployment complete!"</p>
+                            <div class="flex gap-2 flex-wrap text-sm">
+                                <span class="bg-green-100 dark:bg-green-900/30 px-3 py-1 rounded">✅ Success</span>
+                                <span class="bg-gray-100 dark:bg-zinc-800 px-3 py-1 rounded">Which environment</span>
+                                <span class="bg-gray-100 dark:bg-zinc-800 px-3 py-1 rounded">Which version</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- liftck-player: Workflow Summary -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">liftck-player: Complete CI/CD Pipeline</h2>
+            <div class="w-16 h-1 bg-primary mb-10"></div>
+
+            <!-- Three Workflow Cards - Simplified -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Pull Request CI -->
+                <div class="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/30 dark:to-cyan-900/30 rounded-xl p-6 border-2 border-blue-400 dark:border-blue-600">
+                    <div class="text-center mb-4">
+                        <div class="text-5xl mb-3">🔍</div>
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white">Pull Request CI</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Quality Gates</p>
+                    </div>
+                    <div class="space-y-2 text-base text-gray-700 dark:text-gray-300">
+                        <div class="flex items-center gap-2">
+                            <span class="text-green-500">✓</span>
+                            <span>Lint & Format</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-green-500">✓</span>
+                            <span>Unit Tests</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-blue-500">✓</span>
+                            <span>SonarQube Analysis</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-purple-500">✓</span>
+                            <span>Test Reports</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-blue-300 dark:border-blue-700">
+                        <p class="text-sm text-center font-semibold text-red-600 dark:text-red-400">🚫 Blocks merge if fails</p>
+                    </div>
                 </div>
 
                 <!-- SonarQube Release Scan -->
-                <div class="bg-white dark:bg-zinc-700 rounded-lg p-6 border-2 border-green-500 shadow-lg hover:shadow-xl transition-shadow">
-                    <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4 flex items-center gap-3">
-                        <span class="text-3xl">📊</span>
-                        SonarQube Release Scan
-                    </h3>
-                    <ul class="space-y-3 text-lg">
-                        <li class="flex items-start gap-2">
-                            <span class="text-green-500 mt-0.5">✅</span>
-                            <span class="text-gray-700 dark:text-gray-300">Runs tests with code coverage</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-blue-500 mt-0.5">📊</span>
-                            <span class="text-gray-700 dark:text-gray-300">Performs branch-specific analysis</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-purple-500 mt-0.5">�</span>
-                            <span class="text-gray-700 dark:text-gray-300">Tracks quality metrics over time</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-cyan-500 mt-0.5">ℹ️</span>
-                            <span class="text-gray-700 dark:text-gray-300">Informational only (no blocking)</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-indigo-500 mt-0.5">�</span>
-                            <span class="text-gray-700 dark:text-gray-300">Runs on every push to release branches</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Tech Stack & Key Points -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <!-- Tech Stack -->
-                <div class="bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-500/10 dark:to-indigo-500/10 rounded-lg p-6 border border-purple-200 dark:border-purple-500/30">
-                    <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4 flex items-center gap-3">
-                        <span class="text-3xl">🛠️</span>
-                        Tech Stack
-                    </h3>
-                    <div class="space-y-3 text-lg">
-                        <div class="flex items-center justify-between">
-                            <span class="text-gray-700 dark:text-gray-300 font-medium">Java:</span>
-                            <span class="text-gray-600 dark:text-gray-400">Zulu JDK 11 with JavaFX</span>
+                <div class="bg-gradient-to-br from-cyan-50 to-teal-50 dark:from-cyan-900/30 dark:to-teal-900/30 rounded-xl p-6 border-2 border-cyan-400 dark:border-cyan-600">
+                    <div class="text-center mb-4">
+                        <div class="text-5xl mb-3">�</div>
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white">Release Scan</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Branch Analysis</p>
+                    </div>
+                    <div class="space-y-2 text-base text-gray-700 dark:text-gray-300">
+                        <div class="flex items-center gap-2">
+                            <span class="text-green-500">✓</span>
+                            <span>Test Coverage</span>
                         </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-gray-700 dark:text-gray-300 font-medium">Build Tool:</span>
-                            <span class="text-gray-600 dark:text-gray-400">Gradle with wrapper</span>
+                        <div class="flex items-center gap-2">
+                            <span class="text-cyan-500">✓</span>
+                            <span>Code Quality Metrics</span>
                         </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-gray-700 dark:text-gray-300 font-medium">Coverage:</span>
-                            <span class="text-gray-600 dark:text-gray-400">JaCoCo</span>
+                        <div class="flex items-center gap-2">
+                            <span class="text-purple-500">✓</span>
+                            <span>Historical Tracking</span>
                         </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-gray-700 dark:text-gray-300 font-medium">Quality:</span>
-                            <span class="text-gray-600 dark:text-gray-400">SonarQube</span>
+                        <div class="flex items-center gap-2">
+                            <span class="text-blue-500">✓</span>
+                            <span>Branch-Specific</span>
                         </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-gray-700 dark:text-gray-300 font-medium">Cloud:</span>
-                            <span class="text-gray-600 dark:text-gray-400">AWS S3 (Multi-region)</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-gray-700 dark:text-gray-300 font-medium">Notifications:</span>
-                            <span class="text-gray-600 dark:text-gray-400">Slack</span>
-                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-cyan-300 dark:border-cyan-700">
+                        <p class="text-sm text-center font-semibold text-blue-600 dark:text-blue-400">ℹ️ Informational only</p>
                     </div>
                 </div>
 
-                <!-- Key Points -->
-                <div class="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-500/10 dark:to-cyan-500/10 rounded-lg p-6 border border-blue-200 dark:border-blue-500/30">
-                    <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4 flex items-center gap-3">
-                        <span class="text-3xl">📝</span>
-                        Key Points
-                    </h3>
-                    <ul class="space-y-3 text-lg">
-                        <li class="flex items-start gap-2">
-                            <span class="text-red-500 mt-0.5">⚠️</span>
-                            <span class="text-gray-700 dark:text-gray-300">Pull Request CI enforces quality gates - PRs cannot merge if gates fail</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-orange-500 mt-0.5">🔒</span>
-                            <span class="text-gray-700 dark:text-gray-300">Deploy workflow requires environment-specific AWS credentials</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-blue-500 mt-0.5">📊</span>
-                            <span class="text-gray-700 dark:text-gray-300">SonarQube Release Scan runs automatically on release branches</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-cyan-500 mt-0.5">🌍</span>
-                            <span class="text-gray-700 dark:text-gray-300">Multi-region deployment: US and EU S3 buckets</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-green-500 mt-0.5">⏱️</span>
-                            <span class="text-gray-700 dark:text-gray-300">Longest steps: Tests (3m 36s) + SonarQube (1m 36s) = 5m 12s</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-purple-500 mt-0.5">✅</span>
-                            <span class="text-gray-700 dark:text-gray-300">All workflows use Gradle for builds and JaCoCo for coverage</span>
-                        </li>
-                    </ul>
+                <!-- Deploy to Environment -->
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/30 dark:to-emerald-900/30 rounded-xl p-6 border-2 border-green-400 dark:border-green-600">
+                    <div class="text-center mb-4">
+                        <div class="text-5xl mb-3">🚀</div>
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white">Deployment</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Multi-Region</p>
+                    </div>
+                    <div class="space-y-2 text-base text-gray-700 dark:text-gray-300">
+                        <div class="flex items-center gap-2">
+                            <span class="text-green-500">✓</span>
+                            <span>Pre-Deploy Tests</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-blue-500">✓</span>
+                            <span>Build Package</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-orange-500">✓</span>
+                            <span>AWS S3 (US + EU)</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-purple-500">✓</span>
+                            <span>Slack Notification</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-green-300 dark:border-green-700">
+                        <p class="text-sm text-center font-semibold text-green-600 dark:text-green-400">🎯 dev | e2e | prod</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- Demo Note -->
-            <div class="mt-6 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-500/10 dark:to-emerald-500/10 border-l-4 border-green-500 rounded-lg p-6">
-                <div class="flex items-start gap-4">
-                    <span class="text-4xl">🎬</span>
-                    <div>
-                        <h4 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Demo:</h4>
-                        <p class="text-lg text-gray-700 dark:text-gray-300">Walk through the SonarQube Release Scan workflow, then show Pull Request CI quality gates</p>
-                    </div>
+            <!-- Tech Stack - Simplified -->
+            <div class="mt-10 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl p-6 border border-purple-300 dark:border-purple-700">
+                <div class="flex items-center justify-center gap-6 flex-wrap text-lg">
+                    <span class="bg-white dark:bg-zinc-800 px-4 py-2 rounded-lg shadow-sm font-semibold text-gray-700 dark:text-gray-300">☕ Java 11 + JavaFX</span>
+                    <span class="bg-white dark:bg-zinc-800 px-4 py-2 rounded-lg shadow-sm font-semibold text-gray-700 dark:text-gray-300">🐘 Gradle</span>
+                    <span class="bg-white dark:bg-zinc-800 px-4 py-2 rounded-lg shadow-sm font-semibold text-gray-700 dark:text-gray-300">📊 SonarQube</span>
+                    <span class="bg-white dark:bg-zinc-800 px-4 py-2 rounded-lg shadow-sm font-semibold text-gray-700 dark:text-gray-300">☁️ AWS S3</span>
+                    <span class="bg-white dark:bg-zinc-800 px-4 py-2 rounded-lg shadow-sm font-semibold text-gray-700 dark:text-gray-300">💬 Slack</span>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- loa-player Demo -->
-    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <!-- loa-player: CI/CD Demo Intro -->
+    <div class="slide flex items-center justify-center bg-gradient-to-br from-orange-100 to-red-100 dark:from-orange-900/30 dark:to-red-900/30 p-20">
         <div class="max-w-7xl w-full">
-            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">loa-player: Complete CI/CD Pipeline</h2>
-            <div class="w-16 h-1 bg-primary mb-10"></div>
-            <p class="text-2xl text-gray-600 dark:text-gray-300 mb-12 font-medium">Lift-on-Anything Player - Static web application with multi-region deployment</p>
-
-            <!-- Pipeline Workflows -->
-            <div class="grid grid-cols-1 gap-4 mb-8">
-                <!-- Code Quality -->
-                <div class="bg-yellow-50 dark:bg-yellow-500/10 border-l-4 border-yellow-500 rounded-lg p-4">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-3 flex-1">
-                            <span class="text-2xl">📊</span>
-                            <div class="flex-1">
-                                <div class="flex items-center gap-3">
-                                    <span class="text-lg font-semibold text-gray-800 dark:text-white">Code Quality (SonarQube)</span>
-                                    <span class="px-2 py-1 bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 rounded text-sm font-mono">Test</span>
-                                </div>
-                                <p class="text-sm text-gray-600 dark:text-gray-400">sonar.yml - Coverage analysis, code smells, security</p>
-                            </div>
-                        </div>
-                        <span class="text-lg font-mono text-gray-600 dark:text-gray-400">~3–4m</span>
+            <h2 class="text-6xl font-light text-gray-800 dark:text-white mb-4">loa-player Demo</h2>
+            <div class="w-16 h-1 bg-orange-600 mb-10"></div>
+            <p class="text-3xl text-gray-700 dark:text-gray-300 mb-4">Web app with multiple quality checks</p>
+            <p class="text-2xl text-gray-600 dark:text-gray-400 mb-12">Real example from our codebase</p>
+            
+            <!-- What is it? -->
+            <div class="bg-white dark:bg-zinc-800 rounded-xl p-8 shadow-xl">
+                <h3 class="text-3xl font-bold text-gray-800 dark:text-white mb-6">📱 What is loa-player?</h3>
+                <div class="grid grid-cols-2 gap-6 mb-6">
+                    <div class="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 p-5 rounded-lg">
+                        <p class="text-lg text-gray-700 dark:text-gray-300"><strong>Type:</strong> Web Application</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 p-5 rounded-lg">
+                        <p class="text-lg text-gray-700 dark:text-gray-300"><strong>Language:</strong> TypeScript</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 p-5 rounded-lg">
+                        <p class="text-lg text-gray-700 dark:text-gray-300"><strong>Framework:</strong> Angular</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 p-5 rounded-lg">
+                        <p class="text-lg text-gray-700 dark:text-gray-300"><strong>Runtime:</strong> Node.js 20</p>
                     </div>
                 </div>
 
-                <!-- Lint & Typecheck -->
-                <div class="bg-white dark:bg-zinc-700 border-l-4 border-gray-400 rounded-lg p-4">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-3 flex-1">
-                            <span class="text-2xl">🔍</span>
-                            <div class="flex-1">
-                                <div class="flex items-center gap-3">
-                                    <span class="text-lg font-semibold text-gray-800 dark:text-white">Lint & Typecheck</span>
-                                    <span class="px-2 py-1 bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 rounded text-sm font-mono">Test</span>
-                                </div>
-                                <p class="text-sm text-gray-600 dark:text-gray-400">lint.yml + typecheck.yml - ESLint + TypeScript validation</p>
-                            </div>
+                <div class="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border-l-4 border-green-500 rounded-lg p-6">
+                    <p class="text-lg text-gray-700 dark:text-gray-300">
+                        <strong>Lift-on-Anything Player:</strong> Digital advertising player that runs on casino slot machines
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- loa-player: Workflows Overview -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">loa-player: Automated Workflows</h2>
+            <div class="w-16 h-1 bg-primary mb-10"></div>
+            <p class="text-2xl text-gray-600 dark:text-gray-300 mb-8">6 workflows keep code quality high</p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <!-- Lint -->
+                <div class="bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900/30 dark:to-purple-800/30 p-6 rounded-xl border-2 border-purple-400">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-4xl">🔍</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-purple-700 dark:text-purple-400">Lint Check</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 font-mono">lint.yml</p>
                         </div>
-                        <span class="text-lg font-mono text-gray-600 dark:text-gray-400">~1–2m</span>
                     </div>
+                    <p class="text-base text-gray-700 dark:text-gray-300 mb-2">Checks code style with ESLint</p>
+                    <span class="inline-block bg-purple-200 dark:bg-purple-800 text-purple-800 dark:text-purple-200 px-3 py-1 rounded-full text-sm font-semibold">Auto on PRs</span>
+                </div>
+
+                <!-- Typecheck -->
+                <div class="bg-gradient-to-br from-blue-100 to-cyan-200 dark:from-blue-900/30 dark:to-cyan-800/30 p-6 rounded-xl border-2 border-blue-400">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-4xl">✅</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-blue-700 dark:text-blue-400">Type Check</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 font-mono">typecheck.yml</p>
+                        </div>
+                    </div>
+                    <p class="text-base text-gray-700 dark:text-gray-300 mb-2">TypeScript type validation</p>
+                    <span class="inline-block bg-blue-200 dark:bg-blue-800 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm font-semibold">Auto on all branches</span>
                 </div>
 
                 <!-- Unit Tests -->
-                <div class="bg-yellow-50 dark:bg-yellow-500/10 border-l-4 border-yellow-500 rounded-lg p-4">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-3 flex-1">
-                            <span class="text-2xl">🧪</span>
-                            <div class="flex-1">
-                                <div class="flex items-center gap-3">
-                                    <span class="text-lg font-semibold text-gray-800 dark:text-white">Unit Tests (Player + Emulator)</span>
-                                    <span class="px-2 py-1 bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 rounded text-sm font-mono">Test</span>
-                                </div>
-                                <p class="text-sm text-gray-600 dark:text-gray-400">unit-tests.yml - Vitest tests for both applications</p>
-                            </div>
+                <div class="bg-gradient-to-br from-green-100 to-emerald-200 dark:from-green-900/30 dark:to-emerald-800/30 p-6 rounded-xl border-2 border-green-400">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-4xl">🧪</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-green-700 dark:text-green-400">Unit Tests</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 font-mono">unit-tests.yml</p>
                         </div>
-                        <span class="text-lg font-mono text-gray-600 dark:text-gray-400">~2–3m</span>
                     </div>
+                    <p class="text-base text-gray-700 dark:text-gray-300 mb-2">Vitest tests (player + emulator)</p>
+                    <span class="inline-block bg-green-200 dark:bg-green-800 text-green-800 dark:text-green-200 px-3 py-1 rounded-full text-sm font-semibold">Auto on PRs</span>
                 </div>
 
-                <!-- Coverage Report -->
-                <div class="bg-white dark:bg-zinc-700 border-l-4 border-gray-400 rounded-lg p-4">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-3 flex-1">
-                            <span class="text-2xl">📈</span>
-                            <div class="flex-1">
-                                <div class="flex items-center gap-3">
-                                    <span class="text-lg font-semibold text-gray-800 dark:text-white">Coverage Report</span>
-                                    <span class="px-2 py-1 bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 rounded text-sm font-mono">Test</span>
-                                </div>
-                                <p class="text-sm text-gray-600 dark:text-gray-400">pr-coverage-report.yml - Combined coverage from player + emulator</p>
-                            </div>
+                <!-- Playwright E2E -->
+                <div class="bg-gradient-to-br from-yellow-100 to-orange-200 dark:from-yellow-900/30 dark:to-orange-800/30 p-6 rounded-xl border-2 border-yellow-400">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-4xl">🎭</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-yellow-700 dark:text-yellow-400">E2E Tests</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 font-mono">playwright.yml</p>
                         </div>
-                        <span class="text-lg font-mono text-gray-600 dark:text-gray-400">~2m</span>
                     </div>
+                    <p class="text-base text-gray-700 dark:text-gray-300 mb-2">Playwright browser tests</p>
+                    <span class="inline-block bg-yellow-200 dark:bg-yellow-800 text-yellow-800 dark:text-yellow-200 px-3 py-1 rounded-full text-sm font-semibold">Auto on PRs</span>
                 </div>
 
-                <!-- Integration Tests -->
-                <div class="bg-yellow-50 dark:bg-yellow-500/10 border-l-4 border-yellow-500 rounded-lg p-4">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-3 flex-1">
-                            <span class="text-2xl">🎭</span>
-                            <div class="flex-1">
-                                <div class="flex items-center gap-3">
-                                    <span class="text-lg font-semibold text-gray-800 dark:text-white">Integration Tests (Playwright)</span>
-                                    <span class="px-2 py-1 bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 rounded text-sm font-mono">Test</span>
-                                </div>
-                                <p class="text-sm text-gray-600 dark:text-gray-400">playwright.yml - E2E tests (basket, tc-ads, walkup)</p>
-                            </div>
+                <!-- SonarQube -->
+                <div class="bg-gradient-to-br from-cyan-100 to-teal-200 dark:from-cyan-900/30 dark:to-teal-800/30 p-6 rounded-xl border-2 border-cyan-400">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-4xl">📊</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-cyan-700 dark:text-cyan-400">Code Quality</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 font-mono">sonar.yml</p>
                         </div>
-                        <span class="text-lg font-mono text-gray-600 dark:text-gray-400">~10–15m</span>
                     </div>
+                    <p class="text-base text-gray-700 dark:text-gray-300 mb-2">SonarQube analysis + coverage</p>
+                    <span class="inline-block bg-cyan-200 dark:bg-cyan-800 text-cyan-800 dark:text-cyan-200 px-3 py-1 rounded-full text-sm font-semibold">Auto on PRs</span>
                 </div>
 
-                <!-- Build Application -->
-                <div class="bg-white dark:bg-zinc-700 border-l-4 border-orange-500 rounded-lg p-4">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-3 flex-1">
-                            <span class="text-2xl">📦</span>
-                            <div class="flex-1">
-                                <div class="flex items-center gap-3">
-                                    <span class="text-lg font-semibold text-gray-800 dark:text-white">Build Application</span>
-                                    <span class="px-2 py-1 bg-orange-100 dark:bg-orange-500/20 text-orange-700 dark:text-orange-300 rounded text-sm font-mono">Build</span>
-                                </div>
-                                <p class="text-sm text-gray-600 dark:text-gray-400">Part of deploy workflows - Webpack + Angular build</p>
-                            </div>
+                <!-- Deploy -->
+                <div class="bg-gradient-to-br from-red-100 to-pink-200 dark:from-red-900/30 dark:to-pink-800/30 p-6 rounded-xl border-2 border-red-400">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-4xl">🚀</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-red-700 dark:text-red-400">Deploy</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 font-mono">deploy-dynamic-*.yml</p>
                         </div>
-                        <span class="text-lg font-mono text-gray-600 dark:text-gray-400">~3–5m</span>
                     </div>
-                </div>
-
-                <!-- Deploy to S3/CloudFront -->
-                <div class="bg-yellow-50 dark:bg-yellow-500/10 border-l-4 border-green-500 rounded-lg p-4">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-3 flex-1">
-                            <span class="text-2xl">🚀</span>
-                            <div class="flex-1">
-                                <div class="flex items-center gap-3">
-                                    <span class="text-lg font-semibold text-gray-800 dark:text-white">Deploy to S3/CloudFront (Multi-region)</span>
-                                    <span class="px-2 py-1 bg-green-100 dark:bg-green-500/20 text-green-700 dark:text-green-300 rounded text-sm font-mono">Deploy</span>
-                                </div>
-                                <p class="text-sm text-gray-600 dark:text-gray-400">deploy-dynamic-na.yml + deploy-dynamic-eu.yml</p>
-                            </div>
-                        </div>
-                        <span class="text-lg font-mono text-gray-600 dark:text-gray-400">~2–3m</span>
-                    </div>
-                </div>
-
-                <!-- Release Record -->
-                <div class="bg-white dark:bg-zinc-700 border-l-4 border-purple-500 rounded-lg p-4">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-3 flex-1">
-                            <span class="text-2xl">📢</span>
-                            <div class="flex-1">
-                                <div class="flex items-center gap-3">
-                                    <span class="text-lg font-semibold text-gray-800 dark:text-white">Release Record + Notifications</span>
-                                    <span class="px-2 py-1 bg-purple-100 dark:bg-purple-500/20 text-purple-700 dark:text-purple-300 rounded text-sm font-mono">Release</span>
-                                </div>
-                                <p class="text-sm text-gray-600 dark:text-gray-400">Lift API + Slack (#loa-releases)</p>
-                            </div>
-                        </div>
-                        <span class="text-lg font-mono text-gray-600 dark:text-gray-400">~30s</span>
-                    </div>
+                    <p class="text-base text-gray-700 dark:text-gray-300 mb-2">Build + deploy to AWS S3</p>
+                    <span class="inline-block bg-red-200 dark:bg-red-800 text-red-800 dark:text-red-200 px-3 py-1 rounded-full text-sm font-semibold">Manual or Auto</span>
                 </div>
             </div>
 
-            <!-- Key Information -->
-            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-500/10 dark:to-indigo-500/10 border-l-4 border-blue-500 p-6 rounded-xl">
-                <div class="flex items-start gap-4">
-                    <span class="text-3xl">✨</span>
-                    <div class="flex-1">
-                        <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-3">Key Difference:</h3>
-                        <p class="text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
-                            Deploys to S3/CloudFront (static files), not Docker/ECR
-                        </p>
+            <!-- Quick Stats -->
+            <div class="bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 p-6 rounded-lg border-2 border-indigo-400">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">⚡ Quick Facts</h3>
+                <div class="grid grid-cols-3 gap-4 text-center">
+                    <div>
+                        <p class="text-3xl font-bold text-indigo-600 dark:text-indigo-400">6</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Automated workflows</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-bold text-purple-600 dark:text-purple-400">3 envs</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">dev, qa, prod</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-bold text-pink-600 dark:text-pink-400">Multi-region</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">US + Canada</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- loa-player Architecture -->
+    <!-- loa-player: Code Quality Workflows -->
     <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
         <div class="max-w-7xl w-full">
-            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">loa-player: Deployment Architecture</h2>
-            <div class="w-16 h-1 bg-primary mb-10"></div>
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Code Quality Workflows</h2>
+            <div class="w-16 h-1 bg-purple-600 mb-10"></div>
+            <p class="text-2xl text-gray-600 dark:text-gray-300 mb-8">Catching problems before they reach production</p>
 
-            <!-- Deployment Flow -->
+            <!-- Lint + Typecheck -->
             <div class="mb-8">
-                <div class="bg-gradient-to-r from-purple-50 to-indigo-50 dark:from-purple-500/10 dark:to-indigo-500/10 border border-purple-200 dark:border-purple-500/30 rounded-xl p-6 mb-6">
-                    <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4 flex items-center gap-3">
-                        <span class="text-3xl">🏗️</span>
-                        Deployment Architecture
-                    </h3>
-                    <p class="text-xl text-gray-700 dark:text-gray-300 font-mono mb-4">
-                        GitHub → Build (Webpack/Angular) → S3 Bucket → CloudFront CDN → Users
-                    </p>
-                </div>
-
-                <!-- Regional Deployment -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <div class="bg-white dark:bg-zinc-700 border-l-4 border-blue-500 rounded-lg p-6">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="text-3xl">🌎</span>
-                            <h3 class="text-2xl font-semibold text-gray-800 dark:text-white">North America</h3>
-                        </div>
-                        <div class="space-y-2 text-lg">
-                            <div class="flex items-start gap-2">
-                                <span class="text-blue-500">🌐</span>
-                                <div>
-                                    <span class="font-semibold text-gray-700 dark:text-gray-300">Envs:</span>
-                                    <span class="text-gray-600 dark:text-gray-400"> dev (cyan), qa (green), prod (yellow)</span>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-2">
-                                <span class="text-blue-500">🏢</span>
-                                <div>
-                                    <span class="font-semibold text-gray-700 dark:text-gray-300">Tenants:</span>
-                                    <span class="text-gray-600 dark:text-gray-400"> US, CA</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-white dark:bg-zinc-700 border-l-4 border-green-500 rounded-lg p-6">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="text-3xl">🌍</span>
-                            <h3 class="text-2xl font-semibold text-gray-800 dark:text-white">Europe</h3>
-                        </div>
-                        <div class="space-y-2 text-lg">
-                            <div class="flex items-start gap-2">
-                                <span class="text-green-500">🌐</span>
-                                <div>
-                                    <span class="font-semibold text-gray-700 dark:text-gray-300">Envs:</span>
-                                    <span class="text-gray-600 dark:text-gray-400"> eu-dev (teal), eu-qa (dark green), eu-prod (orange)</span>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-2">
-                                <span class="text-green-500">🏢</span>
-                                <div>
-                                    <span class="font-semibold text-gray-700 dark:text-gray-300">Tenants:</span>
-                                    <span class="text-gray-600 dark:text-gray-400"> SE</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Notes Section -->
-            <div class="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-500/10 dark:to-cyan-500/10 border border-blue-200 dark:border-blue-500/30 rounded-xl p-6">
-                <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4 flex items-center gap-3">
-                    <span class="text-3xl">📝</span>
-                    Notes
+                <h3 class="text-3xl font-bold text-gray-800 dark:text-white mb-4 flex items-center gap-3">
+                    <span class="bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-full w-10 h-10 flex items-center justify-center text-xl">1</span>
+                    Lint + Type Check (Fast Checks)
                 </h3>
-                <ul class="space-y-3 text-lg text-gray-700 dark:text-gray-300">
-                    <li class="flex items-start gap-3">
-                        <span class="text-yellow-500 mt-1">✨</span>
-                        <div><span class="font-semibold">Key Difference:</span> Deploys to S3/CloudFront (static files), not Docker/ECR</div>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span class="text-blue-500 mt-1">🌐</span>
-                        <div><span class="font-semibold">Multi-region:</span> Separate NA and EU deployments with different domains</div>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span class="text-orange-500 mt-1">📦</span>
-                        <div><span class="font-semibold">Version Strategy:</span> YYYYMMDDHHMMSS.{git-hash} (e.g., 20251114153045.a7b3c2d)</div>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span class="text-cyan-500 mt-1">📂</span>
-                        <div><span class="font-semibold">Zero-downtime:</span> Versioned folders + redirect files enable instant rollback</div>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span class="text-red-500 mt-1">�</span>
-                        <div><span class="font-semibold">6 Parallel Test Workflows:</span> SonarQube, Lint, Typecheck, Unit, Coverage, Playwright</div>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span class="text-purple-500 mt-1">🚀</span>
-                        <div><span class="font-semibold">3 Environments per Region:</span> dev, qa, prod (triggered by branch)</div>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span class="text-indigo-500 mt-1">📊</span>
-                        <div><span class="font-semibold">Branch Strategy:</span> dev → dev env, release/* → qa, master → prod</div>
-                    </li>
-                </ul>
+                <div class="bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 p-6 rounded-lg border-l-4 border-purple-500">
+                    <p class="text-xl text-gray-800 dark:text-gray-200 mb-4"><strong>What Happens Step-by-Step?</strong></p>
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-3">
+                            <span class="bg-purple-200 dark:bg-purple-800 text-purple-800 dark:text-purple-200 rounded-full px-3 py-1 text-sm font-bold">1-2</span>
+                            <div class="flex-1">
+                                <p class="text-base text-gray-700 dark:text-gray-300"><strong>Setup:</strong> Checkout code + Install Node.js 20</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 italic mt-1">Why? Get the code and tools ready</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="bg-blue-200 dark:bg-blue-800 text-blue-800 dark:text-blue-200 rounded-full px-3 py-1 text-sm font-bold">3</span>
+                            <div class="flex-1">
+                                <p class="text-base text-gray-700 dark:text-gray-300"><strong>Install dependencies:</strong> <code>npm ci</code></p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 italic mt-1">Why? Get all the libraries the app needs</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="bg-purple-200 dark:bg-purple-800 text-purple-800 dark:text-purple-200 rounded-full px-3 py-1 text-sm font-bold">4</span>
+                            <div class="flex-1">
+                                <p class="text-base text-gray-700 dark:text-gray-300"><strong>Lint:</strong> Run ESLint to check code style</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 italic mt-1">Why? Catch formatting mistakes and bad patterns</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="bg-blue-200 dark:bg-blue-800 text-blue-800 dark:text-blue-200 rounded-full px-3 py-1 text-sm font-bold">5</span>
+                            <div class="flex-1">
+                                <p class="text-base text-gray-700 dark:text-gray-300"><strong>TypeCheck:</strong> Run <code>npm run typecheck</code></p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 italic mt-1">Why? Make sure TypeScript types are correct</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex items-center gap-2 text-sm">
+                        <span class="text-gray-600 dark:text-gray-400">⏱️ Takes about:</span>
+                        <span class="bg-purple-200 dark:bg-purple-800 text-purple-800 dark:text-purple-200 px-3 py-1 rounded-full font-semibold">1-2 minutes each</span>
+                    </div>
+                </div>
             </div>
 
-            <!-- Demo Note -->
-            <div class="mt-6 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-500/10 dark:to-emerald-500/10 border-l-4 border-green-500 rounded-lg p-6">
-                <div class="flex items-start gap-4">
-                    <span class="text-4xl">🎬</span>
-                    <div>
-                        <h4 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Demo:</h4>
-                        <p class="text-lg text-gray-700 dark:text-gray-300">Walk through the complete pipeline showing parallel test execution and multi-region deployment</p>
+            <!-- SonarQube -->
+            <div>
+                <h3 class="text-3xl font-bold text-gray-800 dark:text-white mb-4 flex items-center gap-3">
+                    <span class="bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400 rounded-full w-10 h-10 flex items-center justify-center text-xl">2</span>
+                    SonarQube (Deep Analysis)
+                </h3>
+                <div class="bg-gradient-to-br from-cyan-50 to-teal-50 dark:from-cyan-900/20 dark:to-teal-900/20 p-6 rounded-lg border-l-4 border-cyan-500">
+                    <p class="text-xl text-gray-800 dark:text-gray-200 mb-4"><strong>What Happens Step-by-Step?</strong></p>
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-3">
+                            <span class="bg-cyan-200 dark:bg-cyan-800 text-cyan-800 dark:text-cyan-200 rounded-full px-3 py-1 text-sm font-bold">1-3</span>
+                            <div class="flex-1">
+                                <p class="text-base text-gray-700 dark:text-gray-300"><strong>Setup:</strong> Checkout + Node 18 + Install dependencies</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 italic mt-1">Why? Prepare environment (uses Node 18 for compatibility)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="bg-teal-200 dark:bg-teal-800 text-teal-800 dark:text-teal-200 rounded-full px-3 py-1 text-sm font-bold">4</span>
+                            <div class="flex-1">
+                                <p class="text-base text-gray-700 dark:text-gray-300"><strong>Run tests:</strong> <code>npm run test-coverage</code></p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 italic mt-1">Why? Generate coverage report for SonarQube</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="bg-cyan-200 dark:bg-cyan-800 text-cyan-800 dark:text-cyan-200 rounded-full px-3 py-1 text-sm font-bold">5</span>
+                            <div class="flex-1">
+                                <p class="text-base text-gray-700 dark:text-gray-300"><strong>Scan code:</strong> Send to SonarQube for analysis</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 italic mt-1">Why? Find bugs, code smells, and security issues</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex items-center gap-2 text-sm">
+                        <span class="text-gray-600 dark:text-gray-400">⏱️ Takes about:</span>
+                        <span class="bg-cyan-200 dark:bg-cyan-800 text-cyan-800 dark:text-cyan-200 px-3 py-1 rounded-full font-semibold">3-4 minutes</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Architecture Comparison -->
-    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 min-h-screen p-8 md:p-20">
+    <!-- loa-player: Testing Workflows -->
+    <div class="slide flex items-center justify-center bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/30 dark:to-emerald-900/30 p-20">
         <div class="max-w-7xl w-full">
-            <!-- Header -->
-            <div class="mb-12">
-                <h2 class="text-4xl md:text-5xl font-light text-gray-800 dark:text-white mb-4">
-                    Different Deployment Patterns
-                </h2>
-                <div class="w-20 h-1 bg-primary rounded-full"></div>
-            </div>
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Testing Workflows</h2>
+            <div class="w-16 h-1 bg-green-600 mb-10"></div>
+            <p class="text-2xl text-gray-600 dark:text-gray-300 mb-8">Making sure everything works</p>
 
-            <!-- Subtitle -->
-            <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 font-medium">
-                Not all applications follow the same deployment pattern
-            </p>
-
-            <!-- Deployment Pattern Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                <!-- Container-based -->
-                <div class="bg-gradient-to-br from-blue-50 to-blue-100/30 dark:from-blue-500/10 dark:to-blue-500/5 border-l-4 border-blue-500 p-8 rounded-2xl shadow-sm">
-                    <div class="flex items-start gap-4 mb-6">
-                        <span class="text-5xl">🐳</span>
-                        <div>
-                            <h3 class="text-2xl font-bold text-blue-700 dark:text-blue-300 mb-2">Container-based</h3>
-                            <p class="text-lg text-gray-600 dark:text-gray-400 font-mono">(liftck-player)</p>
+            <!-- Unit Tests -->
+            <div class="mb-8">
+                <h3 class="text-3xl font-bold text-gray-800 dark:text-white mb-4 flex items-center gap-3">
+                    <span class="bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-full w-10 h-10 flex items-center justify-center text-xl">1</span>
+                    Unit Tests (Quick Checks)
+                </h3>
+                <div class="bg-white dark:bg-zinc-800 p-6 rounded-lg border-l-4 border-green-500 shadow-lg">
+                    <p class="text-xl text-gray-800 dark:text-gray-200 mb-4"><strong>What Happens Step-by-Step?</strong></p>
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-3">
+                            <span class="bg-green-200 dark:bg-green-800 text-green-800 dark:text-green-200 rounded-full px-3 py-1 text-sm font-bold">1-3</span>
+                            <div class="flex-1">
+                                <p class="text-base text-gray-700 dark:text-gray-300"><strong>Setup:</strong> Checkout code + Node 20 + Dependencies</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 italic mt-1">Why? Get ready to run tests</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="bg-emerald-200 dark:bg-emerald-800 text-emerald-800 dark:text-emerald-200 rounded-full px-3 py-1 text-sm font-bold">4</span>
+                            <div class="flex-1">
+                                <p class="text-base text-gray-700 dark:text-gray-300"><strong>Test player:</strong> Run Vitest for player code</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 italic mt-1">Why? Test individual functions and components</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="bg-green-200 dark:bg-green-800 text-green-800 dark:text-green-200 rounded-full px-3 py-1 text-sm font-bold">5</span>
+                            <div class="flex-1">
+                                <p class="text-base text-gray-700 dark:text-gray-300"><strong>Test emulator:</strong> Run Angular emulator tests</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 italic mt-1">Why? Make sure the emulator works too</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="space-y-3 mb-6 text-lg text-gray-700 dark:text-gray-300">
-                        <div class="flex items-center gap-2">
-                            <span class="text-primary">→</span>
-                            <span>Build → Docker Image</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="text-primary">→</span>
-                            <span>Push to ECR</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="text-primary">→</span>
-                            <span>Deploy to ECS</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="text-primary">→</span>
-                            <span>Load Balancer distributes</span>
-                        </div>
-                    </div>
-                    <div class="pt-4 border-t-2 border-blue-200 dark:border-blue-700">
-                        <span class="font-semibold text-blue-800 dark:text-blue-200">Use Case:</span>
-                        <span class="text-gray-700 dark:text-gray-300"> Backend services, APIs, microservices</span>
-                    </div>
-                </div>
-
-                <!-- Static Site -->
-                <div class="bg-gradient-to-br from-blue-50 to-blue-100/30 dark:from-blue-500/10 dark:to-blue-500/5 border-l-4 border-blue-500 p-8 rounded-2xl shadow-sm">
-                    <div class="flex items-start gap-4 mb-6">
-                        <span class="text-5xl">📄</span>
-                        <div>
-                            <h3 class="text-2xl font-bold text-blue-700 dark:text-blue-300 mb-2">Static Site</h3>
-                            <p class="text-lg text-gray-600 dark:text-gray-400 font-mono">(loa-player)</p>
-                        </div>
-                    </div>
-                    <div class="space-y-3 mb-6 text-lg text-gray-700 dark:text-gray-300">
-                        <div class="flex items-center gap-2">
-                            <span class="text-primary">→</span>
-                            <span>Build → Static files</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="text-primary">→</span>
-                            <span>Upload to S3</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="text-primary">→</span>
-                            <span>Serve via CloudFront</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="text-primary">→</span>
-                            <span>Versioned folders</span>
-                        </div>
-                    </div>
-                    <div class="pt-4 border-t-2 border-blue-200 dark:border-blue-700">
-                        <span class="font-semibold text-blue-800 dark:text-blue-200">Use Case:</span>
-                        <span class="text-gray-700 dark:text-gray-300"> Frontend apps, SPAs, static content</span>
+                    <div class="mt-4 flex items-center gap-2 text-sm">
+                        <span class="text-gray-600 dark:text-gray-400">⏱️ Takes about:</span>
+                        <span class="bg-green-200 dark:bg-green-800 text-green-800 dark:text-green-200 px-3 py-1 rounded-full font-semibold">2-3 minutes</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Key Point -->
-            <div class="bg-gradient-to-r from-yellow-50 to-amber-50 dark:from-yellow-900/20 dark:to-amber-900/20 border-l-4 border-accent p-8 rounded-2xl shadow-sm">
-                <div class="flex items-start gap-4">
-                    <span class="text-3xl">💡</span>
-                    <div class="flex-1">
-                        <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200 mb-3">Key Point:</h3>
-                        <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                            Both follow CI/CD principles, but adapt the deployment stage to match application architecture
-                        </p>
+            <!-- Playwright E2E -->
+            <div>
+                <h3 class="text-3xl font-bold text-gray-800 dark:text-white mb-4 flex items-center gap-3">
+                    <span class="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 rounded-full w-10 h-10 flex items-center justify-center text-xl">2</span>
+                    Playwright E2E (Full Experience)
+                </h3>
+                <div class="bg-white dark:bg-zinc-800 p-6 rounded-lg border-l-4 border-yellow-500 shadow-lg">
+                    <p class="text-xl text-gray-800 dark:text-gray-200 mb-4"><strong>What Happens Step-by-Step?</strong></p>
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-3">
+                            <span class="bg-yellow-200 dark:bg-yellow-800 text-yellow-800 dark:text-yellow-200 rounded-full px-3 py-1 text-sm font-bold">1-2</span>
+                            <div class="flex-1">
+                                <p class="text-base text-gray-700 dark:text-gray-300"><strong>Setup:</strong> Checkout + Node 20 + Playwright browsers</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 italic mt-1">Why? Need real browsers for testing</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="bg-orange-200 dark:bg-orange-800 text-orange-800 dark:text-orange-200 rounded-full px-3 py-1 text-sm font-bold">3-4</span>
+                            <div class="flex-1">
+                                <p class="text-base text-gray-700 dark:text-gray-300"><strong>Build:</strong> Build Angular app + emulator</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 italic mt-1">Why? Need production-like builds to test</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="bg-yellow-200 dark:bg-yellow-800 text-yellow-800 dark:text-yellow-200 rounded-full px-3 py-1 text-sm font-bold">5</span>
+                            <div class="flex-1">
+                                <p class="text-base text-gray-700 dark:text-gray-300"><strong>Start server:</strong> Run app in background (wait 45s)</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 italic mt-1">Why? Tests need a running server to interact with</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="bg-orange-200 dark:bg-orange-800 text-orange-800 dark:text-orange-200 rounded-full px-3 py-1 text-sm font-bold">6</span>
+                            <div class="flex-1">
+                                <p class="text-base text-gray-700 dark:text-gray-300"><strong>Run E2E tests:</strong> Playwright tests real user scenarios</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 italic mt-1">Why? Test like a real user would use the app</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="bg-yellow-200 dark:bg-yellow-800 text-yellow-800 dark:text-yellow-200 rounded-full px-3 py-1 text-sm font-bold">7</span>
+                            <div class="flex-1">
+                                <p class="text-base text-gray-700 dark:text-gray-300"><strong>Save results:</strong> Upload test reports as artifacts</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 italic mt-1">Why? Can review test results and screenshots later</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex items-center gap-2 text-sm">
+                        <span class="text-gray-600 dark:text-gray-400">⏱️ Takes about:</span>
+                        <span class="bg-yellow-200 dark:bg-yellow-800 text-yellow-800 dark:text-yellow-200 px-3 py-1 rounded-full font-semibold">10-15 minutes</span>
+                        <span class="text-gray-600 dark:text-gray-400">(15min timeout)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- loa-player: Deployment Overview -->
+    <div class="slide flex items-center justify-center bg-gradient-to-br from-red-50 to-pink-50 dark:from-red-900/30 dark:to-pink-900/30 p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Deployment Strategy</h2>
+            <div class="w-16 h-1 bg-red-600 mb-10"></div>
+            <p class="text-2xl text-gray-600 dark:text-gray-300 mb-8">Multi-environment, multi-region deployment</p>
+
+            <!-- Deployment Concept -->
+            <div class="bg-white dark:bg-zinc-800 p-8 rounded-lg shadow-xl mb-8">
+                <h3 class="text-3xl font-bold text-gray-800 dark:text-white mb-6">🌍 What makes this deployment special?</h3>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+                    <!-- Environments -->
+                    <div class="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 p-5 rounded-lg border-2 border-blue-400">
+                        <h4 class="text-xl font-bold text-blue-700 dark:text-blue-400 mb-3">3 Environments</h4>
+                        <div class="space-y-2">
+                            <div class="bg-white dark:bg-zinc-800 p-2 rounded">
+                                <span class="text-sm font-mono text-gray-700 dark:text-gray-300">dev</span>
+                                <p class="text-xs text-gray-600 dark:text-gray-400">Development testing</p>
+                            </div>
+                            <div class="bg-white dark:bg-zinc-800 p-2 rounded">
+                                <span class="text-sm font-mono text-gray-700 dark:text-gray-300">qa</span>
+                                <p class="text-xs text-gray-600 dark:text-gray-400">Quality assurance</p>
+                            </div>
+                            <div class="bg-white dark:bg-zinc-800 p-2 rounded">
+                                <span class="text-sm font-mono text-gray-700 dark:text-gray-300">prod</span>
+                                <p class="text-xs text-gray-600 dark:text-gray-400">Production (live)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tenants -->
+                    <div class="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 p-5 rounded-lg border-2 border-green-400">
+                        <h4 class="text-xl font-bold text-green-700 dark:text-green-400 mb-3">Multi-Tenant</h4>
+                        <div class="space-y-2">
+                            <div class="bg-white dark:bg-zinc-800 p-2 rounded">
+                                <span class="text-sm font-mono text-gray-700 dark:text-gray-300">us</span>
+                                <p class="text-xs text-gray-600 dark:text-gray-400">United States</p>
+                            </div>
+                            <div class="bg-white dark:bg-zinc-800 p-2 rounded">
+                                <span class="text-sm font-mono text-gray-700 dark:text-gray-300">ca</span>
+                                <p class="text-xs text-gray-600 dark:text-gray-400">Canada</p>
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-3 italic">Different regions need different builds</p>
+                    </div>
+
+                    <!-- Versioning -->
+                    <div class="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 p-5 rounded-lg border-2 border-purple-400">
+                        <h4 class="text-xl font-bold text-purple-700 dark:text-purple-400 mb-3">Versioned Releases</h4>
+                        <div class="bg-white dark:bg-zinc-800 p-3 rounded mb-2">
+                            <p class="text-xs text-gray-600 dark:text-gray-400 mb-1">Version format:</p>
+                            <code class="text-sm text-purple-600 dark:text-purple-400">20250122143045.abc1234</code>
+                            <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">timestamp + git commit</p>
+                        </div>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 italic">Can rollback to any version</p>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 border-l-4 border-yellow-500 rounded-lg p-4">
+                    <p class="text-sm text-gray-700 dark:text-gray-300">
+                        <strong>💡 Why this matters:</strong> Same code can be deployed to different environments and regions, with each deployment tracked by version. This makes it safe to test changes before going to production.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Deployment Triggers -->
+            <div class="bg-white dark:bg-zinc-800 p-6 rounded-lg shadow-xl">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">When does deployment run?</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-gradient-to-br from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 p-4 rounded-lg">
+                        <span class="text-2xl">🔘</span>
+                        <p class="text-lg font-bold text-gray-800 dark:text-white mt-2">Manual</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Click button to deploy specific version to any environment</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 p-4 rounded-lg">
+                        <span class="text-2xl">⚡</span>
+                        <p class="text-lg font-bold text-gray-800 dark:text-white mt-2">Auto</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Auto-deploys when code is pushed to <code>dev</code>, <code>release/*</code>, or <code>master</code></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- loa-player: Deployment Workflow -->
+    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Deployment Workflow</h2>
+            <div class="w-16 h-1 bg-red-600 mb-10"></div>
+            <p class="text-2xl text-gray-600 dark:text-gray-300 mb-8">How deployment actually works</p>
+
+            <div class="bg-gradient-to-br from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 p-8 rounded-lg">
+                <p class="text-xl text-gray-800 dark:text-gray-200 mb-6"><strong>What Happens Step-by-Step?</strong></p>
+                
+                <div class="space-y-4">
+                    <div class="flex items-start gap-3">
+                        <span class="bg-red-200 dark:bg-red-800 text-red-800 dark:text-red-200 rounded-full px-3 py-1 text-sm font-bold">1-2</span>
+                        <div class="flex-1">
+                            <p class="text-base text-gray-700 dark:text-gray-300"><strong>Setup:</strong> Checkout code + Set up AWS credentials</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 italic mt-1">Why? Need code and permission to upload to AWS</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                        <span class="bg-pink-200 dark:bg-pink-800 text-pink-800 dark:text-pink-200 rounded-full px-3 py-1 text-sm font-bold">3</span>
+                        <div class="flex-1">
+                            <p class="text-base text-gray-700 dark:text-gray-300"><strong>Determine environment:</strong> Figure out dev/qa/prod</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 italic mt-1">Why? Different environments have different settings</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                        <span class="bg-red-200 dark:bg-red-800 text-red-800 dark:text-red-200 rounded-full px-3 py-1 text-sm font-bold">4</span>
+                        <div class="flex-1">
+                            <p class="text-base text-gray-700 dark:text-gray-300"><strong>Create version:</strong> Generate timestamp + git commit ID</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 italic mt-1">Why? Unique version number for this release (e.g., 20250122143045.abc1234)</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                        <span class="bg-pink-200 dark:bg-pink-800 text-pink-800 dark:text-pink-200 rounded-full px-3 py-1 text-sm font-bold">5</span>
+                        <div class="flex-1">
+                            <p class="text-base text-gray-700 dark:text-gray-300"><strong>Build app:</strong> Run <code>npm run build</code> with versioned path</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 italic mt-1">Why? Create production-ready files with correct URLs</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                        <span class="bg-red-200 dark:bg-red-800 text-red-800 dark:text-red-200 rounded-full px-3 py-1 text-sm font-bold">6</span>
+                        <div class="flex-1">
+                            <p class="text-base text-gray-700 dark:text-gray-300"><strong>Create folders:</strong> Make version-specific folders in S3</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 italic mt-1">Why? Each version gets its own folder so we can keep old versions</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                        <span class="bg-pink-200 dark:bg-pink-800 text-pink-800 dark:text-pink-200 rounded-full px-3 py-1 text-sm font-bold">7</span>
+                        <div class="flex-1">
+                            <p class="text-base text-gray-700 dark:text-gray-300"><strong>Update redirects:</strong> Point index.html to new version</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 italic mt-1">Why? Users automatically get the latest version</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                        <span class="bg-red-200 dark:bg-red-800 text-red-800 dark:text-red-200 rounded-full px-3 py-1 text-sm font-bold">8</span>
+                        <div class="flex-1">
+                            <p class="text-base text-gray-700 dark:text-gray-300"><strong>Deploy to S3:</strong> Upload all files to AWS S3 bucket</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 italic mt-1">Why? S3 hosts the static website files</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                        <span class="bg-pink-200 dark:bg-pink-800 text-pink-800 dark:text-pink-200 rounded-full px-3 py-1 text-sm font-bold">9</span>
+                        <div class="flex-1">
+                            <p class="text-base text-gray-700 dark:text-gray-300"><strong>Invalidate CloudFront:</strong> Clear CDN cache</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 italic mt-1">Why? Make sure users get the new version, not cached old files</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                        <span class="bg-red-200 dark:bg-red-800 text-red-800 dark:text-red-200 rounded-full px-3 py-1 text-sm font-bold">10</span>
+                        <div class="flex-1">
+                            <p class="text-base text-gray-700 dark:text-gray-300"><strong>Publish release:</strong> Send release info to API</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 italic mt-1">Why? Track which versions are deployed where</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                        <span class="bg-pink-200 dark:bg-pink-800 text-pink-800 dark:text-pink-200 rounded-full px-3 py-1 text-sm font-bold">11</span>
+                        <div class="flex-1">
+                            <p class="text-base text-gray-700 dark:text-gray-300"><strong>Notify team:</strong> Send Slack message to #loa-releases</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 italic mt-1">Why? Team knows deployment succeeded (color-coded by environment)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 flex items-center gap-2 text-sm">
+                    <span class="text-gray-600 dark:text-gray-400">⏱️ Takes about:</span>
+                    <span class="bg-red-200 dark:bg-red-800 text-red-800 dark:text-red-200 px-3 py-1 rounded-full font-semibold">5-8 minutes</span>
+                </div>
+            </div>
+
+            <!-- Environment Colors -->
+            <div class="mt-6 bg-white dark:bg-zinc-800 p-6 rounded-lg shadow-xl">
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">🎨 Slack Notification Colors</h3>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="bg-cyan-100 dark:bg-cyan-900/30 p-3 rounded-lg border-2 border-cyan-400">
+                        <p class="text-sm font-bold text-cyan-700 dark:text-cyan-400">Dev</p>
+                        <code class="text-xs text-gray-600 dark:text-gray-400">#00fcfc</code>
+                    </div>
+                    <div class="bg-green-100 dark:bg-green-900/30 p-3 rounded-lg border-2 border-green-400">
+                        <p class="text-sm font-bold text-green-700 dark:text-green-400">QA</p>
+                        <code class="text-xs text-gray-600 dark:text-gray-400">#58d854</code>
+                    </div>
+                    <div class="bg-yellow-100 dark:bg-yellow-900/30 p-3 rounded-lg border-2 border-yellow-400">
+                        <p class="text-sm font-bold text-yellow-700 dark:text-yellow-400">Prod</p>
+                        <code class="text-xs text-gray-600 dark:text-gray-400">#f8d878</code>
                     </div>
                 </div>
             </div>
