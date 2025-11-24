@@ -70,60 +70,118 @@
     </div>
 
         <!-- Slide 2: The 8 CI/CD Phases -->
-    <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
+    <div class="slide flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-zinc-900 dark:to-zinc-800 p-20">
         <div class="max-w-7xl w-full">
-            <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">The 8 CI/CD Phases</h2>
-            <div class="w-16 h-1 bg-primary mb-10"></div>
-            <p class="text-2xl text-gray-600 dark:text-gray-300 mb-12 font-medium">An infinite loop of continuous
-                improvement</p>
+            <div class="text-center mb-12">
+                <h2 class="text-6xl font-light text-gray-800 dark:text-white mb-4">The 8 CI/CD Phases</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-primary to-purple-500 mx-auto mb-6 rounded-full"></div>
+                <p class="text-2xl text-gray-600 dark:text-gray-300 font-medium">An infinite loop of continuous improvement</p>
+            </div>
+
+            <!-- Phase Cards Grid -->
             <div class="grid grid-cols-4 gap-6">
-                <div
-                    class="bg-blue-500 text-white p-8 rounded-xl hover:scale-105 transition-transform cursor-pointer flex flex-col items-center justify-center text-center">
-                    <span class="text-6xl mb-4">📋</span>
-                    <span class="text-4xl font-bold mb-2">1</span>
-                    <span class="text-2xl font-semibold">Plan</span>
+                <!-- Phase 1: Plan -->
+                <div class="group relative bg-gradient-to-br from-blue-500 to-blue-600 text-white p-8 rounded-2xl hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer">
+                    <div class="absolute top-0 right-0 bg-white/20 rounded-bl-3xl rounded-tr-2xl px-4 py-2">
+                        <span class="text-3xl font-bold">1</span>
+                    </div>
+                    <div class="flex flex-col items-center justify-center text-center mt-4">
+                        <div class="text-7xl mb-4 transform group-hover:scale-110 transition-transform duration-300">📋</div>
+                        <span class="text-2xl font-bold">Plan</span>
+                        <span class="text-sm mt-2 opacity-90">Requirements & Strategy</span>
+                    </div>
+                    <div class="absolute inset-0 bg-white/0 group-hover:bg-white/10 rounded-2xl transition-all duration-300"></div>
                 </div>
-                <div
-                    class="bg-purple-500 text-white p-8 rounded-xl hover:scale-105 transition-transform cursor-pointer flex flex-col items-center justify-center text-center">
-                    <span class="text-6xl mb-4">💻</span>
-                    <span class="text-4xl font-bold mb-2">2</span>
-                    <span class="text-2xl font-semibold">Code</span>
+
+                <!-- Phase 2: Code -->
+                <div class="group relative bg-gradient-to-br from-purple-500 to-purple-600 text-white p-8 rounded-2xl hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer">
+                    <div class="absolute top-0 right-0 bg-white/20 rounded-bl-3xl rounded-tr-2xl px-4 py-2">
+                        <span class="text-3xl font-bold">2</span>
+                    </div>
+                    <div class="flex flex-col items-center justify-center text-center mt-4">
+                        <div class="text-7xl mb-4 transform group-hover:scale-110 transition-transform duration-300">💻</div>
+                        <span class="text-2xl font-bold">Code</span>
+                        <span class="text-sm mt-2 opacity-90">Version Control</span>
+                    </div>
+                    <div class="absolute inset-0 bg-white/0 group-hover:bg-white/10 rounded-2xl transition-all duration-300"></div>
                 </div>
-                <div
-                    class="bg-green-500 text-white p-8 rounded-xl hover:scale-105 transition-transform cursor-pointer flex flex-col items-center justify-center text-center">
-                    <span class="text-6xl mb-4">📦</span>
-                    <span class="text-4xl font-bold mb-2">3</span>
-                    <span class="text-2xl font-semibold">Build</span>
+
+                <!-- Phase 3: Build -->
+                <div class="group relative bg-gradient-to-br from-green-500 to-green-600 text-white p-8 rounded-2xl hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer">
+                    <div class="absolute top-0 right-0 bg-white/20 rounded-bl-3xl rounded-tr-2xl px-4 py-2">
+                        <span class="text-3xl font-bold">3</span>
+                    </div>
+                    <div class="flex flex-col items-center justify-center text-center mt-4">
+                        <div class="text-7xl mb-4 transform group-hover:scale-110 transition-transform duration-300">📦</div>
+                        <span class="text-2xl font-bold">Build</span>
+                        <span class="text-sm mt-2 opacity-90">Compile & Package</span>
+                    </div>
+                    <div class="absolute inset-0 bg-white/0 group-hover:bg-white/10 rounded-2xl transition-all duration-300"></div>
                 </div>
-                <div
-                    class="bg-yellow-500 text-white p-8 rounded-xl hover:scale-105 transition-transform cursor-pointer flex flex-col items-center justify-center text-center">
-                    <span class="text-6xl mb-4">🧪</span>
-                    <span class="text-4xl font-bold mb-2">4</span>
-                    <span class="text-2xl font-semibold">Test</span>
+
+                <!-- Phase 4: Test -->
+                <div class="group relative bg-gradient-to-br from-yellow-500 to-yellow-600 text-white p-8 rounded-2xl hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer">
+                    <div class="absolute top-0 right-0 bg-white/20 rounded-bl-3xl rounded-tr-2xl px-4 py-2">
+                        <span class="text-3xl font-bold">4</span>
+                    </div>
+                    <div class="flex flex-col items-center justify-center text-center mt-4">
+                        <div class="text-7xl mb-4 transform group-hover:scale-110 transition-transform duration-300">🧪</div>
+                        <span class="text-2xl font-bold">Test</span>
+                        <span class="text-sm mt-2 opacity-90">Quality Assurance</span>
+                    </div>
+                    <div class="absolute inset-0 bg-white/0 group-hover:bg-white/10 rounded-2xl transition-all duration-300"></div>
                 </div>
-                <div
-                    class="bg-indigo-500 text-white p-8 rounded-xl hover:scale-105 transition-transform cursor-pointer flex flex-col items-center justify-center text-center">
-                    <span class="text-6xl mb-4">🚀</span>
-                    <span class="text-4xl font-bold mb-2">5</span>
-                    <span class="text-2xl font-semibold">Release</span>
+
+                <!-- Phase 5: Release -->
+                <div class="group relative bg-gradient-to-br from-indigo-500 to-indigo-600 text-white p-8 rounded-2xl hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer">
+                    <div class="absolute top-0 right-0 bg-white/20 rounded-bl-3xl rounded-tr-2xl px-4 py-2">
+                        <span class="text-3xl font-bold">5</span>
+                    </div>
+                    <div class="flex flex-col items-center justify-center text-center mt-4">
+                        <div class="text-7xl mb-4 transform group-hover:scale-110 transition-transform duration-300">🚀</div>
+                        <span class="text-2xl font-bold">Release</span>
+                        <span class="text-sm mt-2 opacity-90">Prepare Artifacts</span>
+                    </div>
+                    <div class="absolute inset-0 bg-white/0 group-hover:bg-white/10 rounded-2xl transition-all duration-300"></div>
                 </div>
-                <div
-                    class="bg-red-500 text-white p-8 rounded-xl hover:scale-105 transition-transform cursor-pointer flex flex-col items-center justify-center text-center">
-                    <span class="text-6xl mb-4">🌐</span>
-                    <span class="text-4xl font-bold mb-2">6</span>
-                    <span class="text-2xl font-semibold">Deploy</span>
+
+                <!-- Phase 6: Deploy -->
+                <div class="group relative bg-gradient-to-br from-red-500 to-red-600 text-white p-8 rounded-2xl hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer">
+                    <div class="absolute top-0 right-0 bg-white/20 rounded-bl-3xl rounded-tr-2xl px-4 py-2">
+                        <span class="text-3xl font-bold">6</span>
+                    </div>
+                    <div class="flex flex-col items-center justify-center text-center mt-4">
+                        <div class="text-7xl mb-4 transform group-hover:scale-110 transition-transform duration-300">🌐</div>
+                        <span class="text-2xl font-bold">Deploy</span>
+                        <span class="text-sm mt-2 opacity-90">Production Push</span>
+                    </div>
+                    <div class="absolute inset-0 bg-white/0 group-hover:bg-white/10 rounded-2xl transition-all duration-300"></div>
                 </div>
-                <div
-                    class="bg-orange-500 text-white p-8 rounded-xl hover:scale-105 transition-transform cursor-pointer flex flex-col items-center justify-center text-center">
-                    <span class="text-6xl mb-4">🔧</span>
-                    <span class="text-4xl font-bold mb-2">7</span>
-                    <span class="text-2xl font-semibold">Operate</span>
+
+                <!-- Phase 7: Operate -->
+                <div class="group relative bg-gradient-to-br from-orange-500 to-orange-600 text-white p-8 rounded-2xl hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer">
+                    <div class="absolute top-0 right-0 bg-white/20 rounded-bl-3xl rounded-tr-2xl px-4 py-2">
+                        <span class="text-3xl font-bold">7</span>
+                    </div>
+                    <div class="flex flex-col items-center justify-center text-center mt-4">
+                        <div class="text-7xl mb-4 transform group-hover:scale-110 transition-transform duration-300">🔧</div>
+                        <span class="text-2xl font-bold">Operate</span>
+                        <span class="text-sm mt-2 opacity-90">Manage & Maintain</span>
+                    </div>
+                    <div class="absolute inset-0 bg-white/0 group-hover:bg-white/10 rounded-2xl transition-all duration-300"></div>
                 </div>
-                <div
-                    class="bg-pink-500 text-white p-8 rounded-xl hover:scale-105 transition-transform cursor-pointer flex flex-col items-center justify-center text-center">
-                    <span class="text-6xl mb-4">📊</span>
-                    <span class="text-4xl font-bold mb-2">8</span>
-                    <span class="text-2xl font-semibold">Monitor</span>
+
+                <!-- Phase 8: Monitor -->
+                <div class="group relative bg-gradient-to-br from-pink-500 to-pink-600 text-white p-8 rounded-2xl hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer">
+                    <div class="absolute top-0 right-0 bg-white/20 rounded-bl-3xl rounded-tr-2xl px-4 py-2">
+                        <span class="text-3xl font-bold">8</span>
+                    </div>
+                    <div class="flex flex-col items-center justify-center text-center mt-4">
+                        <div class="text-7xl mb-4 transform group-hover:scale-110 transition-transform duration-300">📊</div>
+                        <span class="text-2xl font-bold">Monitor</span>
+                        <span class="text-sm mt-2 opacity-90">Track & Analyze</span>
+                    </div>
+                    <div class="absolute inset-0 bg-white/0 group-hover:bg-white/10 rounded-2xl transition-all duration-300"></div>
                 </div>
             </div>
         </div>
