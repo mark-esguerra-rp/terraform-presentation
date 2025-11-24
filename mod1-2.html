@@ -647,17 +647,20 @@
                 </ul>
             </div>
             <div>
-                <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4">Trunk-Based (Modern)</h3>
+                <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4">**Ticket-Based Workflow (Our Approach)**</h3>
                 <div class="bg-zinc-900 dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-purple-400 dark:text-purple-400 font-mono text-base p-6 rounded-lg overflow-x-auto">
-                    <div>main (always deployable)</div>
+                    <div>main (stable baseline)</div>
                     <div>&nbsp;&nbsp;↓</div>
-                    <div>short-lived feature branches (1-2 days max)</div>
+                    <div>short-lived feature branches (LIFT-XXX/description)</div>
+                    <div>&nbsp;&nbsp;↓</div>
+                    <div>merge to main → auto-delete branch</div>
                 </div>
                 <ul class="space-y-2 text-lg text-gray-600 dark:text-gray-300 mt-4">
-                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Fewer branches, faster integration</span></li>
-                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Deploy multiple times per day</span></li>
-                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Requires good testing and feature flags</span></li>
-                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Reduces merge conflicts</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Ticket-based naming (`LIFT-1012/receiptui2-fix`)</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Short-lived branches (deleted immediately after merge)</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span> Deploy to dev/E2E multiple times per day (no scheduled release windows)</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Pull requests with automated checks (auto build, test, code quality check)</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Reduce merge conflicts (less code overlap)s</span></li>
                 </ul>
             </div>
         </div>
@@ -686,6 +689,8 @@
                     <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Shares knowledge across team</span></li>
                     <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Maintains code quality</span></li>
                     <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Multiple eyes on infrastructure changes</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Multiple eyes on infrastructure changes (especially important for multi-region Terraform!)</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Slack notifications (#lift-build, #loa-releases) keep team informed</span></li>
                 </ul>
             </div>
         </div>
