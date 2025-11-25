@@ -149,7 +149,7 @@
         <div style="text-align: center; margin: 40px 0;">
             <img src="images/mod1-2/qa-meme.jpg" alt="Dev QA Conflict" style="max-width: 500px; width: 100%; border-radius: 8px;">
         </div>
-        <p style="text-align: center; font-size: 1.1em; color: #888; margin-top: 20px;">Traditional silos create adversarial relationships</p>
+        <p style="text-align: left; font-size: 1.1em; color: #888; margin-top: 20px;">Traditional silos create adversarial relationships</p>
     </div>
 </div>
 
@@ -308,7 +308,6 @@
             <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>It breaks down silos between development and operations</span></li>
             <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Automation</strong> is core to DevOps success</span></li>
             <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Continuous everything:</strong> integration, delivery, monitoring, improvement</span></li>
-            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Security must be integrated throughout (DevSecOps)</span></li>
             <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Measure what matters: deployment frequency, lead time, MTTR, quality</span></li>
             <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>DevOps enables organizations to deliver software <strong>faster, safer, and more reliably</strong></span></li>
         </ul>
@@ -664,17 +663,17 @@
             <div>
                 <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4">Docker Image</h3>
                 <ul class="space-y-3 text-xl text-gray-600 dark:text-gray-300">
-                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Contains your app, dependencies, OS libraries, everything needed to run</span></li>
-                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Immutable (doesn't change)</span></li>
-                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Can be stored and shared</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Blueprint for your application</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Immutable (version-tagged: liftck_player:8.1.4.0)</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Stored in registry (AWS ECR, Docker Hub)</span></li>
                 </ul>
             </div>
             <div>
                 <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4">Docker Container</h3>
                 <ul class="space-y-3 text-xl text-gray-600 dark:text-gray-300">
-                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Lightweight (shares the host OS kernel)</span></li>
-                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Isolated (can't interfere with other containers)</span></li>
-                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Disposable (can stop and start easily)</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Running instance of an image</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Lightweight, isolated, disposable</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Can scale horizontally (run multiple containers)</span></li>
                 </ul>
             </div>
         </div>
@@ -718,7 +717,7 @@
             <strong class="text-xl text-gray-800 dark:text-white block mb-3">Common registries:</strong>
             <ul class="space-y-2 text-lg text-gray-700 dark:text-gray-300">
                 <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Docker Hub:</strong> Public registry (like NPM for Docker)</span></li>
-                <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Amazon ECR:</strong> AWS's registry (we use this!)</span></li>
+                <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Amazon ECR:</strong> AWS's registry </span></li>
                 <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Google GCR, Azure ACR:</strong> Cloud provider registries</span></li>
             </ul>
         </div>
