@@ -39,14 +39,25 @@
     <span id="themeIcon" class="text-2xl">🌙</span>
 </button>
 
+<!-- Slide Counter -->
+<div class="fixed bottom-8 right-8 z-40 bg-gradient-to-br from-primary to-secondary px-6 py-3 rounded-full shadow-2xl border-2 border-white/30 backdrop-blur-md">
+    <div class="flex items-center gap-3">
+        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+        <span id="slideCounter" class="text-white font-bold text-lg tracking-wider">1/33</span>
+    </div>
+</div>
+
 <!-- SLIDE 1: Title -->
 <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 min-h-screen p-8 md:p-20">
     <div class="max-w-5xl w-full text-left">
-        <h1 class="text-6xl md:text-7xl font-light mb-8 tracking-tight text-gray-900 dark:text-white">DevOps Training</h1>
+        <h1 class="text-6xl md:text-7xl font-light mb-8 tracking-tight text-gray-900 dark:text-white">DevOps 101</h1>
         <p class="text-3xl md:text-4xl mb-12 font-light text-gray-600 dark:text-gray-300">Day 1: Introduction & Core Fundamentals</p>
         <div class="w-20 h-1 bg-purple-600 dark:bg-purple-400 mb-16"></div>
         <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed">
-            Modules 1-2: DevOps Concepts, Linux, Networking, Version Control & Containers<br>
+            Modules 1-2: DevOps Concepts, Linux, Version Control & Containers<br>
             Rocket Partners Data Platform Team
         </p>
     </div>
@@ -91,21 +102,6 @@
     </div>
 </div>
 
-<!-- SLIDE 3: Dev vs Ops Battle -->
-<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
-    <div class="max-w-7xl w-full">
-        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">The Battle: Dev vs Ops</h2>
-        <div class="w-16 h-1 bg-primary mb-10"></div>
-        <div style="text-align: center; margin: 40px 0;">
-            <img src="images/mod1-2/dev-vs-ops-battle.jpg" alt="Dev vs Ops Battle" style="max-width: 700px; width: 100%; border-radius: 8px;">
-        </div>
-        <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 dark:border-purple-400 p-6 rounded-lg">
-            <strong class="text-xl text-gray-800 dark:text-white">The Classic Conflict</strong><br>
-            <span class="text-lg text-gray-700 dark:text-gray-300">Developers: "I need change!" vs Operations: "I need stability!"</span>
-        </div>
-    </div>
-</div>
-
 <!-- SLIDE 4: Development vs Operations -->
 <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
     <div class="max-w-7xl w-full">
@@ -138,7 +134,7 @@
         <div style="text-align: center; margin: 40px 0;">
             <img src="images/mod1-2/qa-meme.jpg" alt="Dev QA Conflict" style="max-width: 500px; width: 100%; border-radius: 8px;">
         </div>
-        <p style="text-align: center; font-size: 1.1em; color: #888; margin-top: 20px;">Traditional silos create adversarial relationships</p>
+        <p style="text-align: left; font-size: 1.1em; color: #888; margin-top: 20px;">Traditional silos create adversarial relationships</p>
     </div>
 </div>
 
@@ -169,21 +165,6 @@
         </div>
         <div style="text-align: center; margin: 40px 0;">
             <img src="images/mod1-2/agile-devops.png" alt="Agile DevOps Integration" style="max-width: 600px; width: 100%; border-radius: 8px;">
-        </div>
-    </div>
-</div>
-
-<!-- SLIDE 9: Wall of Confusion -->
-<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
-    <div class="max-w-7xl w-full">
-        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Breaking Down the Wall</h2>
-        <div class="w-16 h-1 bg-primary mb-10"></div>
-        <div style="text-align: center; margin: 40px 0;">
-            <img src="images/mod1-2/wall-of-confusion.png" alt="Wall of Confusion" style="max-width: 700px; width: 100%; border-radius: 8px;">
-        </div>
-        <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 dark:border-purple-400 p-6 rounded-lg">
-            <strong class="text-xl text-gray-800 dark:text-white">The Wall of Confusion</strong><br>
-            <span class="text-lg text-gray-700 dark:text-gray-300">DevOps removes the barrier between development and operations teams</span>
         </div>
     </div>
 </div>
@@ -297,7 +278,6 @@
             <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>It breaks down silos between development and operations</span></li>
             <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Automation</strong> is core to DevOps success</span></li>
             <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Continuous everything:</strong> integration, delivery, monitoring, improvement</span></li>
-            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Security must be integrated throughout (DevSecOps)</span></li>
             <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Measure what matters: deployment frequency, lead time, MTTR, quality</span></li>
             <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>DevOps enables organizations to deliver software <strong>faster, safer, and more reliably</strong></span></li>
         </ul>
@@ -309,7 +289,7 @@
     <div class="max-w-7xl w-full">
         <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Module 2: Core Fundamentals</h2>
         <div class="w-16 h-1 bg-primary mb-10"></div>
-        <p style="font-size: 1.3em; color: #7B42BC;">Linux, Networking, Version Control & Containers</p>
+        <p style="font-size: 1.3em; color: #7B42BC;">Linux, Version Control & Containers</p>
     </div>
 </div>
 
@@ -451,18 +431,6 @@
     </div>
 </div>
 
-<!-- SLIDE 21: Networking - OSI Model -->
-<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
-    <div class="max-w-7xl w-full">
-        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Networking: OSI & TCP/IP Models</h2>
-        <div class="w-16 h-1 bg-primary mb-10"></div>
-        <div style="text-align: center; margin: 40px 0;">
-            <img src="images/mod1-2/osi-tcpip-model.png" alt="OSI TCP/IP Model" style="max-width: 700px; width: 100%; border-radius: 8px;">
-        </div>
-        <p style="text-align: center; font-size: 1em; color: #888;">The logical mapping between OSI basic reference model and the TCP/IP stack</p>
-    </div>
-</div>
-
 <!-- SLIDE 22: AWS VPC Subnets -->
 <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
     <div class="max-w-7xl w-full">
@@ -474,36 +442,6 @@
         <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 dark:border-purple-400 p-6 rounded-lg">
             <strong class="text-xl text-gray-800 dark:text-white">Understanding Subnets</strong><br>
             <span class="text-lg text-gray-700 dark:text-gray-300">VPCs contain subnets across availability zones, with Internet Gateways providing external access. Essential for cloud architectures!</span>
-        </div>
-    </div>
-</div>
-
-<!-- SLIDE 23: Common Protocols -->
-<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
-    <div class="max-w-7xl w-full">
-        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Common Network Protocols</h2>
-        <div class="w-16 h-1 bg-primary mb-10"></div>
-        <div style="text-align: center; margin: 40px 0;">
-            <img src="images/mod1-2/network-protocols.png" alt="8 Top Network Protocols" style="max-width: 650px; width: 100%; border-radius: 8px;">
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div>
-                <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4">Key Protocols</h3>
-                <ul class="space-y-3 text-lg text-gray-600 dark:text-gray-300">
-                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>HTTP/HTTPS:</strong> Web traffic</span></li>
-                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>SSH:</strong> Secure remote access</span></li>
-                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>TCP:</strong> Reliable connections</span></li>
-                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>UDP:</strong> Fast, connectionless</span></li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4">Supporting Protocols</h3>
-                <ul class="space-y-3 text-lg text-gray-600 dark:text-gray-300">
-                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>FTP:</strong> File transfer</span></li>
-                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>SMTP:</strong> Email delivery</span></li>
-                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>IP:</strong> Addressing & routing</span></li>
-                </ul>
-            </div>
         </div>
     </div>
 </div>
@@ -636,17 +574,20 @@
                 </ul>
             </div>
             <div>
-                <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4">Trunk-Based (Modern)</h3>
+                <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4">Project Repo-Based Workflow (Our Approach)</h3>
                 <div class="bg-zinc-900 dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-purple-400 dark:text-purple-400 font-mono text-base p-6 rounded-lg overflow-x-auto">
-                    <div>main (always deployable)</div>
+                    <div>main (stable baseline)</div>
                     <div>&nbsp;&nbsp;↓</div>
-                    <div>short-lived feature branches (1-2 days max)</div>
+                    <div>short-lived feature branches (LIFT-XXX/description)</div>
+                    <div>&nbsp;&nbsp;↓</div>
+                    <div>merge to main → auto-delete branch</div>
                 </div>
                 <ul class="space-y-2 text-lg text-gray-600 dark:text-gray-300 mt-4">
-                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Fewer branches, faster integration</span></li>
-                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Deploy multiple times per day</span></li>
-                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Requires good testing and feature flags</span></li>
-                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Reduces merge conflicts</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Ticket-based naming (`LIFT-1012/receiptui2-fix`)</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Short-lived branches (deleted immediately after merge)</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span> Deploy to dev multiple times per day (no scheduled release windows)</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Pull requests with automated checks (auto build, test, code quality check)</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Reduce merge conflicts (less code overlaps)</span></li>
                 </ul>
             </div>
         </div>
@@ -675,109 +616,10 @@
                     <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Shares knowledge across team</span></li>
                     <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Maintains code quality</span></li>
                     <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Multiple eyes on infrastructure changes</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Multiple eyes on infrastructure changes (especially important for multi-region Terraform!)</span></li>
+                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Slack notifications (#lift-build, #loa-releases) keep team informed</span></li>
                 </ul>
             </div>
-        </div>
-    </div>
-</div>
-
-<!-- SLIDE 30: Containerization Intro -->
-<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
-    <div class="max-w-7xl w-full">
-        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Introduction to Docker</h2>
-        <div class="w-16 h-1 bg-primary mb-10"></div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div>
-                <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4">Docker Image</h3>
-                <ul class="space-y-3 text-xl text-gray-600 dark:text-gray-300">
-                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Contains your app, dependencies, OS libraries, everything needed to run</span></li>
-                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Immutable (doesn't change)</span></li>
-                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Can be stored and shared</span></li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4">Docker Container</h3>
-                <ul class="space-y-3 text-xl text-gray-600 dark:text-gray-300">
-                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Lightweight (shares the host OS kernel)</span></li>
-                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Isolated (can't interfere with other containers)</span></li>
-                    <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span>Disposable (can stop and start easily)</span></li>
-                </ul>
-            </div>
-        </div>
-        <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 dark:border-purple-400 p-6 rounded-lg mt-8">
-            <strong class="text-xl text-gray-800 dark:text-white">Think of it this way:</strong><br>
-            <span class="text-lg text-gray-700 dark:text-gray-300">Image = Recipe | Container = Meal cooked from that recipe</span>
-        </div>
-    </div>
-</div>
-
-<!-- SLIDE 31: Dockerfile -->
-<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
-    <div class="max-w-7xl w-full">
-        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Dockerfile Example</h2>
-        <div class="w-16 h-1 bg-primary mb-10"></div>
-        <div class="bg-zinc-900 dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-mono text-base p-6 rounded-lg overflow-x-auto">
-            <div class="text-gray-500 dark:text-gray-600 italic"># Example Dockerfile for our discount service</div>
-            <div><span class="text-blue-600 dark:text-cyan-400">FROM</span> openjdk:17-slim          <span class="text-gray-500 dark:text-gray-600 italic"># Start with Java base image</span></div>
-            <div><span class="text-blue-600 dark:text-cyan-400">WORKDIR</span> /app                   <span class="text-gray-500 dark:text-gray-600 italic"># Set working directory</span></div>
-            <div><span class="text-blue-600 dark:text-cyan-400">COPY</span> target/discount.jar .     <span class="text-gray-500 dark:text-gray-600 italic"># Copy your JAR file</span></div>
-            <div><span class="text-blue-600 dark:text-cyan-400">EXPOSE</span> 8080                    <span class="text-gray-500 dark:text-gray-600 italic"># Declare which port to use</span></div>
-            <div><span class="text-blue-600 dark:text-cyan-400">CMD</span> [<span class="text-purple-600 dark:text-purple-400">"java"</span>, <span class="text-purple-600 dark:text-purple-400">"-jar"</span>, <span class="text-purple-600 dark:text-purple-400">"discount.jar"</span>]  <span class="text-gray-500 dark:text-gray-600 italic"># Command to run</span></div>
-        </div>
-
-        <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 dark:border-purple-400 p-6 rounded-lg mt-6">
-            <strong class="text-xl text-gray-800 dark:text-white">Build and run:</strong>
-        </div>
-        <div class="bg-zinc-900 dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-purple-400 dark:text-purple-400 font-mono text-base p-6 rounded-lg overflow-x-auto">
-            <div>docker build -t discount-service .     <span class="text-gray-500 dark:text-gray-600 italic"># Build image from Dockerfile</span></div>
-            <div>docker run -p 8080:8080 discount-service  <span class="text-gray-500 dark:text-gray-600 italic"># Run container</span></div>
-        </div>
-    </div>
-</div>
-
-<!-- SLIDE 32: Container Registries -->
-<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
-    <div class="max-w-7xl w-full">
-        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Container Registries</h2>
-        <div class="w-16 h-1 bg-primary mb-10"></div>
-        <div class="bg-purple-50 dark:bg-zinc-700 border-l-4 border-purple-500 dark:border-purple-400 p-6 rounded-lg mb-6">
-            <strong class="text-xl text-gray-800 dark:text-white block mb-3">Common registries:</strong>
-            <ul class="space-y-2 text-lg text-gray-700 dark:text-gray-300">
-                <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Docker Hub:</strong> Public registry (like NPM for Docker)</span></li>
-                <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Amazon ECR:</strong> AWS's registry (we use this!)</span></li>
-                <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Google GCR, Azure ACR:</strong> Cloud provider registries</span></li>
-            </ul>
-        </div>
-
-        <div class="bg-zinc-900 dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-purple-400 dark:text-purple-400 font-mono text-base p-6 rounded-lg overflow-x-auto">
-            <div class="text-gray-500 dark:text-gray-600 italic"># Typical workflow</div>
-            <div>docker build -t discount-service:v1.0 .</div>
-            <div>docker tag discount-service:v1.0 \</div>
-            <div>&nbsp;&nbsp;account.ecr.aws/discount-service:v1.0</div>
-            <div>docker push account.ecr.aws/discount-service:v1.0</div>
-            <div>&nbsp;</div>
-            <div class="text-gray-500 dark:text-gray-600 italic"># On production server</div>
-            <div>docker pull account.ecr.aws/discount-service:v1.0</div>
-            <div>docker run account.ecr.aws/discount-service:v1.0</div>
-        </div>
-    </div>
-</div>
-
-<!-- SLIDE 33: Container Best Practices -->
-<div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
-    <div class="max-w-7xl w-full">
-        <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Container Best Practices</h2>
-        <div class="w-16 h-1 bg-primary mb-10"></div>
-        <ul class="space-y-4 text-xl text-gray-600 dark:text-gray-300">
-            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Keep images small:</strong> Use slim/alpine base images (200MB vs 500MB+)</span></li>
-            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>One process per container:</strong> Don't run app + database + nginx together</span></li>
-            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Don't run as root:</strong> Create a non-root user for security</span></li>
-            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Use .dockerignore:</strong> Like .gitignore, prevents copying unnecessary files</span></li>
-            <li class="flex items-start"><span class="text-primary mr-3 mt-1">▸</span><span><strong>Version your images:</strong> Never use <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded">latest</code> in production - use <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded">v1.2.3</code></span></li>
-        </ul>
-        <div class="bg-zinc-900 dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-mono text-base p-6 rounded-lg overflow-x-auto mt-8">
-            <div><span class="text-blue-600 dark:text-cyan-400">RUN</span> useradd -m appuser</div>
-            <div><span class="text-blue-600 dark:text-cyan-400">USER</span> appuser</div>
         </div>
     </div>
 </div>
@@ -797,7 +639,7 @@
     <div class="max-w-7xl w-full">
         <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">What is Cloud Computing?</h2>
         <div class="w-16 h-1 bg-blue-600 mb-10"></div>
-        
+
         <div class="bg-blue-50 dark:bg-zinc-700 border-l-4 border-blue-600 p-8 rounded-lg mb-10">
             <p class="text-2xl text-gray-800 dark:text-white font-semibold mb-4">💡 Definition</p>
             <p class="text-xl text-gray-700 dark:text-gray-300">Cloud computing is the <strong>on-demand delivery of IT resources</strong> over the internet with <strong>pay-as-you-go pricing</strong>.</p>
@@ -831,7 +673,7 @@
     <div class="max-w-7xl w-full">
         <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Cloud Service Models</h2>
         <div class="w-16 h-1 bg-blue-600 mb-10"></div>
-        
+
         <div class="grid grid-cols-3 gap-6 mb-8">
             <div class="bg-gradient-to-br from-orange-100 to-orange-200 dark:from-orange-900/30 dark:to-orange-800/30 p-6 rounded-xl border-2 border-orange-400 dark:border-orange-600">
                 <h3 class="text-3xl font-bold text-orange-700 dark:text-orange-400 mb-4">IaaS</h3>
@@ -864,7 +706,7 @@
     <div class="max-w-7xl w-full">
         <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Major Cloud Providers</h2>
         <div class="w-16 h-1 bg-blue-600 mb-10"></div>
-        
+
         <div class="grid grid-cols-3 gap-8 mb-10">
             <div class="bg-gradient-to-br from-orange-500 to-orange-600 p-8 rounded-2xl text-white shadow-xl">
                 <div class="text-5xl mb-4">☁️</div>
@@ -915,7 +757,7 @@
     <div class="max-w-7xl w-full">
         <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Compute: Virtual Machines (VMs)</h2>
         <div class="w-16 h-1 bg-blue-600 mb-10"></div>
-        
+
         <p class="text-2xl text-gray-700 dark:text-gray-300 mb-8">Virtual servers running in the cloud—like having a computer in someone else's data center.</p>
 
         <div class="grid grid-cols-3 gap-6 mb-8">
@@ -965,7 +807,7 @@
     <div class="max-w-7xl w-full">
         <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Storage Services</h2>
         <div class="w-16 h-1 bg-blue-600 mb-10"></div>
-        
+
         <div class="grid grid-cols-3 gap-6">
             <div class="bg-gradient-to-br from-cyan-100 to-cyan-200 dark:from-cyan-900/30 dark:to-cyan-800/30 p-6 rounded-xl border-2 border-cyan-400 dark:border-cyan-600">
                 <div class="text-5xl mb-4">📦</div>
@@ -1009,7 +851,7 @@
     <div class="max-w-7xl w-full">
         <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Identity & Access Management (IAM)</h2>
         <div class="w-16 h-1 bg-blue-600 mb-10"></div>
-        
+
         <p class="text-2xl text-gray-700 dark:text-gray-300 mb-8">Controls <strong>who</strong> can access <strong>what</strong> in your cloud environment.</p>
 
         <div class="grid grid-cols-2 gap-6 mb-8">
@@ -1052,7 +894,7 @@
     <div class="max-w-7xl w-full">
         <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Multi-Cloud & Hybrid Cloud</h2>
         <div class="w-16 h-1 bg-blue-600 mb-10"></div>
-        
+
         <div class="grid grid-cols-2 gap-8">
             <div class="bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 p-6 rounded-xl border-2 border-purple-400 dark:border-purple-600">
                 <h3 class="text-3xl font-bold text-purple-700 dark:text-purple-400 mb-4">Multi-Cloud</h3>
@@ -1105,7 +947,7 @@
     <div class="max-w-7xl w-full">
         <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Common Cloud Pitfalls to Avoid</h2>
         <div class="w-16 h-1 bg-red-600 mb-10"></div>
-        
+
         <div class="grid grid-cols-2 gap-6">
             <div class="bg-red-50 dark:bg-red-900/20 border-2 border-red-300 dark:border-red-700 p-6 rounded-lg">
                 <h3 class="text-xl font-bold text-red-700 dark:text-red-400 mb-3">❌ Open Security Groups</h3>
@@ -1160,7 +1002,7 @@
     <div class="max-w-7xl w-full">
         <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Why Monitoring Matters in DevOps</h2>
         <div class="w-16 h-1 bg-green-600 mb-10"></div>
-        
+
         <div class="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-600 p-8 rounded-lg mb-10">
             <h3 class="text-3xl font-bold text-red-700 dark:text-red-400 mb-4">💡 Core Principle</h3>
             <p class="text-2xl text-gray-800 dark:text-white">If you can't measure it, you can't improve it.</p>
@@ -1195,7 +1037,7 @@
     <div class="max-w-7xl w-full">
         <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">The Three Pillars of Observability</h2>
         <div class="w-16 h-1 bg-green-600 mb-10"></div>
-        
+
         <div class="grid grid-cols-3 gap-6">
             <div class="bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900/30 dark:to-blue-800/30 p-6 rounded-xl border-2 border-blue-400 dark:border-blue-600">
                 <div class="text-5xl mb-4 text-center">📊</div>
@@ -1263,7 +1105,7 @@
     <div class="max-w-7xl w-full">
         <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Popular Monitoring Tools</h2>
         <div class="w-16 h-1 bg-green-600 mb-10"></div>
-        
+
         <div class="grid grid-cols-2 gap-6">
             <div class="bg-gradient-to-br from-orange-100 to-orange-200 dark:from-orange-900/30 dark:to-orange-800/30 p-6 rounded-xl border-2 border-orange-400 dark:border-orange-600">
                 <h3 class="text-3xl font-bold text-orange-700 dark:text-orange-400 mb-3">Prometheus</h3>
@@ -1317,7 +1159,7 @@
     <div class="max-w-7xl w-full">
         <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Log Management Best Practices</h2>
         <div class="w-16 h-1 bg-green-600 mb-10"></div>
-        
+
         <div class="grid grid-cols-2 gap-8 mb-8">
             <div class="bg-red-50 dark:bg-red-900/20 border-2 border-red-300 dark:border-red-700 p-6 rounded-lg">
                 <h3 class="text-2xl font-bold text-red-700 dark:text-red-400 mb-4">❌ Bad (Unstructured)</h3>
@@ -1368,7 +1210,7 @@
     <div class="max-w-7xl w-full">
         <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Effective Alerting</h2>
         <div class="w-16 h-1 bg-green-600 mb-10"></div>
-        
+
         <div class="grid grid-cols-2 gap-8 mb-8">
             <div class="bg-red-50 dark:bg-red-900/20 border-2 border-red-300 dark:border-red-700 p-6 rounded-lg">
                 <h3 class="text-2xl font-bold text-red-700 dark:text-red-400 mb-4">❌ Bad Alert</h3>
@@ -1420,7 +1262,7 @@
             <h2 class="text-6xl font-light text-gray-800 dark:text-white mb-4">The 8 CI/CD Phases</h2>
             <div class="w-24 h-1 bg-gradient-to-r from-primary to-purple-500 mx-auto mb-6 rounded-full"></div>
             <p class="text-2xl text-gray-600 dark:text-gray-300 font-medium">An infinite loop of continuous improvement</p>
- 
+
         </div>
 
         <!-- Phase Cards Grid -->
@@ -2119,7 +1961,7 @@
             <div class="w-32 h-1 bg-white mx-auto mb-8 rounded-full"></div>
             <p class="text-4xl text-white/90 font-light mb-12">DevOps 101: Day 1 Complete</p>
         </div>
-        
+
         <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-12 mb-8 border border-white/20">
             <h3 class="text-3xl font-semibold text-white mb-6">Questions?</h3>
             <p class="text-2xl text-white/80 mb-8">Let's discuss what we've learned today</p>
@@ -2138,7 +1980,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="text-white/70 text-xl">
             <p class="mb-3">📅 <strong>Next:</strong> Day 2 - CI/CD in Practice</p>
             <p class="italic">Keep learning, keep building! 🚀</p>
