@@ -216,6 +216,141 @@
         </div>
     </div>
 
+    <!-- CI/CD Demos: Lift Ad Players Overview -->
+    <div class="slide flex items-center justify-center bg-gradient-to-br from-purple-100 via-blue-100 to-cyan-100 dark:from-purple-900/30 dark:via-blue-900/30 dark:to-cyan-900/30 p-20">
+        <div class="max-w-7xl w-full">
+            <h2 class="text-6xl font-light text-gray-800 dark:text-white mb-4">CI/CD in Action</h2>
+            <div class="w-16 h-1 bg-gradient-to-r from-purple-600 to-cyan-600 mb-10"></div>
+            <p class="text-3xl text-gray-700 dark:text-gray-300 mb-4">Real-world examples from Lift Ad Players</p>
+            <p class="text-2xl text-gray-600 dark:text-gray-400 mb-12">Both are client ad players for the Lift platform — different implementations, same delivery goals</p>
+            
+            <!-- What is Lift? -->
+            <div class="bg-white dark:bg-zinc-800 rounded-xl p-8 shadow-xl mb-8">
+                <h3 class="text-3xl font-bold text-gray-800 dark:text-white mb-6">🎮 What is Lift?</h3>
+                <div class="bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 border-l-4 border-purple-500 rounded-lg p-6 mb-6">
+                    <p class="text-xl text-gray-800 dark:text-white mb-2"><strong>Lift Digital Advertising Platform</strong></p>
+                    <p class="text-lg text-gray-700 dark:text-gray-300">Our flagship product that delivers targeted advertising and promotional content to casino gaming environments. The ad players are the client applications that display this content.</p>
+                </div>
+            </div>
+
+            <!-- The Two Players Comparison -->
+            <div class="grid grid-cols-2 gap-8">
+                <!-- liftck-player Card -->
+                <div class="bg-white dark:bg-zinc-800 rounded-xl p-8 shadow-xl border-2 border-blue-400">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="text-5xl">🖥️</span>
+                        <div>
+                            <h3 class="text-3xl font-bold text-blue-600 dark:text-blue-400">liftck-player</h3>
+                            <p class="text-lg text-gray-600 dark:text-gray-400">Cashier & Kiosk Display</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div class="flex items-start gap-3">
+                            <span class="text-2xl">⚙️</span>
+                            <div>
+                                <p class="text-lg font-semibold text-gray-800 dark:text-white">Java 21 + JavaFX</p>
+                                <p class="text-base text-gray-600 dark:text-gray-400">Gradle build system</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-2xl">🐳</span>
+                            <div>
+                                <p class="text-lg font-semibold text-gray-800 dark:text-white">Containerized</p>
+                                <p class="text-base text-gray-600 dark:text-gray-400">Docker → AWS ECS</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-2xl">📍</span>
+                            <div>
+                                <p class="text-lg font-semibold text-gray-800 dark:text-white">Where it runs</p>
+                                <p class="text-base text-gray-600 dark:text-gray-400">Circle K cashier & kiosk displays</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
+                        <p class="text-base text-gray-700 dark:text-gray-300"><strong>3 Key Workflows:</strong> PR checks, release scan, cloud deployment</p>
+                    </div>loa-player Demo
+                </div>
+
+                <!-- loa-player Card -->
+                <div class="bg-white dark:bg-zinc-800 rounded-xl p-8 shadow-xl border-2 border-orange-400">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="text-5xl">🛒</span>
+                        <div>
+                            <h3 class="text-3xl font-bold text-orange-600 dark:text-orange-400">loa-player</h3>
+                            <p class="text-lg text-gray-600 dark:text-gray-400">Lift-on-Anything Player</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div class="flex items-start gap-3">
+                            <span class="text-2xl">🌐</span>
+                            <div>
+                                <p class="text-lg font-semibold text-gray-800 dark:text-white">HTML5 Web Player</p>
+                                <p class="text-base text-gray-600 dark:text-gray-400">TypeScript/Angular PWA</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-2xl">☁️</span>
+                            <div>
+                                <p class="text-lg font-semibold text-gray-800 dark:text-white">Static Web App</p>
+                                <p class="text-base text-gray-600 dark:text-gray-400">AWS S3 + CloudFront</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-2xl">📍</span>
+                            <div>
+                                <p class="text-lg font-semibold text-gray-800 dark:text-white">Where it runs</p>
+                                <p class="text-base text-gray-600 dark:text-gray-400">Smart Checkout (Mashgin) & beyond</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-orange-50 dark:bg-orange-900/20 rounded-lg p-4">
+                        <p class="text-base text-gray-700 dark:text-gray-300"><strong>6 Quality Workflows:</strong> Lint, type check, unit tests, E2E, SonarQube, deploy</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why These Examples -->
+            <div class="mt-8 bg-gradient-to-r from-purple-50 to-cyan-50 dark:from-purple-900/20 dark:to-cyan-900/20 rounded-xl p-8 border-2 border-purple-400">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">💡 Why explore both?</h3>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="flex items-start gap-3">
+                        <span class="text-3xl">🔄</span>
+                        <div>
+                            <p class="text-lg font-semibold text-gray-800 dark:text-white mb-1">Different Tech Stacks</p>
+                            <p class="text-base text-gray-600 dark:text-gray-400">See how CI/CD principles apply to both backend and frontend</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-3xl">🎯</span>
+                        <div>
+                            <p class="text-lg font-semibold text-gray-800 dark:text-white mb-1">Real Production Code</p>
+                            <p class="text-base text-gray-600 dark:text-gray-400">Actual workflows running in production right now</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-3xl">🚀</span>
+                        <div>
+                            <p class="text-lg font-semibold text-gray-800 dark:text-white mb-1">Full CI/CD Coverage</p>
+                            <p class="text-base text-gray-600 dark:text-gray-400">From code quality checks to multi-region deployment</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-3xl">✅</span>
+                        <div>
+                            <p class="text-lg font-semibold text-gray-800 dark:text-white mb-1">Best Practices</p>
+                            <p class="text-base text-gray-600 dark:text-gray-400">See the 8 CI/CD phases implemented in practice</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- liftck-player: Workflow 1 - Pull Request CI -->
     <div class="slide flex items-center justify-center bg-white dark:bg-zinc-800 p-20">
         <div class="max-w-7xl w-full">
@@ -745,41 +880,6 @@
                     <span class="bg-white dark:bg-zinc-800 px-4 py-2 rounded-lg shadow-sm font-semibold text-gray-700 dark:text-gray-300">📊 SonarQube</span>
                     <span class="bg-white dark:bg-zinc-800 px-4 py-2 rounded-lg shadow-sm font-semibold text-gray-700 dark:text-gray-300">☁️ AWS S3</span>
                     <span class="bg-white dark:bg-zinc-800 px-4 py-2 rounded-lg shadow-sm font-semibold text-gray-700 dark:text-gray-300">💬 Slack</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- loa-player: CI/CD Demo Intro -->
-    <div class="slide flex items-center justify-center bg-gradient-to-br from-orange-100 to-red-100 dark:from-orange-900/30 dark:to-red-900/30 p-20">
-        <div class="max-w-7xl w-full">
-            <h2 class="text-6xl font-light text-gray-800 dark:text-white mb-4">loa-player Demo</h2>
-            <div class="w-16 h-1 bg-orange-600 mb-10"></div>
-            <p class="text-3xl text-gray-700 dark:text-gray-300 mb-4">Web app with multiple quality checks</p>
-            <p class="text-2xl text-gray-600 dark:text-gray-400 mb-12">Real example from our codebase</p>
-            
-            <!-- What is it? -->
-            <div class="bg-white dark:bg-zinc-800 rounded-xl p-8 shadow-xl">
-                <h3 class="text-3xl font-bold text-gray-800 dark:text-white mb-6">📱 What is loa-player?</h3>
-                <div class="grid grid-cols-2 gap-6 mb-6">
-                    <div class="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 p-5 rounded-lg">
-                        <p class="text-lg text-gray-700 dark:text-gray-300"><strong>Type:</strong> Web Application</p>
-                    </div>
-                    <div class="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 p-5 rounded-lg">
-                        <p class="text-lg text-gray-700 dark:text-gray-300"><strong>Language:</strong> TypeScript</p>
-                    </div>
-                    <div class="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 p-5 rounded-lg">
-                        <p class="text-lg text-gray-700 dark:text-gray-300"><strong>Framework:</strong> Angular</p>
-                    </div>
-                    <div class="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 p-5 rounded-lg">
-                        <p class="text-lg text-gray-700 dark:text-gray-300"><strong>Runtime:</strong> Node.js 20</p>
-                    </div>
-                </div>
-
-                <div class="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border-l-4 border-green-500 rounded-lg p-6">
-                    <p class="text-lg text-gray-700 dark:text-gray-300">
-                        <strong>Lift-on-Anything Player:</strong> Digital advertising player that runs on casino slot machines
-                    </p>
                 </div>
             </div>
         </div>
