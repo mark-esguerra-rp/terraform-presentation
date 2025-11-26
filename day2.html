@@ -1501,8 +1501,7 @@
             <h1 class="text-6xl md:text-7xl font-light text-gray-900 dark:text-white mb-6 tracking-tight">Terraform Introduction</h1>
             <p class="text-3xl md:text-4xl text-gray-600 dark:text-gray-300 mb-16 font-light">Infrastructure as Code at Rocket Partners</p>
             <div class="w-20 h-1 bg-purple-600 dark:bg-purple-400 mb-16"></div>
-            
-            <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-3 leading-relaxed">Data Platform Team • PH Team</p>
+
             <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 leading-relaxed">AWS Infrastructure Management</p>
         </div>
     </div>
@@ -1589,7 +1588,7 @@
                             <span class="text-2xl font-bold">6</span>
                         </div>
                         <div>
-                            <h3 class="text-2xl font-semibold mb-2">Q&A & Best Practices</h3>
+                            <h3 class="text-2xl font-semibold mb-2">Q&A</h3>
                             <p class="text-lg text-white/80">Tips, tricks & troubleshooting</p>
                         </div>
                     </div>
@@ -1822,13 +1821,13 @@
                         <strong class="text-yellow-800 dark:text-yellow-300 text-xl">Required: Terraform 1.6.3</strong>
                     </div>
                     <p class="text-gray-700 dark:text-gray-300 mb-1">
-                        Defined in <code class="text-orange-600 dark:text-orange-400 font-mono">workflows/plan-prod-us.yml</code>
+                        Defined in <code class="text-orange-600 dark:text-orange-400 font-mono">workflows/app-versions.yml</code>
                     </p>
                     <p class="text-gray-700 dark:text-gray-300">Ensures team consistency.</p>
                 </div>
 
                 <!-- Button -->
-                <a href="https://github.com/RocketPartners/liftck_tf_infra/blob/main/.github/workflows/plan-prod-us.yml" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-8 py-4 rounded-2xl text-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg flex items-center gap-3 inline-flex">
+                <a href="https://github.com/RocketPartners/liftck_tf_infra/blob/main/.github/workflows/app-versions.yml" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-8 py-4 rounded-2xl text-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg flex items-center gap-3 inline-flex">
                     <span class="text-2xl">📄</span>
                     View Workflow YAML
                 </a>
@@ -1902,7 +1901,7 @@
                 </li>
                 <li class="flex items-start gap-4">
                     <span class="text-purple-500 dark:text-purple-400 mt-2">→</span>
-                    <span><strong class="text-gray-800 dark:text-white">Virtual Journal Integration:</strong> HTTP endpoint for POS data</span>
+                    <span><strong class="text-gray-800 dark:text-white">Register Integration:</strong> HTTP endpoint for POS data</span>
                 </li>
             </ul>
 
@@ -1911,7 +1910,7 @@
                     Architecture:
                 </p>
                 <p class="text-lg text-gray-700 dark:text-gray-300">
-                    Java POS App → Virtual Journal (HTTP) → Discount Service (ECS) → Load Balancer
+                    Java POS App → Register (HTTP) → Discount Service (ECS) → Load Balancer
                 </p>
             </div>
         </div>
@@ -2033,7 +2032,7 @@
                             <span class="text-green-500 dark:text-green-400">(NEW)</span>
                         </div>
                     </div>
-                    <p class="text-center text-cyan-500 dark:text-cyan-400 mt-4">← Virtual Journal connects here</p>
+                    <p class="text-center text-cyan-500 dark:text-cyan-400 mt-4">← Player connects here</p>
                 </div>
 
                 <!-- Terraform Code -->
@@ -2187,17 +2186,12 @@
             <h2 class="text-5xl font-light text-gray-800 dark:text-white mb-4">Complete POS Discount Service</h2>
             <div class="w-16 h-1 bg-primary mb-12"></div>
             
-            <p class="text-xl text-gray-600 dark:text-gray-400 mb-12">POS App → Virtual Journal (HTTP) → Our Infrastructure</p>
+            <p class="text-xl text-gray-600 dark:text-gray-400 mb-12">POS App (HTTP) → Our Infrastructure</p>
             
             <div class="flex flex-wrap gap-6 items-center justify-center mb-12">
                 <div class="flex flex-col items-center">
                     <span class="text-6xl mb-2">🖥️</span>
                     <span class="text-lg text-gray-700 dark:text-gray-300 text-center">Java POS<br>App</span>
-                </div>
-                <span class="text-4xl text-cyan-500 dark:text-cyan-400">→</span>
-                <div class="flex flex-col items-center">
-                    <span class="text-6xl mb-2">📡</span>
-                    <span class="text-lg text-gray-700 dark:text-gray-300 text-center">Virtual<br>Journal<br>(HTTP)</span>
                 </div>
                 <span class="text-4xl text-cyan-500 dark:text-cyan-400">→</span>
                 <div class="flex flex-col items-center">
@@ -2714,7 +2708,7 @@
                     <span class="text-gray-700 dark:text-gray-300">TF 1.6.3 • TG 0.53.2</span>
                 </div>
                 <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                    (workflows/plan-prod-us.yml)
+                    (workflows/app-versions.yml)
                 </div>
             </div>
 
