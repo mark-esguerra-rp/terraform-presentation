@@ -2040,6 +2040,13 @@
                     <h3 class="text-2xl font-semibold text-cyan-500 dark:text-cyan-400 mb-8">Terraform Code</h3>
                     <div class="bg-white dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-mono text-sm p-6 rounded-lg overflow-x-auto">
                         <div class="space-y-1">
+                            <div><span class="text-blue-600 dark:text-cyan-400">resource</span> <span class="text-purple-600 dark:text-purple-400">"aws_vpc"</span> <span class="text-purple-600 dark:text-purple-400">"main"</span> {</div>
+                            <div>&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">cidr_block</span> = <span class="text-purple-600 dark:text-purple-400">"10.0.0.0/16"</span></div>
+                            <div>&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">enable_dns_hostnames</span> = <span class="text-purple-600 dark:text-purple-400">true</span></div>
+                            <div>&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">enable_dns_support</span> = <span class="text-purple-600 dark:text-purple-400">true</span></div>
+                            <div>&nbsp;&nbsp;<span class="text-gray-500 dark:text-gray-600 italic"># VPC for ECS and Load Balancer</span></div>
+                            <div>}</div>
+                            <div>&nbsp;</div>
                             <div><span class="text-blue-600 dark:text-cyan-400">resource</span> <span class="text-purple-600 dark:text-purple-400">"aws_lb"</span> <span class="text-purple-600 dark:text-purple-400">"discount"</span> {</div>
                             <div>&nbsp;&nbsp;<span class="text-purple-600 dark:text-purple-400">name</span> = <span class="text-purple-600 dark:text-purple-400">"discount-service-lb"</span></div>
                             <div>&nbsp;&nbsp;<span class="text-gray-500 dark:text-gray-600 italic"># Load balancer name</span></div>
@@ -2318,7 +2325,7 @@
                 <div class="bg-zinc-100 dark:bg-black border-2 border-gray-300 dark:border-gray-700 text-purple-600 dark:text-purple-400 font-mono text-lg p-8 rounded-lg overflow-x-auto">
                     <div class="space-y-1">
                         <div>project/</div>
-                        <div>├── workflows/plan-prod-us.yml <span class="text-gray-500 dark:text-gray-600 italic"># TF 1.6.3, TG 0.53.2</span></div>
+                        <div>├── workflows/app-versions.yml <span class="text-gray-500 dark:text-gray-600 italic"># TF 1.6.3, TG 0.53.2</span></div>
                         <div>├── scripts/ <span class="text-gray-500 dark:text-gray-600 italic"># .js files</span></div>
                         <div>├── <span class="text-cyan-500 dark:text-cyan-400 font-semibold">modules/contentstack/</span> <span class="text-gray-500 dark:text-gray-600 italic"># ONE copy!</span></div>
                         <div>│ ├── iam.tf</div>
@@ -2438,7 +2445,7 @@
                         <div>modules/contentstack/ <span class="text-gray-500 dark:text-gray-600 italic"># Infrastructure</span></div>
                         <div>&nbsp;&nbsp;├── iam.tf, main.tf, variables.tf</div>
                         <div>&nbsp;</div>
-                        <div>live/prod/</div>
+                        <div>live/dev/</div>
                         <div>├── us-east-1/lambda/</div>
                         <div>│ ├── fetcher/terragrunt.hcl</div>
                         <div>│ └── integration/terragrunt.hcl</div>
